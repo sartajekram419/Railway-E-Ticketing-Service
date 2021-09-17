@@ -1,18 +1,20 @@
 import React from 'react'
 import {
     Nav,
+    Title,
     Bars,
     NavLink,
     NavMenu,
 } from './NavbarElements'
 
 const Navbar = () => {
+
     return (
         <>
             <Nav>
-                <NavLink to='/home'>
+                <Title>
                     <h3>Railway E-Ticketing Service</h3>
-                </NavLink>
+                </Title>
                 <Bars />
                 <NavMenu>
                     <NavLink to='/home' activeStyle>

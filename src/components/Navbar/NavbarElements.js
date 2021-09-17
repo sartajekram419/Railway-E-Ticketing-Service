@@ -5,10 +5,23 @@ import { FaBars } from 'react-icons/fa'
 export const Nav = styled.nav`
     background: #292626;
     height: 80px;
+    width:100%;
     display: flex;
     justify-content: space-between;
     padding: 0.5rem calc((100vw - 1000px) / 20);
     z-index:10;
+    position: fixed;
+`;
+
+export const Title = styled.div`
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+    cursor: pointer;
+
 `;
 
 export const NavLink = styled(Link)`
@@ -20,8 +33,10 @@ export const NavLink = styled(Link)`
     height: 100%;
     cursor: pointer;
 
+
     &.active {
         color: #fff;
+        border-bottom: 3px solid #fff;
     }
 `;
 
@@ -41,6 +56,8 @@ export const NavMenu = styled.div`
     display: flex;
     align-items: center;
     color: #fff;
+
+    white-space: nowrap;
 
     @media screen and (max-width: 768px) {
         display: none;
