@@ -10,24 +10,24 @@ const Navbar = () => {
     return (
         <>
             <Nav>
-                <NavLink to='/'>
+                <NavLink to='/home'>
                     <h3>Railway E-Ticketing Service</h3>
                 </NavLink>
                 <Bars />
                 <NavMenu>
-                    <NavLink to='/' activeStyle>
+                    <NavLink to='/home' activeStyle>
                         Home
                     </NavLink>
-                    <NavLink to='/' activeStyle>
+                    <NavLink to='/login' activeStyle>
                         Login
                     </NavLink>
-                    <NavLink to='/' activeStyle>
+                    <NavLink to='/register' activeStyle>
                         Register
                     </NavLink>
-                    <NavLink to='/' activeStyle>
+                    <NavLink to='/verify-ticket' activeStyle>
                         Verify Ticket
                     </NavLink>
-                    <NavLink to='/' activeStyle>
+                    <NavLink to='/contact-us' activeStyle>
                         Contact Us
                     </NavLink>
                 </NavMenu>
