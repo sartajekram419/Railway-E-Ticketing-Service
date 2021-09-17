@@ -4,15 +4,11 @@ import Login from './pages/login'
 import Register from './pages/register'
 import VerifyTicket from './pages/verifyticket'
 import ContactUs from './pages/contactus'
-import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
 function App() {
   return (
     <Router>
-
-      
-      <Navbar/>
 
       <Switch>
         <Route path='/home' exact component={Home}/>

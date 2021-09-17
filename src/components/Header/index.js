@@ -1,149 +1,21 @@
 import React from 'react'
+import { Container, TextBox, FindCardBox } from './HeaderElements'
+import FindCard from '../FindCard'
 
 const Header = () => {
     return (
-        <div style={{ backgroundImage: `url(headerBackground.jpg)`, 
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'}}>
+        <Container>
 
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
-            <h1>
-                Railway 
-            </h1>
+            <TextBox>
+                <h1>Welcome to <br/>Railway <br/>E-Ticketing Service</h1>
+            </TextBox>
 
-        </div>
+            <FindCardBox>
+                <FindCard/>
+            </FindCardBox>
+            
+            
+        </Container>
     )
 }
 
