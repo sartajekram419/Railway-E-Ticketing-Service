@@ -3,8 +3,14 @@ import Navbar from '../components/Navbar'
 import RegistrationForm from '../components/RegistrationForm'
 
 const Register = () => {
+
+    const style = {
+        display: "flex",
+        flexDirection: "column",
+    }
+
     return (
-        <div>
+        <div style={style}>
             <Navbar />
             <RegistrationForm />
         </div>
