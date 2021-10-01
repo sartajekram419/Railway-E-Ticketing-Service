@@ -7,7 +7,7 @@ import {
     NavMenu,
 } from './NavbarElements'
 
-const Navbar = () => {
+const Navbar = ({ toggleSidebar }) => {
 
     return (
         <>
@@ -15,7 +15,7 @@ const Navbar = () => {
                 <Title>
                     <h3>Railway E-Ticketing Service</h3>
                 </Title>
-                <Bars />
+                <Bars onClick={toggleSidebar} />
                 <NavMenu>
                     <NavLink to='/home' activeStyle>
                         Home

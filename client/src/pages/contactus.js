@@ -1,10 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Navbar from '../components/Navbar'
+import Sidebar from '../components/Sidebar'
 
 const ContactUs = () => {
+
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    }
+
     return (
         <div>
-            <Navbar/>
+            <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+            <Navbar  toggleSidebar={toggleSidebar} />
         </div>
     )
 }
