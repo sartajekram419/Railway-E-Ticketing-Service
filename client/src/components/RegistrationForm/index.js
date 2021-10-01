@@ -40,7 +40,7 @@ const RegistrationForm = () => {
 
                 <label style={styleLabel}>NID</label>
                 <hr style={styleHr}></hr>
-                <input style={styleInput}  type="text" placeholder="Enter National ID"/>
+                <input style={styleInput}  type="number" placeholder="Enter National ID"/>
                 <br></br>
 
                 <label style={styleLabel}>Email</label>
@@ -50,17 +50,17 @@ const RegistrationForm = () => {
 
                 <label style={styleLabel}>Mobile</label>
                 <hr style={styleHr}></hr>
-                <input  style={styleInput} type="text" placeholder="Enter Mobile No"/>
+                <input  style={styleInput} type="number" placeholder="Enter Mobile No"/>
                 <br></br>
 
                 <label style={styleLabel}>Password</label>
                 <hr style={styleHr}></hr>
-                <input  style={styleInput} type="text" placeholder="Password"/>
+                <input  style={styleInput} type="password" placeholder="Password"/>
                 <br></br>
 
                 <label style={styleLabel}>Confirm Password</label>
                 <hr style={styleHr}></hr>
-                <input  style={styleInput} type="text" placeholder="Confirm Password"/>
+                <input  style={styleInput} type="password" placeholder="Confirm Password"/>
                 <br></br>
                 <hr style={styleHr}></hr>
 
