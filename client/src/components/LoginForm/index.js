@@ -44,7 +44,7 @@ const LoginForm = () => {
 
                 <ButtonAndNavLinkBox>
                 <Button>Login</Button>
-                <NavLink to='/' activeStyle> Forgot Password? </NavLink> 
+                <NavLink to='/login' activeStyle> Forgot Password? </NavLink> 
                 </ButtonAndNavLinkBox>
             </Form>
 

@@ -74,11 +74,6 @@ export const NavLink = styled(Link)`
     height: 100%;
     cursor: pointer;
 
-
-    &.active {
-        color: #fff;
-        border-bottom: 3px solid #fff;
-    }
 `;
 
 export const ButtonAndNavLinkBox = styled.div`
