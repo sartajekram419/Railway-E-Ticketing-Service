@@ -1,10 +1,12 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import RegistrationForm from '../components/RegistrationForm'
 
 const Register = () => {
     return (
         <div>
-            <Navbar/>
+            <Navbar />
+            <RegistrationForm />
         </div>
     )
 }
