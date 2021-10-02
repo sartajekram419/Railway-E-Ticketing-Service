@@ -10,12 +10,11 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     padding: 120px 0px 40px 0px;
-    justify-content: space-between;
     flex-direction: column;
     margin: auto;
     width: 80%;
     @media (max-width: 768px) {
-        flex-direction: column;
+        width: 95%;
     }
 `;
 
@@ -33,10 +32,12 @@ export const Heading = styled.div`
 `;
 
 export const Table = styled.table`
-    width: 99%;
+    width: 100%;
     background: #fff;
     border-collapse: collapse;
-   
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 
