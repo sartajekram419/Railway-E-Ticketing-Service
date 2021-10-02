@@ -34,17 +34,17 @@ const LoginForm = () => {
             <Form>
                 <label style={styleLabel}>Email</label>
                 <hr style={styleHr}></hr>
-                <input style={styleInput} type="text" placeholder="Enter Email"/>
+                <input style={styleInput} type="text" placeholder="Enter Email" />
                 <br ></br>
 
                 <label style={styleLabel}>Password</label>
                 <hr style={styleHr}></hr>
-                <input  style={styleInput} type="password" placeholder="Password"/>
+                <input style={styleInput} type="password" placeholder="Password" />
                 <br></br>
 
                 <ButtonAndNavLinkBox>
-                <Button>Login</Button>
-                <NavLink to='/login' activeStyle> Forgot Password? </NavLink> 
+                    <Button>Login</Button>
+                    <NavLink to='/login' activeStyle> Forgot Password? </NavLink>
                 </ButtonAndNavLinkBox>
             </Form>
 
