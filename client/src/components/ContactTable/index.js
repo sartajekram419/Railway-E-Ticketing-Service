@@ -11,13 +11,13 @@ const ContactTable = () => {
 
     const styleTable = {
         borderStyle: "ridge",
-        borderWidth: "3px",
-        borderColor: "#102f63",
+        borderLeft: "1.5px solid #a4b0af",
+        borderBottom: "2px solid #a4b0af",
     }
 
     const styleTdBorder = {
-        borderBottom: "2px solid #102f63",
-        borderRight: "2px solid #102f63",
+        borderBottom: "1px solid #a4b0af",
+        borderRight: "1.5px solid #a4b0af",
         padding: "10px 10px 10px 10px",
 
     }
