@@ -24,8 +24,17 @@ app.post("/api/insertPassenger", (req, res) => {
     const password = req.body.password
 
     const sqlInsertPassenger = "INSERT INTO passenger (name, nid, email, mobile, password) VALUES (?,?,?,?,?)"
-    db.query(sqlInsertPassenger, [name, nid, email, mobile, password], (err, result) => {
-        console.log(err);
+    db.query(sqlInsertPassenger, [name, nid, email, mobile, password], (err) => {
+       if(err==null) {
+        var isValid = { 
+            isValid: true,
+        };
+       } else {
+        var isValid = { 
+            isValid: false,
+        };
+       }
+       return res.json(isValid);
     });
 
 });

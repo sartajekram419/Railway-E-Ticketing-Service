@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { Container, Button, Heading, Form, NavLink, ButtonAndNavLinkBox } from '../RegistrationForm/RegistrationFormElements'
 import Axios from 'axios'
+import { useHistory } from 'react-router-dom'
 
 const RegistrationForm = () => {
+
+    const history = useHistory();
 
     const [name, setName] = useState("")
     const [nid, setNid] = useState(0)
@@ -18,8 +21,13 @@ const RegistrationForm = () => {
             email: email,
             mobile: mobile,
             password: password,
-        }).then(()=>{
-            alert("Invalid");
+        })
+        .then((res) => {
+            if (res.data.isValid == true) {
+                window.location = "/login";
+            } else {
+                alert("Invalid");
+            }
         });
     };
 
