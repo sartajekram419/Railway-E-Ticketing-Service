@@ -1,29 +1,40 @@
-import React, {useState} from 'react'
+import React, {Component, useState} from 'react'
 import Header from '../components/Header'
 import HomeInfoDiv from '../components/HomeInfoDiv'
 import Navbar from '../components/Navbar'
 import PaymentLogos from '../components/PaymentLogos'
 import Sidebar from '../components/Sidebar'
 
-const Home = ( {  } ) => {
+export default class Home extends Component {
 
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+    constructor(props) {
+        super(props);
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
+        this.state = {
+            isSidebarOpen: false,
+        }
+
+        this.toggleSidebar = this.toggleSidebar.bind(this);
     }
 
-    return (
-        <div>
-            <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-            <Navbar toggleSidebar={toggleSidebar} />
-            <Header />
-            <HomeInfoDiv />
-            <hr></hr>
-            <PaymentLogos />
-            <hr></hr>
-        </div>
-    )
+    toggleSidebar = () => {
+        this.setState({
+            isSidebarOpen: !this.state.isSidebarOpen,
+        })
+    }
+    
+    render() {
+        return (
+            <div>
+                <Sidebar isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} />
+                <Navbar toggleSidebar={this.toggleSidebar} />
+                <Header />
+                <HomeInfoDiv />
+                <hr></hr>
+                <PaymentLogos />
+                <hr></hr>
+            </div>
+        )
+    }
 }
 
-export default Home

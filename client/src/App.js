@@ -6,52 +6,90 @@ import VerifyTicket from './pages/verifyticket'
 import ContactUs from './pages/contactus'
 import HomeUser from './pages/home-user'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import React, { useState } from 'react'
+import React, { Component, useState } from 'react'
 
-function App() {
+export default class App extends Component {
 
-  return (
-    <Router>
+  constructor() {
+    super();
 
-      <Switch>
-        <Route exact path = '/' >
-          <Home />
-        </Route>
-        <Route exact path='/home'>
-          <Home />
-        </Route>
-        <Route exact path='/login'>
-          <Login />
-        </Route>
-        <Route exact path='/register'>
-          <Register />
-        </Route>
-        <Route exact path='/verify-ticket' >
-          <VerifyTicket />
-        </Route>
-        <Route exact path='/contact-us' >
-          <ContactUs />
-        </Route>
-        <Route exact path='/home-user' >
-          <HomeUser />
-        </Route>
-      </Switch>
+    this.state = {
+      passengerMail: {},
+    }
     
-      <Route
-        render={() => {
-        return (
-            <Redirect
-              to={{
-                pathname: window.location.pathname,
-              }}
-              
-            />
-        );
-      }}
-      />
+    this.setPassengerMail = this.setPassengerMail.bind(this);
+  }
 
-    </Router>
-  );
+  setPassengerMail(data) {
+    this.setState({
+      passengerMail: data,
+    });
+  }
+
+  render() {
+    return (
+      <Router>
+  
+        <Switch>
+          <Route exact path = '/' 
+          render={props => (
+            <Home {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+          )}
+          />
+            
+          <Route exact path='/home'
+          render={props => (
+            <Home {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+          )}
+          />
+
+          <Route exact path='/login'
+          render={props => (
+            <Login {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+          )}
+          />
+
+          <Route exact path='/register'
+          render={props => (
+            <Register {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+          )}
+          />
+          
+          <Route exact path='/verify-ticket' 
+          render={props => (
+            <VerifyTicket {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+          )}
+          />
+          
+          <Route exact path='/contact-us' 
+          render={props => (
+            <ContactUs {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+          )}
+          />
+          
+          <Route exact path='/home-user' 
+          render={props => (
+            <HomeUser {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+          )}
+          />
+        </Switch>
+      
+        <Route
+          render={() => {
+          return (
+              <Redirect
+                to={{
+                  pathname: window.location.pathname,
+                }}
+                
+              />
+          );
+        }}
+        />
+  
+      </Router>
+    );
+  }
+  
 }
 
-export default App;

@@ -1,29 +1,39 @@
-import React, {useState} from 'react'
+import React, {Component, useState} from 'react'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import LoginForm from '../components/LoginForm'
 
-const Login = () => {
+export default class Login extends Component {
 
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+    constructor(props) {
+        super(props);
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
+        this.state = {
+            isSidebarOpen: false,
+            style: {
+                display: "flex",
+                flexDirection: "column",
+                padding: "0px 0px 80px 0px",
+            }
+        }
+
+        this.toggleSidebar = this.toggleSidebar.bind(this);
     }
 
-    const style = {
-        display: "flex",
-        flexDirection: "column",
-        padding: "0px 0px 80px 0px",
+    toggleSidebar = () => {
+        this.setState({
+            isSidebarOpen: !this.state.isSidebarOpen,
+        })
     }
 
-    return (
-        <div style={style}>
-            <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-            <Navbar toggleSidebar={toggleSidebar} />
-            <LoginForm />
-        </div>
-    )
+    render(){
+        return (
+            <div style={this.state.style}>
+                <Sidebar isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} />
+                <Navbar toggleSidebar={this.toggleSidebar} />
+                <LoginForm />
+            </div>
+        )
+    }
 }
 
-export default Login
