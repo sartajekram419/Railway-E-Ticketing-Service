@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import Header from '../components/Header'
 import HomeInfoDiv from '../components/HomeInfoDiv'
-import Navbar from '../components/Navbar'
+import NavbarUser from '../components/NavbarUser'
 import PaymentLogos from '../components/PaymentLogos'
-import Sidebar from '../components/Sidebar'
+import SidebarUser from '../components/SidebarUser'
 
-const Home = ( {  } ) => {
+const HomeUser = ( { } ) => {
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
@@ -15,8 +15,8 @@ const Home = ( {  } ) => {
 
     return (
         <div>
-            <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-            <Navbar toggleSidebar={toggleSidebar} />
+            <SidebarUser isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+            <NavbarUser toggleSidebar={toggleSidebar} />
             <Header />
             <HomeInfoDiv />
             <hr></hr>
@@ -26,4 +26,4 @@ const Home = ( {  } ) => {
     )
 }
 
-export default Home
+export default HomeUser

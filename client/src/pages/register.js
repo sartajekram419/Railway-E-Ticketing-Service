@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import RegistrationForm from '../components/RegistrationForm'
 import Sidebar from '../components/Sidebar'
 
-const Register = () => {
+const Register = ( { }) => {
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 

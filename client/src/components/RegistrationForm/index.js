@@ -3,9 +3,9 @@ import { Container, Button, Heading, Form, NavLink, ButtonAndNavLinkBox } from '
 import Axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
-const RegistrationForm = () => {
+const RegistrationForm = ({  }) => {
 
-    const history = useHistory();
+    let history = useHistory();
 
     const [name, setName] = useState("")
     const [nid, setNid] = useState(0)
@@ -24,7 +24,8 @@ const RegistrationForm = () => {
         })
         .then((res) => {
             if (res.data.isValid == true) {
-                window.location = "/login";
+                window.location = "/home-user";
+                history.push('/home-user');
             } else {
                 alert("Invalid");
             }
