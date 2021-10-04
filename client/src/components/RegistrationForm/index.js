@@ -1,105 +1,156 @@
-import React, { useState } from 'react'
+import React, { Component, useState } from 'react'
 import { Container, Button, Heading, Form, NavLink, ButtonAndNavLinkBox } from '../RegistrationForm/RegistrationFormElements'
 import Axios from 'axios'
-import { useHistory } from 'react-router-dom'
+import { withRouter } from 'react-router';
 
-const RegistrationForm = ({  }) => {
+class RegistrationForm extends Component {
 
-    let history = useHistory();
+    constructor(props) {
+        super(props);
 
-    const [name, setName] = useState("")
-    const [nid, setNid] = useState(0)
-    const [email, setEmail] = useState("")
-    const [mobile, setMobile] = useState(0)
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
+        this.state = {
+            name: "",
+            nid: 0,
+            email: "",
+            mobile: 0,
+            password: "",
+            confirmPassword: "",
 
-    const signUpPressed = () => {
-        Axios.post("http://localhost:3001/api/insertPassenger", {
-            name: name,
-            nid: nid,
-            email: email,
-            mobile: mobile,
-            password: password,
-        })
-        .then((res) => {
-            if (res.data.isValid == true) {
-                window.location = "/home-user";
-                history.push('/home-user');
-            } else {
-                alert("Invalid");
+            isSuccessful: false,
+
+            styleHeading: {
+                color: "#fff",
+                textAlign: "center",
+            },
+            styleInput: {
+                height: "40px",
+                padding: "0px 0px 0px 10px",
+            },
+            styleLabel: {
+                padding: "0px 0px 0px 0px",
+            },
+            styleHr: {
+                background: "transparent",
+                color: "transparent",
+                margin: "0",
+                borderStyle: "none",
+                height: "1vw",
             }
-        });
+        }
+
+        this.signUpPressed = this.signUpPressed.bind(this);
+
+        this.setName = this.setName.bind(this);
+        this.setNid = this.setNid.bind(this);
+        this.setEmail = this.setEmail.bind(this);
+        this.setMobile = this.setMobile.bind(this);
+        this.setPassword = this.setPassword.bind(this);
+        this.setConfirmPassword = this.setConfirmPassword.bind(this);
+    }
+
+    signUpPressed = () => {
+
+        
+        // Axios.post("http://localhost:3001/api/insertPassenger", {
+        //     name: this.state.name,
+        //     nid: this.state.nid,
+        //     email: this.state.email,
+        //     mobile: this.state.mobile,
+        //     password: this.state.password,
+        // })
+        // .then((res) => {
+        //     if (res.data.isValid == true) {
+        //         this.setState({
+        //             isSuccessful: true,
+        //         })
+        //     } else {
+        //         //alert("Invalid");
+        //     }
+        // });
+
+        // if(this.state.isSuccessful)
+        // this.props.history.push("/home-user");
     };
 
-    const styleHeading = {
-        color: "#fff",
-        textAlign: "center",
+    setName(data) {
+        this.setState({
+            name: data,
+        })
+    }
+    setNid(data) {
+        this.setState({
+            nid: data,
+        })
+    }
+    setEmail(data) {
+        this.setState({
+            email: data,
+        })
+    }
+    setMobile(data) {
+        this.setState({
+            mobile: data,
+        })
+    }
+    setPassword(data) {
+        this.setState({
+            password: data,
+        })
+    }
+    setConfirmPassword(data) {
+        this.setState({
+            confirmPassword: data,
+        })
     }
 
-    const styleInput = {
-        height: "40px",
-        padding: "0px 0px 0px 10px",
+    render() {
+        return (
+            <Container>
+                <Heading>
+                    <h2 style={this.state.styleHeading}>User Registration</h2>
+                </Heading>
+    
+                <Form>
+                    <label style={this.state.styleLabel}>Name</label>
+                    <hr style={this.state.styleHr}></hr>
+                    <input style={this.state.styleInput} onChange={(e)=>{this.setName(e.target.value)}} type="text" placeholder="Enter Full name"/>
+                    <br ></br>
+    
+                    <label style={this.state.styleLabel}>NID</label>
+                    <hr style={this.state.styleHr}></hr>
+                    <input style={this.state.styleInput} onChange={(e)=>{this.setNid(e.target.value)}}  type="number" placeholder="Enter National ID"/>
+                    <br></br>
+    
+                    <label style={this.state.styleLabel}>Email</label>
+                    <hr style={this.state.styleHr}></hr>
+                    <input  style={this.state.styleInput} onChange={(e)=>{this.setEmail(e.target.value)}}  type="text" placeholder="Enter Email"/>
+                    <br></br>
+    
+                    <label style={this.state.styleLabel}>Mobile</label>
+                    <hr style={this.state.styleHr}></hr>
+                    <input  style={this.state.styleInput} onChange={(e)=>{this.setMobile(e.target.value)}}  type="number" placeholder="Enter Mobile No"/>
+                    <br></br>
+    
+                    <label style={this.state.styleLabel}>Password</label>
+                    <hr style={this.state.styleHr}></hr>
+                    <input  style={this.state.styleInput} onChange={(e)=>{this.setPassword(e.target.value)}} type="password" placeholder="Password"/>
+                    <br></br>
+    
+                    <label style={this.state.styleLabel}>Confirm Password</label>
+                    <hr style={this.state.styleHr}></hr>
+                    <input  style={this.state.styleInput} onChange={(e)=>{this.setConfirmPassword(e.target.value)}} type="password" placeholder="Confirm Password"/>
+                    <br></br>
+                    <hr style={this.state.styleHr}></hr>
+    
+                    <ButtonAndNavLinkBox>
+                    <Button onClick={this.signUpPressed}>Sign Up</Button>
+                    <NavLink to='/login' activeStyle> Already Registerd? </NavLink> 
+                    </ButtonAndNavLinkBox>
+                </Form>
+    
+            </Container>
+        )
     }
-
-    const styleLabel = {
-        padding: "0px 0px 0px 0px",
-    }
-
-    const styleHr = {
-        background: "transparent",
-        color: "transparent",
-        margin: "0",
-        borderStyle: "none",
-        height: "1vw",
-    }
-
-    return (
-        <Container>
-            <Heading>
-                <h2 style={styleHeading}>User Registration</h2>
-            </Heading>
-
-            <Form>
-                <label style={styleLabel}>Name</label>
-                <hr style={styleHr}></hr>
-                <input style={styleInput} onChange={(e)=>{setName(e.target.value)}} type="text" placeholder="Enter Full name"/>
-                <br ></br>
-
-                <label style={styleLabel}>NID</label>
-                <hr style={styleHr}></hr>
-                <input style={styleInput} onChange={(e)=>{setNid(e.target.value)}}  type="number" placeholder="Enter National ID"/>
-                <br></br>
-
-                <label style={styleLabel}>Email</label>
-                <hr style={styleHr}></hr>
-                <input  style={styleInput} onChange={(e)=>{setEmail(e.target.value)}}  type="text" placeholder="Enter Email"/>
-                <br></br>
-
-                <label style={styleLabel}>Mobile</label>
-                <hr style={styleHr}></hr>
-                <input  style={styleInput} onChange={(e)=>{setMobile(e.target.value)}}  type="number" placeholder="Enter Mobile No"/>
-                <br></br>
-
-                <label style={styleLabel}>Password</label>
-                <hr style={styleHr}></hr>
-                <input  style={styleInput} onChange={(e)=>{setPassword(e.target.value)}} type="password" placeholder="Password"/>
-                <br></br>
-
-                <label style={styleLabel}>Confirm Password</label>
-                <hr style={styleHr}></hr>
-                <input  style={styleInput} onChange={(e)=>{setConfirmPassword(e.target.value)}} type="password" placeholder="Confirm Password"/>
-                <br></br>
-                <hr style={styleHr}></hr>
-
-                <ButtonAndNavLinkBox>
-                <Button onClick={signUpPressed}>Sign Up</Button>
-                <NavLink to='/login' activeStyle> Already Registerd? </NavLink> 
-                </ButtonAndNavLinkBox>
-            </Form>
-
-        </Container>
-    )
 }
 
-export default RegistrationForm
+export default withRouter(RegistrationForm)

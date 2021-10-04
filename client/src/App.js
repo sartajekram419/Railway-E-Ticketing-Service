@@ -5,7 +5,7 @@ import Register from './pages/register'
 import VerifyTicket from './pages/verifyticket'
 import ContactUs from './pages/contactus'
 import HomeUser from './pages/home-user'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import React, { Component, useState } from 'react'
 
 export default class App extends Component {
@@ -33,59 +33,46 @@ export default class App extends Component {
         <Switch>
           <Route exact path = '/' 
           render={props => (
-            <Home {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+            <Home {...props} history={this.props.history} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
           )}
           />
             
           <Route exact path='/home'
           render={props => (
-            <Home {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+            <Home {...props} history={this.props.history} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
           )}
           />
 
           <Route exact path='/login'
           render={props => (
-            <Login {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+            <Login {...props} history={this.props.history} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
           )}
           />
 
           <Route exact path='/register'
           render={props => (
-            <Register {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+            <Register {...props} history={this.props.history} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
           )}
           />
           
           <Route exact path='/verify-ticket' 
           render={props => (
-            <VerifyTicket {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+            <VerifyTicket {...props} history={this.props.history} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
           )}
           />
           
           <Route exact path='/contact-us' 
           render={props => (
-            <ContactUs {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+            <ContactUs {...props} history={this.props.history} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
           )}
           />
           
           <Route exact path='/home-user' 
           render={props => (
-            <HomeUser {...props} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+            <HomeUser {...props} history={this.props.history} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
           )}
           />
         </Switch>
-      
-        <Route
-          render={() => {
-          return (
-              <Redirect
-                to={{
-                  pathname: window.location.pathname,
-                }}
-                
-              />
-          );
-        }}
-        />
   
       </Router>
     );

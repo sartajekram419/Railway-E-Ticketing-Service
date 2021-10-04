@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
     Nav,
     Title,
@@ -7,35 +7,41 @@ import {
     NavMenu,
 } from './NavbarElements'
 
-const Navbar = ({ toggleSidebar }) => {
+export default class Navbar extends Component {
 
-    return (
-        <>
-            <Nav>
-                <Title>
-                    <h3>Railway E-Ticketing Service</h3>
-                </Title>
-                <Bars onClick={toggleSidebar} />
-                <NavMenu>
-                    <NavLink to='/home' activeStyle>
-                        Home
-                    </NavLink>
-                    <NavLink to='/login' activeStyle>
-                        Login
-                    </NavLink>
-                    <NavLink to='/register' activeStyle>
-                        Register
-                    </NavLink>
-                    <NavLink to='/verify-ticket' activeStyle>
-                        Verify Ticket
-                    </NavLink>
-                    <NavLink to='/contact-us' activeStyle>
-                        Contact Us
-                    </NavLink>
-                </NavMenu>
-            </Nav>
-        </>
-    )
+    constructor(props) {
+        super(props);
+
+    }
+
+    render() {
+        return (
+            <>
+                <Nav>
+                    <Title>
+                        <h3>Railway E-Ticketing Service</h3>
+                    </Title>
+                    <Bars onClick={this.props.toggleSidebar} />
+                    <NavMenu>
+                        <NavLink to='/home' activeStyle>
+                            Home
+                        </NavLink>
+                        <NavLink to='/login' activeStyle>
+                            Login
+                        </NavLink>
+                        <NavLink to='/register' activeStyle>
+                            Register
+                        </NavLink>
+                        <NavLink to='/verify-ticket' activeStyle>
+                            Verify Ticket
+                        </NavLink>
+                        <NavLink to='/contact-us' activeStyle>
+                            Contact Us
+                        </NavLink>
+                    </NavMenu>
+                </Nav>
+            </>
+        )
+    }
 }
 
-export default Navbar
