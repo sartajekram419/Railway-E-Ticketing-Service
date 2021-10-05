@@ -1,7 +1,8 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import { Container, Button, Heading, Form, NavLink, ButtonAndNavLinkBox } from '../RegistrationForm/RegistrationFormElements'
 import Axios from 'axios'
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
+
 
 class RegistrationForm extends Component {
 
@@ -48,28 +49,26 @@ class RegistrationForm extends Component {
         this.setConfirmPassword = this.setConfirmPassword.bind(this);
     }
 
-    signUpPressed = () => {
+    signUpPressed = event => {
+        event.preventDefault();
 
-        
-        // Axios.post("http://localhost:3001/api/insertPassenger", {
-        //     name: this.state.name,
-        //     nid: this.state.nid,
-        //     email: this.state.email,
-        //     mobile: this.state.mobile,
-        //     password: this.state.password,
-        // })
-        // .then((res) => {
-        //     if (res.data.isValid == true) {
-        //         this.setState({
-        //             isSuccessful: true,
-        //         })
-        //     } else {
-        //         //alert("Invalid");
-        //     }
-        // });
+        Axios.post("http://localhost:3001/api/insertPassenger", {
+            name: this.state.name,
+            nid: this.state.nid,
+            email: this.state.email,
+            mobile: this.state.mobile,
+            password: this.state.password,
+        })
+        .then((res) => {
+            if (res.data.isValid == true) {
+            } else {
+                this.setEmail("");
+            }
+        })
 
-        // if(this.state.isSuccessful)
-        // this.props.history.push("/home-user");
+        if(this.state.email != "") {
+            this.props.history.push({pathname: '/home-user'});
+        }
     };
 
     setName(data) {

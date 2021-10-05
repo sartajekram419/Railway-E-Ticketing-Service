@@ -72,6 +72,7 @@ export default class App extends Component {
             <HomeUser {...props} history={this.props.history} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
           )}
           />
+          
         </Switch>
   
       </Router>

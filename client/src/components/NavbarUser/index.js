@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router';
 import {
     Nav,
     Title,
@@ -7,7 +8,7 @@ import {
     NavMenu,
 } from './NavbarUserElements'
 
-export default class NavbarUser extends Component {
+class NavbarUser extends Component {
 
     constructor(props) {
         super(props);
@@ -15,7 +16,8 @@ export default class NavbarUser extends Component {
         this.logoutPressed = this.logoutPressed.bind(this);
     }
 
-    logoutPressed = () => {
+    logoutPressed = event => {
+        event.preventDefault();
         this.props.history.push("/home");
     }
 
@@ -49,4 +51,6 @@ export default class NavbarUser extends Component {
         )
     }
 }
+
+export default withRouter(NavbarUser)
 

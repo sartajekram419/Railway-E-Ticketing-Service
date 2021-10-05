@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router';
 import { SidebarContainer, Icon, CloseIcon, SidebarLink, SidebarWrapper, SidebarMenu } from './SidebarUserElements'
 
-export default class SidebarUser extends Component {
+class SidebarUser extends Component {
 
     constructor(props) {
         super(props);
@@ -9,7 +10,8 @@ export default class SidebarUser extends Component {
         this.logoutPressed = this.logoutPressed.bind(this);
     }
 
-    logoutPressed = () => {
+    logoutPressed = event => {
+        event.preventDefault();
         this.props.history.push("/home");
     }
 
@@ -35,3 +37,4 @@ export default class SidebarUser extends Component {
     }
 }
 
+export default withRouter(SidebarUser)
