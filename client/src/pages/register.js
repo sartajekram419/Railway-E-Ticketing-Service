@@ -31,7 +31,7 @@ export default class Register extends Component {
             <div style={this.state.style}>
                 <Sidebar isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} />
                 <Navbar toggleSidebar={this.toggleSidebar} />
-                <RegistrationForm setPassengerMail={this.props.setPassengerMail}/>
+                <RegistrationForm setPassengerMail={this.props.setPassengerMail} passengerMail={this.props.passengerMail} />
             </div>
         )
     }

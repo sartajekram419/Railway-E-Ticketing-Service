@@ -5,8 +5,8 @@ import Register from './pages/register'
 import VerifyTicket from './pages/verifyticket'
 import ContactUs from './pages/contactus'
 import HomeUser from './pages/home-user'
-import { BrowserRouter as Router, Switch, Route, Redirect, withRouter } from 'react-router-dom'
-import React, { Component, useState } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React, { Component } from 'react'
 
 export default class App extends Component {
 

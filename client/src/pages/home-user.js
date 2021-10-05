@@ -26,8 +26,8 @@ export default class HomeUser extends Component {
     render() {
         return (
             <div>
-                <SidebarUser isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} />
-                <NavbarUser toggleSidebar={this.toggleSidebar} />
+                <SidebarUser isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} setPassengerMail={this.props.setPassengerMail} passengerMail={this.props.passengerMail} />
+                <NavbarUser toggleSidebar={this.toggleSidebar} setPassengerMail={this.props.setPassengerMail} passengerMail={this.props.passengerMail} />
                 <Header />
                 <HomeInfoDiv />
                 <hr></hr>
