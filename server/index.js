@@ -26,15 +26,11 @@ app.post("/api/registerPassenger", (req, res) => {
     const sqlInsertPassenger = "INSERT INTO passenger (name, nid, email, mobile, password) VALUES (?,?,?,?,?)"
     db.query(sqlInsertPassenger, [name, nid, email, mobile, password], (err) => {
        if(err==null) {
-        var isValid = { 
-            isValid: true,
-        };
+        var isValid = { isValid: 'true' };
        } else {
-        var isValid = { 
-            isValid: false,
-        };
+        var isValid = { isValid: 'false' };
        }
-       return res.json(isValid);
+       return res.json(isValid.isValid);
     });
 
 });
@@ -46,16 +42,16 @@ app.post("/api/loginPassenger", (req, res) => {
 
     const sqlSelectPassenger = "SELECT * FROM passenger WHERE email = ? AND password = ?"
     db.query(sqlSelectPassenger, [email, password], (err, result) => {
-       if(result.length > 0) {
-        var isValid = {
-            isValid: true,
-        };
-       } else {
-        var isValid = { 
-            isValid: false,
-        };
-       }
-       return res.json(isValid);
+        
+        //console.log(result.length);
+       
+        if(result.length == 1) {
+            var isValid = { isValid: 'true' };
+        } else {
+            var isValid = { isValid: 'false' };
+        }
+       //console.log(isValid.isValid);
+       return res.json(isValid.isValid);
     });
 
 });

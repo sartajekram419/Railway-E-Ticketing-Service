@@ -10,11 +10,12 @@ import React, { Component } from 'react'
 import VerifyTicketUser from './pagesUser/verifyticket-user';
 import ContactUsUser from './pagesUser/contactus-user';
 import Dashboard from './pagesUser/dashboard';
+import { withRouter } from 'react-router';
 
-export default class App extends Component {
+class App extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       passengerMail: {},
@@ -101,4 +102,6 @@ export default class App extends Component {
   }
   
 }
+
+export default withRouter(App)
 

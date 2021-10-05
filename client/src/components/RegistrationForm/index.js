@@ -60,16 +60,17 @@ class RegistrationForm extends Component {
             password: this.state.password,
         })
         .then((res) => {
-            if (res.data.isValid == true) {
+            if (res.data == 'true') {
                 this.props.setPassengerMail(this.state.email);
+                this.setEmail("-1");
             } else {
-                this.setEmail("");
+                //this.setEmail("");
             }
         })
 
-        if(this.state.email != "") {
-            this.props.history.push({pathname: '/home-user'});
-        }
+        // if(this.state.email != "") {
+        //     this.props.history.push({pathname: '/home-user'});
+        // }
     };
 
     setName(data) {
@@ -85,6 +86,10 @@ class RegistrationForm extends Component {
     setEmail(data) {
         this.setState({
             email: data,
+        },()=>{
+            if(this.state.email != "" && this.state.email =="-1") {
+                this.props.history.push({pathname: '/home-user'});
+            }
         })
     }
     setMobile(data) {
