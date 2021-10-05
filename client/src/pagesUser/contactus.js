@@ -20,10 +20,10 @@ export default class ContactUs extends Component {
             isSidebarOpen: !this.state.isSidebarOpen,
         })
     }
-    
+
     render() {
         return (
-            <div>
+            <div style={this.state.style}>
                 <Sidebar isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} />
                 <Navbar toggleSidebar={this.toggleSidebar} />
                 <ContactTable />
