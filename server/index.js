@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json())
 app.use(bobyParser.urlencoded({extended: true}))
 
-app.post("/api/insertPassenger", (req, res) => {
+app.post("/api/registerPassenger", (req, res) => {
 
     const name = req.body.name
     const nid = req.body.nid
@@ -27,6 +27,27 @@ app.post("/api/insertPassenger", (req, res) => {
     db.query(sqlInsertPassenger, [name, nid, email, mobile, password], (err) => {
        if(err==null) {
         var isValid = { 
+            isValid: true,
+        };
+       } else {
+        var isValid = { 
+            isValid: false,
+        };
+       }
+       return res.json(isValid);
+    });
+
+});
+
+app.post("/api/loginPassenger", (req, res) => {
+
+    const email = req.body.email
+    const password = req.body.password
+
+    const sqlSelectPassenger = "SELECT * FROM passenger WHERE email = ? AND password = ?"
+    db.query(sqlSelectPassenger, [email, password], (err, result) => {
+       if(result.length > 0) {
+        var isValid = {
             isValid: true,
         };
        } else {

@@ -43,7 +43,7 @@ export const Button = styled.button`
     @media (max-width: 768px) {
         width: 35%;
     }
-
+    cursor: pointer;
     border-radius:10px 10px 10px 10px;
     border: 2px solid #102f63;
 

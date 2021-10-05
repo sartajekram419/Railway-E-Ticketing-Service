@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router';
 import { Container, Button, Heading, Form, NavLink, ButtonAndNavLinkBox } from '../LoginForm/LoginFormElements'
+import Axios from 'axios'
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
+
+            email: "",
+            password: "",
+
             styleHeading: {
                 color: "#fff",
                 textAlign: "center",
@@ -26,6 +32,45 @@ export default class LoginForm extends Component {
                 height: "1vw",
             },
         }
+
+        this.loginPressed = this.loginPressed.bind(this);
+
+        this.setEmail = this.setEmail.bind(this);
+        this.setPassword = this.setPassword.bind(this);
+    }
+
+    loginPressed = event => {
+        event.preventDefault();
+
+        alert(this.props.passengerMail);
+
+        Axios.post("http://localhost:3001/api/loginPassenger", {
+            email: this.state.email,
+            password: this.state.password,
+        })
+        .then((res) => {
+            if (res.data.isValid == true) {
+                this.props.setPassengerMail(this.state.email);
+            } else {
+                this.setEmail("");
+            }
+        })
+
+        if(this.state.email != "") {
+            this.props.history.push({pathname: '/home-user'});
+        }
+    };
+
+    setEmail(data) {
+        this.setState({
+            email: data,
+        })
+    }
+
+    setPassword(data) {
+        this.setState({
+            password: data,
+        })
     }
 
     render() {
@@ -38,16 +83,16 @@ export default class LoginForm extends Component {
                 <Form>
                     <label style={this.state.styleLabel}>Email</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} type="text" placeholder="Enter Email" />
+                    <input style={this.state.styleInput} onChange={(e)=>{this.setEmail(e.target.value)}} type="text" placeholder="Enter Email" />
                     <br ></br>
 
                     <label style={this.state.styleLabel}>Password</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} type="password" placeholder="Password" />
+                    <input style={this.state.styleInput} onChange={(e)=>{this.setPassword(e.target.value)}} type="password" placeholder="Password" />
                     <br></br>
 
                     <ButtonAndNavLinkBox>
-                        <Button>Login</Button>
+                        <Button onClick={this.loginPressed}>Login</Button>
                         <NavLink to='/login' activeStyle> Forgot Password? </NavLink>
                     </ButtonAndNavLinkBox>
                 </Form>
@@ -57,4 +102,5 @@ export default class LoginForm extends Component {
     }
 }
 
+export default withRouter(LoginForm)
 

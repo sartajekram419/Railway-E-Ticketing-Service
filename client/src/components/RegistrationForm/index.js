@@ -17,8 +17,6 @@ class RegistrationForm extends Component {
             password: "",
             confirmPassword: "",
 
-            isSuccessful: false,
-
             styleHeading: {
                 color: "#fff",
                 textAlign: "center",
@@ -54,7 +52,7 @@ class RegistrationForm extends Component {
 
         alert(this.props.passengerMail);
 
-        Axios.post("http://localhost:3001/api/insertPassenger", {
+        Axios.post("http://localhost:3001/api/registerPassenger", {
             name: this.state.name,
             nid: this.state.nid,
             email: this.state.email,
