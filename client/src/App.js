@@ -1,12 +1,15 @@
 import './App.css';
-import Home from './pages/home'
-import Login from './pages/login'
-import Register from './pages/register'
-import VerifyTicket from './pages/verifyticket'
-import ContactUs from './pages/contactus'
-import HomeUser from './pages/home-user'
+import Home from './pagesUser/home'
+import Login from './pagesUser/login'
+import Register from './pagesUser/register'
+import VerifyTicket from './pagesUser/verifyticket'
+import ContactUs from './pagesUser/contactus'
+import HomeUser from './pagesUser/home-user'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import React, { Component } from 'react'
+import VerifyTicketUser from './pagesUser/verifyticket-user';
+import ContactUsUser from './pagesUser/contactus-user';
+import Dashboard from './pagesUser/dashboard';
 
 export default class App extends Component {
 
@@ -70,6 +73,24 @@ export default class App extends Component {
           <Route exact path='/home-user' 
           render={props => (
             <HomeUser {...props} history={this.props.history} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+          )}
+          />
+
+          <Route exact path='/verify-ticket-user' 
+          render={props => (
+            <VerifyTicketUser {...props} history={this.props.history} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+          )}
+          />
+
+          <Route exact path='/contact-us-user' 
+          render={props => (
+            <ContactUsUser {...props} history={this.props.history} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
+          )}
+          />
+
+          <Route exact path='/dashboard' 
+          render={props => (
+            <Dashboard {...props} history={this.props.history} setPassengerMail={this.setPassengerMail} passengerMail={this.state.passengerMail} />
           )}
           />
           
