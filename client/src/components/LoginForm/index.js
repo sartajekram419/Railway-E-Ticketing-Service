@@ -49,11 +49,15 @@ class LoginForm extends Component {
             password: this.state.password,
         })
         .then((res) => {
-            if (res.data == 'true') {
+            if (res.data.isValid == true) {
                 this.props.setPassengerMail(this.state.email);
+                this.props.setPassengerNid(res.data.nid);
+                this.props.setPassengerName(res.data.name);
+                this.props.setPassengerMobile(res.data.mobile);
+                this.props.setPassengerPassword(res.data.password);
                 this.setEmail("-1");
             } else {
-                //this.setEmail("-1");
+                
             }
         })
 

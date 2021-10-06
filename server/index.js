@@ -42,16 +42,23 @@ app.post("/api/loginPassenger", (req, res) => {
 
     const sqlSelectPassenger = "SELECT * FROM passenger WHERE email = ? AND password = ?"
     db.query(sqlSelectPassenger, [email, password], (err, result) => {
-        
-        //console.log(result.length);
-       
+
         if(result.length == 1) {
-            var isValid = { isValid: 'true' };
+            var user = {
+                isValid: true,
+                nid: result[0].NID,
+                email: result[0].Email,
+                name: result[0].Name,
+                mobile: result[0].Mobile,
+                password: result[0].Password,
+            };
         } else {
-            var isValid = { isValid: 'false' };
+            var user = {
+                isValid: false,
+            };
         }
-       //console.log(isValid.isValid);
-       return res.json(isValid.isValid);
+
+        return res.json(user);
     });
 
 });
