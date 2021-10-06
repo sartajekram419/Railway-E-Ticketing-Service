@@ -35,7 +35,7 @@ class NavbarUser extends Component {
                         <NavLink to='/home-user' activeStyle>
                             Home
                         </NavLink>
-                        <NavLink to='/dashboard' activeStyle>
+                        <NavLink to='/dashboard-user' activeStyle>
                             Dashboard
                         </NavLink>
                         <NavLink to='/verify-ticket-user' activeStyle>

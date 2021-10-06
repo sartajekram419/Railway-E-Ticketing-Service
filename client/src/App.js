@@ -9,8 +9,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import React, { Component } from 'react'
 import VerifyTicketUser from './pagesUser/verifyticket-user'
 import ContactUsUser from './pagesUser/contactus-user'
-import Dashboard from './pagesUser/dashboard'
 import { withRouter } from 'react-router'
+import DashboardUser from './pagesUser/dashboard-user'
 
 class App extends Component {
 
@@ -78,6 +78,7 @@ class App extends Component {
       <Router>
   
         <Switch>
+
           <Route exact path = '/' 
           render={props => (
             <Home {...props} 
@@ -184,9 +185,9 @@ class App extends Component {
           )}
           />
 
-          <Route exact path='/dashboard' 
+          <Route exact path='/dashboard-user' 
           render={props => (
-            <Dashboard {...props} 
+            <DashboardUser {...props} 
             history={this.props.history} 
             setPassengerMail={this.setPassengerMail} 
             passengerMail={this.state.passengerMail} 
