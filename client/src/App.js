@@ -17,7 +17,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+    this.state = JSON.parse(window.localStorage.getItem('state')) || {
       passengerMail: "",
       passengerNid: 0,
       passengerName: "",
@@ -32,32 +32,42 @@ class App extends Component {
     this.setPassengerPassword = this.setPassengerPassword.bind(this);
   }
 
+  setState(state) {
+    window.localStorage.setItem('state', JSON.stringify(state));
+    super.setState(state);
+  }
+
   setPassengerMail(data) {
-    this.setState({
+    return this.setState({
+      ...this.state,
       passengerMail: data,
     });
   }
 
   setPassengerNid(data) {
-    this.setState({
+    return this.setState({
+      ...this.state,
       passengerNid: data,
     });
   }
 
   setPassengerName(data) {
-    this.setState({
+    return this.setState({
+      ...this.state,
       passengerName: data,
     });
   }
 
   setPassengerMobile(data) {
-    this.setState({
+    return this.setState({
+      ...this.state,
       passengerMobile: data,
     });
   }
 
   setPassengerPassword(data) {
-    this.setState({
+    return this.setState({
+      ...this.state,
       passengerPassword: data,
     });
   }

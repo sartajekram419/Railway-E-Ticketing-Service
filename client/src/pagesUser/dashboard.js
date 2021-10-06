@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NavbarUser from '../components/NavbarUser'
 import SidebarUser from '../components/SidebarUser'
+import Axios from 'axios'
 
 export default class Dashboard extends Component {
 
@@ -11,6 +12,20 @@ export default class Dashboard extends Component {
         isSidebarOpen: false,
     }
 
+
+    // Axios.post("http://localhost:3001/api/loginPassenger", {
+    //         email: '1',
+    //         password: '1',
+    //     })
+    //     .then((res) => {
+    //         if (res.data.isValid == true) {
+    //             this.props.setPassengerPassword('999');
+    //         } else {
+                
+    //         }
+    //     })
+    
+
     this.toggleSidebar = this.toggleSidebar.bind(this);
   }
 
@@ -19,7 +34,20 @@ export default class Dashboard extends Component {
           isSidebarOpen: !this.state.isSidebarOpen,
       })
   }
+
+  
+
+
+//   componentDidMount() {
+//     window.addEventListener('load', this.handleLoad);
+//  }
+
+//  componentWillUnmount() { 
+//    window.removeEventListener('load', this.handleLoad)  
+//  }
     
+
+
     render() {
         return (
             <div>
