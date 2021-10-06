@@ -115,3 +115,16 @@ CREATE TABLE `railway_management_database`.`ticket_seat` (
   );
 
 
+INSERT INTO `railway_management_database`.admin (ID, Password)
+VALUES (1, 'admin');
+
+INSERT INTO `railway_management_database`.passenger 
+VALUES (1, '1', '1', 1, '1'), (2, '2', '2', 2, '2'), (3, '3', '3', 3, '3');
+
+INSERT INTO `railway_management_database`.station (Name, District)
+VALUES ('Ctg', 'Ctg'), ('Dhaka', 'Dhaka'), ('Cumilla', 'Cumilla');
+
+INSERT INTO `railway_management_database`.train (Name, Up_start_time, Down_start_time, No_of_coaches, No_of_classes)
+VALUES ('Suborno', '07:00:00', '03:00:00', 21, 3), ('Turna', '23:00:00', '07:00:00', 15, 2);
+
+
