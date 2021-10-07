@@ -14,38 +14,7 @@ class DashboardUserContainer extends Component {
             email: "",
             password: "",
 
-            items: [
-                {
-                    ticketID: 1,
-                    trainName: 1,
-                    coachID: 1,
-                    noOfSeats: 1,
-                    stationFrom: 1,
-                    stationTo: 1,
-                    departure: 1,
-                    issue: 1,
-                },
-                {
-                    ticketID: 2,
-                    trainName: 2,
-                    coachID: 2,
-                    noOfSeats: 2,
-                    stationFrom: 2,
-                    stationTo: 2,
-                    departure: 2,
-                    issue: 2,
-                },
-                {
-                    ticketID: 3,
-                    trainName: 3,
-                    coachID: 3,
-                    noOfSeats: 3,
-                    stationFrom: 3,
-                    stationTo: 3,
-                    departure: 3,
-                    issue: 3,
-                }
-            ],
+            items: [],
 
             styleHeading: {
                 color: "#fff",
@@ -72,6 +41,27 @@ class DashboardUserContainer extends Component {
                 height: "1vw",
             },
         }
+
+
+        Axios.post("http://localhost:3001/api/getPassengerJourneys", {
+            nid: this.props.passengerNid,
+        })
+        .then((res) => {
+            for(var i in res.data) {
+                var object = {
+                    Ticket_ID:  res.data[i].Ticket_ID,
+                    Train_ID: res.data[i].Train_ID,
+                    Coach_ID: res.data[i].Coach_ID,
+                    No_of_seats: res.data[i].No_of_seats,
+                    Start_position: res.data[i].Start_position,
+                    End_position: res.data[i].End_position,
+                    Journey_time: res.data[i].Journey_time,
+                    Issue_time: res.data[i].Issue_time,
+                };
+
+                this.setState({ items: [...this.state.items, ...[object] ] })
+            }
+        })
 
         this.loginPressed = this.loginPressed.bind(this);
 
@@ -100,10 +90,6 @@ class DashboardUserContainer extends Component {
                 
             }
         })
-
-        // if(this.state.email != "") {
-        //     this.props.history.push({pathname: '/home-user'});
-        // }
     };
 
     setEmail(data) {
@@ -160,17 +146,15 @@ class DashboardUserContainer extends Component {
                     </Heading>
 
                     {this.state.items.map((item,index)=>{
-                        return <JourneyUserContainer key={index} item={item}/>
+                        return <JourneyUserContainer 
+                                key={index}
+                                item={item}
+                                />
                     })}
 
                 </Container2>
 
             </div>
-
-            
-
-            
-
             
         )
     }

@@ -63,6 +63,51 @@ app.post("/api/loginPassenger", (req, res) => {
 
 });
 
+app.post("/api/getPassengerJourneys", (req, res) => {
+
+    const nid = req.body.nid
+
+    const sqlSelectPassenger = "SELECT Ticket_ID, Train_ID, Coach_ID, No_of_seats, Start_position, End_position, Journey_time, Issue_time FROM ticket WHERE  Passenger_ID = ?"
+    db.query(sqlSelectPassenger, [nid], (err, result) => {
+        return res.json(result);
+    });
+
+});
+
+app.post("/api/getTrainName", (req, res) => {
+
+    const trainID = req.body.trainID
+
+    const sqlSelectPassenger = "SELECT Name FROM train WHERE Train_ID = ?"
+    db.query(sqlSelectPassenger, [trainID], (err, result) => {
+        return res.json(result);
+    });
+
+});
+
+app.post("/api/getStationID", (req, res) => {
+
+    const trainID = req.body.trainID
+    const position = req.body.position
+
+    const sqlSelectPassenger = "SELECT Station_ID FROM train_station WHERE Train_ID = ? AND Position = ?"
+    db.query(sqlSelectPassenger, [trainID, position], (err, result) => {
+        return res.json(result);
+    });
+
+});
+
+app.post("/api/getStationName", (req, res) => {
+
+    const stationID = req.body.stationID
+
+    const sqlSelectPassenger = "SELECT Name FROM station WHERE Station_ID = ?"
+    db.query(sqlSelectPassenger, [stationID], (err, result) => {
+        return res.json(result);
+    });
+
+});
+
 app.listen(3001, ()=>{
     console.log("running");
 })

@@ -18,20 +18,6 @@ export default class DashboardUser extends Component {
         }
     }
 
-
-    // Axios.post("http://localhost:3001/api/loginPassenger", {
-    //         email: '1',
-    //         password: '1',
-    //     })
-    //     .then((res) => {
-    //         if (res.data.isValid == true) {
-    //             this.props.setPassengerPassword('999');
-    //         } else {
-                
-    //         }
-    //     })
-    
-
     this.toggleSidebar = this.toggleSidebar.bind(this);
   }
 
