@@ -46,13 +46,10 @@ const ContactTable = () => {
                     <td  style={styleTdBorder}>16216</td>
                 </tr>
                 
-
                 <tr>
                     <td style={styleTdBorder}>For refund of successfully purchased tickets</td>
                     <td colspan="2"  style={styleTdBorder}>Visit your originating station ( Name of the Station From which you wanted to travel ) and contact the refund counter</td>
                 </tr>
-
-
 
                 <tr>
                     <td style={styleTdBorder}>For Technical Support</td>

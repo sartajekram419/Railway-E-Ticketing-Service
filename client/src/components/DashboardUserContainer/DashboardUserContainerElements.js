@@ -74,6 +74,7 @@ export const Container2 = styled.div`
     margin-left: auto;
     margin-right: auto;
     justify-content: space-between;
+    padding: 0px 0px 30px 0px;
 
     border-radius:10px 10px 10px 10px;
     border: 2px solid #a4b0af;

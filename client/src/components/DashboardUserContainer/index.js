@@ -127,6 +127,7 @@ class DashboardUserContainer extends Component {
                     </Heading>
 
                     <JourneyUserContainer/>
+                    <JourneyUserContainer/>
 
                 </Container2>
 
