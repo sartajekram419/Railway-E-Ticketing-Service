@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { NavLink as Link } from 'react-router-dom'
 
 
-export const Container = styled.div`
+export const Container1 = styled.div`
     background: #fff;
     display: flex;
     align-items: center;
@@ -16,7 +16,7 @@ export const Container = styled.div`
     border: 2px solid #a4b0af;
 
     flex-direction: column;
-    width: 85%;
+    width: 90%;
     @media (max-width: 768px) {
         flex-direction: column;
         width: 90%;
@@ -33,6 +33,60 @@ export const Heading = styled.div`
     margin: auto;
     width: 100%;
 `;
+
+export const UserInfoContainer = styled.div`
+    background: #fff;
+    display: flex;
+    align-items: flex-start;
+    margin: auto;
+    padding: 10px 0px 45px 0px;
+    border-radius:0px 0px 7px 7px;
+    border: 2px solid transparent;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+    }
+`;
+
+export const InfoDiv = styled.div`
+    width: 40%;
+    padding: 30px 50px 0px 50px;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 768px) {
+        padding: 30px 0px 0px 0px;
+        width: 80%;
+    }
+`;
+
+export const Container2 = styled.div`
+    background: #fff;
+    display: flex;
+    align-items: center;
+    margin-top: 45px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+
+    border-radius:10px 10px 10px 10px;
+    border: 2px solid #a4b0af;
+
+    flex-direction: column;
+    width: 90%;
+    @media (max-width: 768px) {
+        flex-direction: column;
+        width: 90%;
+    }
+`;
+
+
 
 export const Button = styled.button`
     background: #102f63;

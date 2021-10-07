@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router';
-import { Container, Button, Heading, Form, NavLink, ButtonAndNavLinkBox } from '../DashboardUserContainer/DashboardUserContainerElements'
+import { Container2, Button, Heading, Form, NavLink, ButtonAndNavLinkBox, UserInfoContainer, Container1, InfoDiv } from '../DashboardUserContainer/DashboardUserContainerElements'
 import Axios from 'axios'
 
 class DashboardUserContainer extends Component {
@@ -22,7 +22,13 @@ class DashboardUserContainer extends Component {
                 padding: "0px 0px 0px 10px",
             },
             styleLabel: {
-                padding: "0px 0px 0px 0px",
+                fontSize: "20px",
+                fontWeight: "bold",
+                padding: "5px 0px 5px 0px",
+            },
+            styleText: {
+                fontSize: "20px",
+                padding: "5px 0px 5px 0px",
             },
             styleHr: {
                 background: "transparent",
@@ -84,29 +90,72 @@ class DashboardUserContainer extends Component {
 
     render() {
         return (
-            <Container>
-                <Heading>
-                    <h2 style={this.state.styleHeading}>Dashboard</h2>
-                </Heading>
+            <div>
 
-                <Form>
-                    <label style={this.state.styleLabel}>Email</label>
-                    <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e)=>{this.setEmail(e.target.value)}} type="text" placeholder="Enter Email" />
-                    <br ></br>
+                <Container1>
+                    <Heading>
+                        <h2 style={this.state.styleHeading}>Personal Information</h2>
+                    </Heading>
 
-                    <label style={this.state.styleLabel}>Password</label>
-                    <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e)=>{this.setPassword(e.target.value)}} type="password" placeholder="Password" />
-                    <br></br>
+                    <UserInfoContainer>
+                        <InfoDiv>
+                            <label style={this.state.styleLabel}>Name:</label>
+                            <text style={this.state.styleText}>{this.props.passengerName}</text>
+                        </InfoDiv>
 
-                    <ButtonAndNavLinkBox>
-                        <Button onClick={this.loginPressed}>Login</Button>
-                        <NavLink to='/login' activeStyle> Forgot Password? </NavLink>
-                    </ButtonAndNavLinkBox>
-                </Form>
+                        <InfoDiv>
+                            <label style={this.state.styleLabel}>Email:</label>
+                            <text style={this.state.styleText}>{this.props.passengerMail}</text>
+                        </InfoDiv>
 
-            </Container>
+                        <InfoDiv>
+                            <label style={this.state.styleLabel}>National ID:</label>
+                            <text style={this.state.styleText}>{this.props.passengerNid}</text>
+                        </InfoDiv>
+
+                        <InfoDiv>
+                            <label style={this.state.styleLabel}>Mobile No:</label>
+                            <text style={this.state.styleText}>0{this.props.passengerMobile}</text>
+                        </InfoDiv>
+                    </UserInfoContainer>
+                </Container1>
+
+                <Container2>
+                    <Heading>
+                        <h2 style={this.state.styleHeading}>Upcoming Journeys</h2>
+                    </Heading>
+
+                    <UserInfoContainer>
+                        <label style={this.state.styleLabel}>Email</label>
+                        <text>Full Name: Syed Mohammed Sartaj Ekram</text>
+                    </UserInfoContainer>
+
+                    {/* <Form>
+                        <label style={this.state.styleLabel}>Email</label>
+                        <hr style={this.state.styleHr}></hr>
+                        <input style={this.state.styleInput} onChange={(e)=>{this.setEmail(e.target.value)}} type="text" placeholder="Enter Email" />
+                        <br ></br>
+
+                        <label style={this.state.styleLabel}>Password</label>
+                        <hr style={this.state.styleHr}></hr>
+                        <input style={this.state.styleInput} onChange={(e)=>{this.setPassword(e.target.value)}} type="password" placeholder="Password" />
+                        <br></br>
+
+                        <ButtonAndNavLinkBox>
+                            <Button onClick={this.loginPressed}>Login</Button>
+                            <NavLink to='/login' activeStyle> Forgot Password? </NavLink>
+                        </ButtonAndNavLinkBox>
+                    </Form> */}
+
+                </Container2>
+
+            </div>
+
+            
+
+            
+
+            
         )
     }
 }
