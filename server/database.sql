@@ -137,13 +137,16 @@ INSERT INTO `railway_management_database`.train_station
 VALUES (1, 3, '10:00:00', '18:00:00', 1), (1, 2, '13:00:00', '19:00:00', 2);
 
 INSERT INTO `railway_management_database`.fare 
-VALUES (1, 3, 1, 2, 480);
+VALUES (1, 3, 1, 2, 480),
+(1, 2, 2, 1, 300);
 
 INSERT INTO `railway_management_database`.booking_status 
 VALUES (1, 5, '2021-10-07', 1, 2, 45, 1);
 
 INSERT INTO `railway_management_database`.ticket (Issue_time, Journey_time, Start_position, End_position, Train_ID, Class_ID, Coach_ID, No_of_seats, Fare, Passenger_ID)
-VALUES ('2021-10-04 05:40:30', '2021-10-07 07:00:00', 1, 2, 1, 3, 5, 45, 480, 1);
+VALUES ('2021-10-04 05:40:30', '2021-10-07 10:00:00', 1, 2, 1, 3, 5, 1, 480, 1), 
+('2021-10-04 12:20:35', '2021-10-09 18:00:00', 2, 1, 1, 2, 10, 1, 300, 2),
+('2021-10-04 05:40:30', '2021-10-11 10:00:00', 1, 2, 1, 3, 15, 1, 480, 1);
 
 INSERT INTO `railway_management_database`.ticket_seat 
 VALUES (1, 45);
