@@ -21,6 +21,7 @@ export default class JourneyUserContainer extends Component {
                 padding: "10px 0px 10px 10px",
                 width: "40%",
                 verticalAlign: "top",
+                borderRight: "1px solid #a4b0af",
             },
             styleCol2: {
                 fontSize: "16px",
