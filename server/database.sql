@@ -125,6 +125,27 @@ INSERT INTO `railway_management_database`.station (Name, District)
 VALUES ('Ctg', 'Ctg'), ('Dhaka', 'Dhaka'), ('Cumilla', 'Cumilla');
 
 INSERT INTO `railway_management_database`.train (Name, Up_start_time, Down_start_time, No_of_coaches, No_of_classes)
-VALUES ('Suborno', '07:00:00', '03:00:00', 21, 3), ('Turna', '23:00:00', '07:00:00', 15, 2);
+VALUES ('Suborno', '07:00:00', '15:00:00', 21, 3), ('Turna', '23:00:00', '07:00:00', 15, 2);
+
+INSERT INTO `railway_management_database`.booking_clerk (Name, Mobile, Password, Station_ID)
+VALUES ('Ami Clerk', '0123435123', '1234', 2);
+
+INSERT INTO `railway_management_database`.train_coach 
+VALUES (1, 5, 2, 52);
+
+INSERT INTO `railway_management_database`.train_station 
+VALUES (1, 3, '10:00:00', '18:00:00', 1), (1, 2, '13:00:00', '19:00:00', 2);
+
+INSERT INTO `railway_management_database`.fare 
+VALUES (1, 3, 1, 2, 480);
+
+INSERT INTO `railway_management_database`.booking_status 
+VALUES (1, 5, '2021-10-07', 1, 2, 45, 1);
+
+INSERT INTO `railway_management_database`.ticket (Issue_time, Journey_time, Start_position, End_position, Train_ID, Class_ID, Coach_ID, No_of_seats, Fare, Passenger_ID)
+VALUES ('2021-10-04 05:40:30', '2021-10-07 07:00:00', 1, 2, 1, 3, 5, 45, 480, 1);
+
+INSERT INTO `railway_management_database`.ticket_seat 
+VALUES (1, 45);
 
 
