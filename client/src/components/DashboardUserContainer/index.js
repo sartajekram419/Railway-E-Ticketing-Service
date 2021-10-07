@@ -14,6 +14,39 @@ class DashboardUserContainer extends Component {
             email: "",
             password: "",
 
+            items: [
+                {
+                    ticketID: 1,
+                    trainName: 1,
+                    coachID: 1,
+                    noOfSeats: 1,
+                    stationFrom: 1,
+                    stationTo: 1,
+                    departure: 1,
+                    issue: 1,
+                },
+                {
+                    ticketID: 2,
+                    trainName: 2,
+                    coachID: 2,
+                    noOfSeats: 2,
+                    stationFrom: 2,
+                    stationTo: 2,
+                    departure: 2,
+                    issue: 2,
+                },
+                {
+                    ticketID: 3,
+                    trainName: 3,
+                    coachID: 3,
+                    noOfSeats: 3,
+                    stationFrom: 3,
+                    stationTo: 3,
+                    departure: 3,
+                    issue: 3,
+                }
+            ],
+
             styleHeading: {
                 color: "#fff",
                 textAlign: "center",
@@ -126,8 +159,9 @@ class DashboardUserContainer extends Component {
                         <h2 style={this.state.styleHeading}>Upcoming Journeys</h2>
                     </Heading>
 
-                    <JourneyUserContainer/>
-                    <JourneyUserContainer/>
+                    {this.state.items.map((item,index)=>{
+                        return <JourneyUserContainer key={index} item={item}/>
+                    })}
 
                 </Container2>
 

@@ -37,42 +37,42 @@ export default class JourneyUserContainer extends Component {
                 <Table style={this.state.styleTable}>
                     <tr>
                         <td style={this.state.styleCol1}>Ticket ID:</td>
-                        <td style={this.state.styleCol2} >1111111</td>
+                        <td style={this.state.styleCol2} >{this.props.item.ticketID}</td>
                     </tr>
                     
                     <tr style={this.state.styleRow}>
                         <td style={this.state.styleCol1}>Train Name:</td>
-                        <td style={this.state.styleCol2}>Shuborno Express</td>
+                        <td style={this.state.styleCol2}>{this.props.item.trainName}</td>
                     </tr>
 
                     <tr style={this.state.styleRow}>
                         <td style={this.state.styleCol1}>Coach ID:</td>
-                        <td style={this.state.styleCol2} >1</td>
+                        <td style={this.state.styleCol2} >{this.props.item.coachID}</td>
                     </tr>
 
                     <tr style={this.state.styleRow}>
                         <td style={this.state.styleCol1}>No of seats:</td>
-                        <td style={this.state.styleCol2} >4</td>
+                        <td style={this.state.styleCol2} >{this.props.item.noOfSeats}</td>
                     </tr>
 
                     <tr style={this.state.styleRow}>
                         <td style={this.state.styleCol1}>Station From:</td>
-                        <td style={this.state.styleCol2}>Chittagong Railway Station</td>
+                        <td style={this.state.styleCol2}>{this.props.item.stationFrom}</td>
                     </tr>
 
                     <tr style={this.state.styleRow}>
                         <td style={this.state.styleCol1}>Station To:</td>
-                        <td style={this.state.styleCol2}>Kamalapur Railway Station</td>
+                        <td style={this.state.styleCol2}>{this.props.item.stationTo}</td>
                     </tr>
 
                     <tr style={this.state.styleRow}>
                         <td style={this.state.styleCol1}>Departure Date and Time:</td>
-                        <td style={this.state.styleCol2} >12/7/21 16:00</td>
+                        <td style={this.state.styleCol2} >{this.props.item.departure}</td>
                     </tr>
 
                     <tr style={this.state.styleRow}>
                         <td style={this.state.styleCol1}>Issue Date and Time:</td>
-                        <td style={this.state.styleCol2} >12/7/21 16:00</td>
+                        <td style={this.state.styleCol2} >{this.props.item.issue}</td>
                     </tr>
 
                 </Table>
