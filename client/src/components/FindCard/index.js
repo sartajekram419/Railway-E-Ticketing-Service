@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const FindCard = () => {
-    return (
-        <div>
-            
-        </div>
-    )
+export default class FindCard extends Component {
+    render() {
+        return (
+            <div>
+                
+            </div>
+        )
+    }
+    
 }
-
-export default FindCard
