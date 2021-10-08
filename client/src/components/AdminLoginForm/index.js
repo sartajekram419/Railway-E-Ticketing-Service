@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router';
-import { Container, Button, Heading, Form, NavLink, ButtonAndNavLinkBox } from '../LoginForm/LoginFormElements'
+import { Container, Button, Heading, Form, NavLink, ButtonAndNavLinkBox } from '../AdminLoginForm/AdminLoginFormElements'
 import Axios from 'axios'
 
-class LoginForm extends Component {
+class AdminLoginForm extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
 
-            email: "",
+            id: 0,
             password: "",
 
             styleHeading: {
@@ -35,27 +35,28 @@ class LoginForm extends Component {
 
         this.loginPressed = this.loginPressed.bind(this);
 
-        this.setEmail = this.setEmail.bind(this);
+        this.setID = this.setID.bind(this);
         this.setPassword = this.setPassword.bind(this);
     }
 
     loginPressed = event => {
         event.preventDefault();
 
-        alert(this.props.passengerMail);
+        alert(this.props.adminID);
 
-        Axios.post("http://localhost:3001/api/loginPassenger", {
-            email: this.state.email,
+
+
+        Axios.post("http://localhost:3001/api/loginAdmin", {
+            id: this.state.id,
             password: this.state.password,
         })
             .then((res) => {
+
+
+
                 if (res.data.isValid == true) {
-                    this.props.setPassengerMail(this.state.email);
-                    this.props.setPassengerNid(res.data.nid);
-                    this.props.setPassengerName(res.data.name);
-                    this.props.setPassengerMobile(res.data.mobile);
-                    this.props.setPassengerPassword(res.data.password);
-                    this.setEmail("-1");
+                    this.props.setAdminID(this.state.id);
+                    this.setID(-1);
                 } else {
 
                 }
@@ -66,12 +67,12 @@ class LoginForm extends Component {
         // }
     };
 
-    setEmail(data) {
+    setID(data) {
         this.setState({
-            email: data,
+            id: data,
         }, () => {
-            if (this.state.email != "" && this.state.email == "-1") {
-                this.props.history.push({ pathname: '/home-user' });
+            if (this.state.id != "" && this.state.id == -1) {
+                this.props.history.push({ pathname: '/admin-home' });
             }
         })
     }
@@ -86,13 +87,13 @@ class LoginForm extends Component {
         return (
             <Container>
                 <Heading>
-                    <h2 style={this.state.styleHeading}>User Login</h2>
+                    <h2 style={this.state.styleHeading}>Admin Login</h2>
                 </Heading>
 
                 <Form>
-                    <label style={this.state.styleLabel}>Email</label>
+                    <label style={this.state.styleLabel}>ID</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setEmail(e.target.value) }} type="text" placeholder="Enter Email" />
+                    <input style={this.state.styleInput} onChange={(e) => { this.setID(e.target.value) }} type="number" placeholder="Enter ID" />
                     <br ></br>
 
                     <label style={this.state.styleLabel}>Password</label>
@@ -102,7 +103,6 @@ class LoginForm extends Component {
 
                     <ButtonAndNavLinkBox>
                         <Button onClick={this.loginPressed}>Login</Button>
-                        <NavLink to='/login' activeStyle> Forgot Password? </NavLink>
                     </ButtonAndNavLinkBox>
                 </Form>
 
@@ -111,5 +111,5 @@ class LoginForm extends Component {
     }
 }
 
-export default withRouter(LoginForm)
+export default withRouter(AdminLoginForm)
 

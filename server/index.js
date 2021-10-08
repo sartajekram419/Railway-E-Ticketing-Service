@@ -13,7 +13,7 @@ const db = mysql.createPool({
 
 app.use(cors());
 app.use(express.json())
-app.use(bobyParser.urlencoded({extended: true}))
+app.use(bobyParser.urlencoded({ extended: true }))
 
 app.post("/api/registerPassenger", (req, res) => {
 
@@ -25,12 +25,12 @@ app.post("/api/registerPassenger", (req, res) => {
 
     const sqlInsertPassenger = "INSERT INTO passenger (name, nid, email, mobile, password) VALUES (?,?,?,?,?)"
     db.query(sqlInsertPassenger, [name, nid, email, mobile, password], (err) => {
-       if(err==null) {
-        var isValid = { isValid: 'true' };
-       } else {
-        var isValid = { isValid: 'false' };
-       }
-       return res.json(isValid.isValid);
+        if (err == null) {
+            var isValid = { isValid: 'true' };
+        } else {
+            var isValid = { isValid: 'false' };
+        }
+        return res.json(isValid.isValid);
     });
 
 });
@@ -43,7 +43,7 @@ app.post("/api/loginPassenger", (req, res) => {
     const sqlSelectPassenger = "SELECT * FROM passenger WHERE email = ? AND password = ?"
     db.query(sqlSelectPassenger, [email, password], (err, result) => {
 
-        if(result.length == 1) {
+        if (result.length == 1) {
             var user = {
                 isValid: true,
                 nid: result[0].NID,
@@ -108,6 +108,45 @@ app.post("/api/getStationName", (req, res) => {
 
 });
 
-app.listen(3001, ()=>{
+
+app.post("/api/loginAdmin", (req, res) => {
+
+    const id = req.body.id
+    const password = req.body.password
+
+    const sqlSelectPassenger = "SELECT * FROM admin WHERE ID = ? AND password = ?"
+    db.query(sqlSelectPassenger, [id, password], (err, result) => {
+
+        if (result.length == 1) {
+            var admin = {
+                isValid: true,
+                id: result[0].ID,
+            };
+        } else {
+            var admin = {
+                isValid: false,
+            };
+        }
+
+        return res.json(admin);
+    });
+
+});
+
+
+
+
+app.listen(3001, () => {
     console.log("running");
 })
+
+
+
+
+
+
+
+
+
+
+
