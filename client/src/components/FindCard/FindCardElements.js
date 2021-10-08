@@ -12,7 +12,7 @@ export const Container = styled.div`
     align-items: center;
     padding: 30px 0px 30px 0px;
     margin: auto;
-    width: 80%;
+    width: 90%;
     @media (max-width: 768px) {
         width: 95%;
     }
@@ -22,9 +22,9 @@ export const SpaceContainer = styled.div`
 
     display: flex;
     align-items: center;
-    //padding: 30px 0px 30px 0px;
+    padding: 0px 0px 30px 0px;
     margin: 0px;
-    width: 10%;
+    width: 5%;
 `;
 
 export const InputContainerLeft = styled.div`
@@ -32,9 +32,9 @@ export const InputContainerLeft = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    //padding: 30px 0px 30px 0px;
+    padding: 0px 0px 30px 0px;
     margin: 0px;
-    width: 35%;
+    width: 42.5%;
 `;
 
 export const InputContainerRight = styled.div`
@@ -42,9 +42,14 @@ export const InputContainerRight = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    //padding: 30px 0px 30px 0px;
+    padding: 0px 0px 30px 0px;
     margin: 0px;
-    width: 35%;
+    width: 42.5%;
+`;
+
+export const Select = styled.select`
+    width: 100%;
+    height: 40px;
 `;
 
 export const Heading = styled.div`
