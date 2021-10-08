@@ -23,7 +23,7 @@ export const SpaceContainer = styled.div`
     display: flex;
     align-items: center;
     //padding: 30px 0px 30px 0px;
-    margin: auto;
+    margin: 0px;
     width: 10%;
 `;
 
@@ -31,9 +31,9 @@ export const InputContainerLeft = styled.div`
 
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
     //padding: 30px 0px 30px 0px;
-    margin: auto;
+    margin: 0px;
     width: 35%;
 `;
 
@@ -41,9 +41,9 @@ export const InputContainerRight = styled.div`
 
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     //padding: 30px 0px 30px 0px;
-    margin: auto;
+    margin: 0px;
     width: 35%;
 `;
 
