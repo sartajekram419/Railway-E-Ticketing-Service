@@ -34,4 +34,9 @@ export const TextBox = styled.div`
 export const FindCardBox = styled.div`
     justify-content: center;
     align-items: center;
+    width: 60%;
+    @media (max-width: 768px) {
+        width: 100%;
+        padding: 40px 0px 0px 0px;
+    }
 `;
