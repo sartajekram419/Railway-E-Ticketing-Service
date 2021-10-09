@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Button, Heading, Form, NavLink } from './TicketVerificationElements'
+import { Container, Button, Heading, Form, MessageBox } from './TicketVerificationElements'
 import { withRouter } from 'react-router-dom';
 import Axios from 'axios'
 
@@ -10,6 +10,10 @@ class TicketVerification extends Component {
         super(props);
 
         this.state = {
+
+            ticketID: 0,
+            mobileNo: 0,
+
             styleHeading: {
                 color: "#fff",
                 textAlign: "center",
@@ -29,64 +33,72 @@ class TicketVerification extends Component {
                 height: "1vw",
             }
         }
+
+        this.setTicketID = this.setTicketID.bind(this);
+        this.setMobileNo = this.setMobileNo.bind(this);
+    }
+
+    setTicketID(data) {
+        this.setState({
+            ticketID: data,
+        })
+    }
+
+    setMobileNo(data) {
+        this.setState({
+            mobileNo: data,
+        })
     }
 
 
     verifyPressed = event => {
         event.preventDefault();
 
-        alert(this.props.passengerMail);
-
-        Axios.post("http://localhost:3001/api/registerPassenger", {
-            name: this.state.name,
-            nid: this.state.nid,
-            email: this.state.email,
-            mobile: this.state.mobile,
-            password: this.state.password,
+        Axios.post("http://localhost:3001/api/verifyTicket", {
+            ticketID: this.state.ticketID,
+            mobileNo: this.state.mobileNo,
         })
-            .then((res) => {
-                if (res.data == 'true') {
-                    this.props.setPassengerMail(this.state.email);
-                    this.setEmail("-1");
-                } else {
-                    //this.setEmail("");
-                }
-            })
-
-        // if(this.state.email != "") {
-        //     this.props.history.push({pathname: '/home-user'});
-        // }
+        .then((res) => {
+            if (res.data.isValid == true) {
+                this.props.setMessage("The Ticket is Valid");
+            } else {
+                this.props.setMessage("The Ticket is Invalid");
+            }
+        })
     };
 
 
     render() {
         return (
-            <Container>
+            <div>
+                <MessageBox message={this.props.message}>
+                    {this.props.message}
+                </MessageBox>
 
+                <Container  message={this.props.message}>    
                 <Heading>
                     <h2 style={this.state.styleHeading}>Verify Your Ticket</h2>
                 </Heading>
 
 
                 <Form>
-                    <label style={this.state.styleLabel}>PIN</label>
+                    <label style={this.state.styleLabel}>Ticket ID</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setName(e.target.value) }} type="number" placeholder="PIN" />
+                    <input style={this.state.styleInput} onChange={(e) => { this.setTicketID(e.target.value) }} type="number" placeholder="Enter Ticket ID" />
                     <br ></br>
 
-                    <label style={this.state.styleLabel}>Mobile No.</label>
+                    <label style={this.state.styleLabel}>Mobile No</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setNid(e.target.value) }} type="number" placeholder="Enter Mobile No." />
+                    <input style={this.state.styleInput} onChange={(e) => { this.setMobileNo(e.target.value) }} type="number" placeholder="Enter Mobile No." />
                     <br></br>
 
                     <Button onClick={this.verifyPressed}>Verify</Button>
 
                 </Form>
+                </Container >
 
-
-
-
-            </Container >
+            </div>
+            
         )
     }
 }

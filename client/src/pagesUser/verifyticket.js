@@ -14,10 +14,12 @@ export default class VerifyTicket extends Component {
                 display: "flex",
                 flexDirection: "column",
                 padding: "0px 0px 80px 0px",
-            }
+            },
+            message: "",
         }
 
         this.toggleSidebar = this.toggleSidebar.bind(this);
+        this.setMessage = this.setMessage.bind(this);
     }
 
     toggleSidebar = () => {
@@ -26,12 +28,18 @@ export default class VerifyTicket extends Component {
         })
     }
 
+    setMessage(data) {
+        this.setState({
+            message: data,
+        })
+    }
+
     render() {
         return (
             <div style={this.state.style}>
                 <Sidebar isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} />
                 <Navbar toggleSidebar={this.toggleSidebar} />
-                <TicketVerification />
+                <TicketVerification message={this.state.message} setMessage={this.setMessage} />
             </div>
         )
     }

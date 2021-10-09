@@ -133,7 +133,47 @@ app.post("/api/loginAdmin", (req, res) => {
 
 });
 
+app.post("/api/verifyTicket", (req, res) => {
 
+    var ticketID = req.body.ticketID
+    var mobileNo = req.body.mobileNo
+    var passengerID = 0
+
+    var sqlSelectPassenger = "SELECT Passenger_ID FROM ticket WHERE Ticket_ID = ?"
+    db.query(sqlSelectPassenger, [ticketID], (err, result) => {
+        if (result.length == 1) {
+            passengerID = result[0].Passenger_ID
+            //console.log(passengerID);
+
+            const sqlCommand = "SELECT Mobile FROM passenger WHERE NID = ?"
+            db.query(sqlCommand, [passengerID], (err1, result1) => {
+                if (result1[0].Mobile == mobileNo) {
+                    var isValid = {
+                        isValid: true,
+                    };
+                } else {
+                    var isValid = {
+                    isValid: false,
+                    };
+                }
+                return res.json(isValid);
+            });
+
+
+        } else {
+            var isValid = {
+                isValid: false,
+            };
+            return res.json(isValid);
+        }
+        
+    });
+
+    
+
+    
+
+});
 
 
 app.listen(3001, () => {

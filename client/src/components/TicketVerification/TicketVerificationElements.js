@@ -5,7 +5,9 @@ export const Container = styled.div`
     background: #fff;
     display: flex;
     align-items: center;
-    margin-top: 150px;
+    
+    margin-top: ${({ message }) => (message != "" ? '70px' : '150px')};
+
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
@@ -19,6 +21,30 @@ export const Container = styled.div`
     @media (max-width: 768px) {
         flex-direction: column;
         width: 80%;
+    }
+`;
+
+
+export const MessageBox = styled.div`
+    background: ${({ message }) => (message == "The Ticket is Valid" ? '#9de371' : '#fc5353')};
+    display: ${({ message }) => (message != "" ? 'flex' : 'none')};
+    align-items: center;
+    margin-top: 150px;
+    margin-bottom: auto;
+    font-size: 23px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+
+    border-radius:5px 5px 5px 5px;
+    border: 2px solid transparent;
+
+    flex-direction: column;
+    width: fit-content;
+    padding: 10px 20px 10px 20px;
+    @media (max-width: 768px) {
+        flex-direction: column;
+        //width: 80%;
     }
 `;
 
