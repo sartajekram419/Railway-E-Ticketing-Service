@@ -53,7 +53,7 @@ CREATE TABLE `railway_management_database`.`train_station` (
   `Station_ID` INT NOT NULL,
   `Up_time` TIME NOT NULL,
   `Down_time` TIME NOT NULL,
-  `Position` INT NOT NULL unique,
+  `Position` INT NOT NULL,
   PRIMARY KEY (`Train_ID`, `Station_ID`),
   FOREIGN KEY (Train_ID) REFERENCES train(Train_ID) ON DELETE CASCADE,
   FOREIGN KEY (Station_ID) REFERENCES station(Station_ID) ON DELETE CASCADE);
@@ -66,23 +66,22 @@ CREATE TABLE `railway_management_database`.`fare` (
   `End_position` INT NOT NULL,
   `Fare` INT NOT NULL,
   PRIMARY KEY (`Train_ID`, `Class_ID`, `Start_position`, `End_position`),
-  FOREIGN KEY (Train_ID) REFERENCES train(Train_ID) ON DELETE CASCADE,
-  FOREIGN KEY (Start_position) REFERENCES train_station(Position) ON DELETE CASCADE,
-  FOREIGN KEY (End_position) REFERENCES train_station(Position) ON DELETE CASCADE
+  FOREIGN KEY (Train_ID) REFERENCES train(Train_ID) ON DELETE CASCADE
+  -- FOREIGN KEY (Start_position) REFERENCES train_station(Position) ON DELETE CASCADE,
+  -- FOREIGN KEY (End_position) REFERENCES train_station(Position) ON DELETE CASCADE
   );
 
 CREATE TABLE `railway_management_database`.`booking_status` (
   `Train_ID` INT NOT NULL,
   `Coach_ID` INT NOT NULL,
-  `Date` DATETIME NOT NULL,
+  `Date` DATE NOT NULL,
   `Start_position` INT NOT NULL,
   `End_position` INT NOT NULL,
   `Seat_no` INT NOT NULL,
-  `Status` INT NOT NULL,
   PRIMARY KEY (`Train_ID`, `Coach_ID`, `Date`, `Start_position`, `End_position`, `Seat_no`),
-  FOREIGN KEY (Train_ID) REFERENCES train(Train_ID) ON DELETE CASCADE,
-  FOREIGN KEY (Start_position) REFERENCES train_station(Position) ON DELETE CASCADE,
-  FOREIGN KEY (End_position) REFERENCES train_station(Position) ON DELETE CASCADE
+  FOREIGN KEY (Train_ID) REFERENCES train(Train_ID) ON DELETE CASCADE
+  -- FOREIGN KEY (Start_position) REFERENCES train_station(Position) ON DELETE CASCADE,
+  -- FOREIGN KEY (End_position) REFERENCES train_station(Position) ON DELETE CASCADE
   );
 
 
@@ -101,9 +100,9 @@ CREATE TABLE `railway_management_database`.`ticket` (
   `Passenger_ID` INT NOT NULL,
   PRIMARY KEY (`Ticket_ID`),
   FOREIGN KEY (Passenger_ID) REFERENCES passenger(NID),
-  FOREIGN KEY (Train_ID) REFERENCES train(Train_ID) ON DELETE CASCADE,
-  FOREIGN KEY (Start_position) REFERENCES fare(Start_position) ON DELETE CASCADE,
-  FOREIGN KEY (End_position) REFERENCES fare(End_position) ON DELETE CASCADE
+  FOREIGN KEY (Train_ID) REFERENCES train(Train_ID) ON DELETE CASCADE
+  -- FOREIGN KEY (Start_position) REFERENCES fare(Start_position) ON DELETE CASCADE,
+  -- FOREIGN KEY (End_position) REFERENCES fare(End_position) ON DELETE CASCADE
   );
 
 
@@ -122,33 +121,70 @@ INSERT INTO `railway_management_database`.passenger
 VALUES (1, '1', '1', 1, '1'), (2, '2', '2', 2, '2'), (3, '3', '3', 3, '3');
 
 INSERT INTO `railway_management_database`.station (Name, District)
-VALUES ('Ctg', 'Ctg'), ('Dhaka', 'Dhaka'), ('Cumilla', 'Cumilla');
+VALUES ('Ctg', 'Ctg'), ('Cumilla', 'Cumilla'), ('Dhaka', 'Dhaka');
 
 INSERT INTO `railway_management_database`.train (Name, Up_start_time, Down_start_time, No_of_coaches, No_of_classes)
-VALUES ('Suborno', '07:00:00', '15:00:00', 21, 3), ('Turna', '23:00:00', '07:00:00', 15, 2);
+VALUES ('Suborno', '07:00:00', '15:00:00', 3, 2), ('Turna', '23:00:00', '07:00:00', 3, 2);
 
 INSERT INTO `railway_management_database`.booking_clerk (Name, Mobile, Password, Station_ID)
 VALUES ('Ami Clerk', '0123435123', '1234', 2);
 
 INSERT INTO `railway_management_database`.train_coach 
-VALUES (1, 5, 2, 52);
+VALUES (1, 1, 1, 4),
+(1, 2, 2, 4),
+(1, 3, 2, 4),
+(2, 1, 1, 4),
+(2, 2, 2, 4),
+(2, 3, 2, 4);
 
-INSERT INTO `railway_management_database`.train_station 
-VALUES (1, 3, '10:00:00', '18:00:00', 1), (1, 2, '13:00:00', '19:00:00', 2);
 
-INSERT INTO `railway_management_database`.fare 
-VALUES (1, 3, 1, 2, 480),
-(1, 2, 2, 1, 300);
+INSERT INTO `railway_management_database`.train_station (Train_ID, Station_ID, Up_time, Down_time, Position)
+VALUES (1, 1, '07:00:00', '21:00:00', 11), 
+(1, 2, '09:00:00', '19:00:00', 12),
+(1, 3, '13:00:00', '15:00:00', 13),
+(2, 1, '00:00:00', '14:00:00', 11), 
+(2, 2, '02:00:00', '12:00:00', 12),
+(2, 3, '06:00:00', '08:00:00', 13);
 
-INSERT INTO `railway_management_database`.booking_status 
-VALUES (1, 5, '2021-10-07', 1, 2, 45, 1);
+
+INSERT INTO `railway_management_database`.fare (Train_ID, Class_ID, Start_position, End_position, Fare)
+VALUES (1, 1, 11, 12, 400),
+(1, 1, 12, 13, 600),
+(1, 1, 11, 13, 1000),
+(1, 2, 11, 12, 200),
+(1, 2, 12, 13, 400),
+(1, 2, 11, 13, 600),
+
+(2, 1, 11, 12, 300),
+(2, 1, 12, 13, 500),
+(2, 1, 11, 13, 800),
+(2, 2, 11, 12, 100),
+(2, 2, 12, 13, 300),
+(2, 2, 11, 13, 400);
+
+
+INSERT INTO `railway_management_database`.booking_status (Train_ID, Coach_ID, Date, Start_position, End_position, Seat_no)
+VALUES (1, 1, '2021-10-15', 11, 12, 1),
+(1, 1, '2021-10-15', 11, 12, 2),
+(1, 2, '2021-10-15', 12, 13, 2),
+(2, 1, '2021-10-15', 13, 12, 4),
+(2, 2, '2021-10-16', 11, 13, 2);
 
 INSERT INTO `railway_management_database`.ticket (Issue_time, Journey_time, Start_position, End_position, Train_ID, Class_ID, Coach_ID, No_of_seats, Fare, Passenger_ID)
-VALUES ('2021-10-04 05:40:30', '2021-10-07 10:00:00', 1, 2, 1, 3, 5, 1, 480, 1), 
-('2021-10-04 12:20:35', '2021-10-09 18:00:00', 2, 1, 1, 2, 10, 1, 300, 2),
-('2021-10-04 05:40:30', '2021-10-11 10:00:00', 1, 2, 1, 3, 15, 1, 480, 1);
+VALUES ('2021-10-04 05:40:30', '2021-10-15 07:00:00', 11, 12, 1, 1, 1, 2, 800, 1), 
+('2021-10-04 05:40:30', '2021-10-15 09:00:00', 12, 13, 1, 2, 2, 1, 400, 2),
+
+('2021-10-04 12:20:35', '2021-10-15 08:00:00', 13, 12, 2, 1, 1, 1, 500, 3),
+('2021-10-04 12:20:35', '2021-10-16 00:00:00', 11, 13, 2, 2, 2, 1, 400, 1);
+
 
 INSERT INTO `railway_management_database`.ticket_seat 
-VALUES (1, 45);
+VALUES (1, 1), (1, 2),
+(2, 2), 
+(3, 4),
+(4, 2);
+
+
+
 
 

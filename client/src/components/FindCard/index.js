@@ -19,47 +19,49 @@ export default class FindCard extends Component {
 
         Axios.post("http://localhost:3001/api/getStationList", {
         })
-        .then((res) => {
-            for(var i in res.data) {
-                var object = res.data[i].Name;
+            .then((res) => {
+                for (var i in res.data) {
+                    var object = res.data[i].Name;
 
-                this.setState({ stationList: [...this.state.stationList, ...[object] ] })
-            }
-        })
+                    this.setState({ stationList: [...this.state.stationList, ...[object]] })
+                }
+            })
 
 
 
-        //this.loginPressed = this.loginPressed.bind(this);
+        this.findPressed = this.findPressed.bind(this);
 
 
     }
 
-    // loginPressed = event => {
-    //     event.preventDefault();
+    findPressed = event => {
+        event.preventDefault();
 
-    //     alert(this.props.passengerMail);
+        // alert(this.props.passengerMail);
 
-    //     Axios.post("http://localhost:3001/api/loginPassenger", {
-    //         email: this.state.email,
-    //         password: this.state.password,
-    //     })
-    //         .then((res) => {
-    //             if (res.data.isValid == true) {
-    //                 this.props.setPassengerMail(this.state.email);
-    //                 this.props.setPassengerNid(res.data.nid);
-    //                 this.props.setPassengerName(res.data.name);
-    //                 this.props.setPassengerMobile(res.data.mobile);
-    //                 this.props.setPassengerPassword(res.data.password);
-    //                 this.setEmail("-1");
-    //             } else {
+        // Axios.post("http://localhost:3001/api/loginPassenger", {
+        //     startStationName: this.state.startStationName,
+        //     endStationName: this.state.endStationName,
 
-    //             }
-    //         })
+        //     password: this.state.password,
+        // })
+        //     .then((res) => {
+        //         if (res.data.isValid == true) {
+        //             this.props.setPassengerMail(this.state.email);
+        //             this.props.setPassengerNid(res.data.nid);
+        //             this.props.setPassengerName(res.data.name);
+        //             this.props.setPassengerMobile(res.data.mobile);
+        //             this.props.setPassengerPassword(res.data.password);
+        //             this.setEmail("-1");
+        //         } else {
 
-    //     // if(this.state.email != "") {
-    //     //     this.props.history.push({pathname: '/home-user'});
-    //     // }
-    // };
+        //         }
+        //     })
+
+        // if(this.state.email != "") {
+        //     this.props.history.push({pathname: '/home-user'});
+        // }
+    };
 
     render() {
         return (
@@ -68,10 +70,10 @@ export default class FindCard extends Component {
                     <label style={this.state.styleLabel}>From</label>
                     <Select>
                         <option value="" disabled selected>Select a station</option>
-                        {this.state.stationList.map((station,index)=>{
-                        return <option key={index} value={station}>
+                        {this.state.stationList.map((station, index) => {
+                            return <option key={index} value={station}>
                                 {station}
-                                </option>
+                            </option>
                         })}
                     </Select>
                 </InputContainerLeft>
@@ -80,10 +82,10 @@ export default class FindCard extends Component {
                     <label style={this.state.styleLabel}>To</label>
                     <Select>
                         <option value="" disabled selected>Select a station</option>
-                        {this.state.stationList.map((station,index)=>{
-                        return <option key={index} value={station}>
+                        {this.state.stationList.map((station, index) => {
+                            return <option key={index} value={station}>
                                 {station}
-                                </option>
+                            </option>
                         })}
                     </Select>
                 </InputContainerRight>
@@ -97,7 +99,7 @@ export default class FindCard extends Component {
                 </InputContainerLeft>
                 <SpaceContainer />
                 <InputContainerRight>
-                <label style={this.state.styleLabel}>Class</label>
+                    <label style={this.state.styleLabel}>Class</label>
                     <Select>
                         <option value="" disabled selected>Select a class</option>
                         <option value="1" >AC</option>
@@ -115,7 +117,7 @@ export default class FindCard extends Component {
                     </Select>
                 </InputContainerLeft>
 
-                <Button onClick={this.loginPressed}>Find</Button>
+                <Button onClick={this.findPressed}>Find</Button>
 
             </Container>
         )
