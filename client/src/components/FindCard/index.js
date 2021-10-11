@@ -7,7 +7,14 @@ export default class FindCard extends Component {
         super(props);
 
         this.state = {
-            
+            styleLabel: {
+                color: "#fff",
+                fontWeight: 'bold',
+                padding: "0px 0px 8px 0px",
+            },
+            styleInput: {
+                height: "40px",
+            },
         }
     }
 
@@ -16,6 +23,7 @@ export default class FindCard extends Component {
         return (
             <Container>
                 <InputContainerLeft>
+                    <label style={this.state.styleLabel}>From</label>
                     <Select>
                         <option value="fsfasf" >fsfsf</option>
                         <option value="qqqqqq">qqqqqqq</option>
@@ -23,12 +31,14 @@ export default class FindCard extends Component {
                 </InputContainerLeft>
                 <SpaceContainer />
                 <InputContainerRight>
+                    <label style={this.state.styleLabel}>To</label>
                     <Select>
                         <option value="fsfasf" >fsfsf</option>
                         <option value="qqqqqq">qqqqqqq</option>
                     </Select>
                 </InputContainerRight>
                 <InputContainerLeft>
+                    <label style={this.state.styleLabel}>Date</label>
                     <Select>
                         <option value="fsfasf" >fsfsf</option>
                         <option value="qqqqqq">qqqqqqq</option>
@@ -36,6 +46,7 @@ export default class FindCard extends Component {
                 </InputContainerLeft>
                 <SpaceContainer />
                 <InputContainerRight>
+                <label style={this.state.styleLabel}>Passenger(s)</label>
                     <Select>
                         <option value="fsfasf" >fsfsf</option>
                         <option value="qqqqqq">qqqqqqq</option>
