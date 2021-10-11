@@ -169,9 +169,16 @@ app.post("/api/verifyTicket", (req, res) => {
         
     });
 
-    
+});
 
-    
+
+app.post("/api/getStationList", (req, res) => {
+
+    const sqlSelectPassenger = "SELECT Name FROM station"
+    db.query(sqlSelectPassenger, [], (err, result) => {
+        console.log(result);
+        return res.json(result);
+    });
 
 });
 

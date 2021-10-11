@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Select, InputContainerRight, InputContainerLeft, SpaceContainer, Button } from './FindCardElements'
+import Axios from 'axios'
 
 export default class FindCard extends Component {
 
@@ -12,7 +13,21 @@ export default class FindCard extends Component {
                 fontWeight: 'bold',
                 padding: "0px 0px 8px 0px",
             },
+            date: new Date(),
+            stationList: [],
         }
+
+        Axios.post("http://localhost:3001/api/getStationList", {
+        })
+        .then((res) => {
+            for(var i in res.data) {
+                var object = res.data[i].Name;
+
+                this.setState({ stationList: [...this.state.stationList, ...[object] ] })
+            }
+        })
+
+
 
         //this.loginPressed = this.loginPressed.bind(this);
 
@@ -53,8 +68,11 @@ export default class FindCard extends Component {
                     <label style={this.state.styleLabel}>From</label>
                     <Select>
                         <option value="" disabled selected>Select a station</option>
-                        <option value="fsfasf" >fsfsf</option>
-                        <option value="qqqqqq">qqqqqqq</option>
+                        {this.state.stationList.map((station,index)=>{
+                        return <option key={index} value={station}>
+                                {station}
+                                </option>
+                        })}
                     </Select>
                 </InputContainerLeft>
                 <SpaceContainer />
@@ -62,8 +80,11 @@ export default class FindCard extends Component {
                     <label style={this.state.styleLabel}>To</label>
                     <Select>
                         <option value="" disabled selected>Select a station</option>
-                        <option value="fsfasf" >fsfsf</option>
-                        <option value="qqqqqq">qqqqqqq</option>
+                        {this.state.stationList.map((station,index)=>{
+                        return <option key={index} value={station}>
+                                {station}
+                                </option>
+                        })}
                     </Select>
                 </InputContainerRight>
                 <InputContainerLeft>
