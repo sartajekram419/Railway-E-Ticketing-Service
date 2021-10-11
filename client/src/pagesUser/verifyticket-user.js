@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import NavbarUser from '../components/NavbarUser'
 import SidebarUser from '../components/SidebarUser'
 import TicketVerification from '../components/TicketVerification';

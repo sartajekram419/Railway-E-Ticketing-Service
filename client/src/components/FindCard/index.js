@@ -12,9 +12,6 @@ export default class FindCard extends Component {
                 fontWeight: 'bold',
                 padding: "0px 0px 8px 0px",
             },
-            styleInput: {
-                height: "40px",
-            },
         }
     }
 

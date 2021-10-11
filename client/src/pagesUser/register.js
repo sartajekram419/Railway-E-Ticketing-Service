@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react'
+import React, {Component} from 'react'
 import Navbar from '../components/Navbar'
 import RegistrationForm from '../components/RegistrationForm'
 import Sidebar from '../components/Sidebar'

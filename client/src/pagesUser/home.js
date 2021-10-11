@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react'
+import React, {Component} from 'react'
 import Header from '../components/Header'
 import HomeInfoDiv from '../components/HomeInfoDiv'
 import Navbar from '../components/Navbar'

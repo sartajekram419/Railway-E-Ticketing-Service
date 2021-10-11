@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import NavbarUser from '../components/NavbarUser'
 import SidebarUser from '../components/SidebarUser'
-import Axios from 'axios'
 import DashboardUserContainer from '../components/DashboardUserContainer';
 
 export default class DashboardUser extends Component {
