@@ -10,7 +10,7 @@ export const Container = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 30px 0px 10px 0px;
+    padding: 30px 0px 30px 0px;
     margin: auto;
     width: 90%;
     @media (max-width: 768px) {
@@ -77,3 +77,13 @@ export const Table = styled.table`
 `;
 
 
+export const Button = styled.button`
+    background: #102f63;
+    color: white;
+    width: 90%;
+    height: 40px;
+    cursor: pointer;
+    border-radius:10px 10px 10px 10px;
+    border: 2px solid #102f63;
+
+`;

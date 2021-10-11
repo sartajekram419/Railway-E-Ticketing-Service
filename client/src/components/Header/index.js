@@ -17,7 +17,22 @@ export default class Header extends Component {
                 </TextBox>
 
                 <FindCardBox>
-                    <FindCard/>
+                    <FindCard
+                    setPassengerMail={this.props.setPassengerMail} 
+                    passengerMail={this.props.passengerMail}
+                    setFromStation={this.props.setFromStation}
+                    fromStation={this.props.fromStation}
+                    setToStation={this.props.setToStation}
+                    toStation={this.props.toStation}
+                    setJourneyDate={this.props.setJourneyDate}
+                    journyDate={this.props.journyDate}
+                    setClass={this.props.setClass}
+                    class={this.props.class}
+                    setNoOfPassengers={this.props.setNoOfPassengers}
+                    noOfPassengers={this.props.noOfPassengers}
+                    setSelectedTrainID={this.props.setSelectedTrainID}
+                    selectedTrainID={this.props.setSelectedTrainID}
+                    />
                 </FindCardBox>
                 
                 

@@ -26,6 +26,13 @@ class App extends Component {
       passengerMobile: 0,
       passengerPassword: "",
 
+      fromStation: 0,
+      toStation: 0,
+      journyDate: 0,
+      class: 0,
+      noOfPassengers: 0,
+
+      selectedTrainID: 0, 
 
       adminID: 0,
     }
@@ -36,6 +43,14 @@ class App extends Component {
     this.setPassengerMobile = this.setPassengerMobile.bind(this);
     this.setPassengerPassword = this.setPassengerPassword.bind(this);
 
+
+    this.setFromStation = this.setFromStation.bind(this);
+    this.setToStation = this.setToStation.bind(this);
+    this.setJourneyDate = this.setJourneyDate.bind(this);
+    this.setClass = this.setClass.bind(this);
+    this.setNoOfPassengers = this.setNoOfPassengers.bind(this);
+
+    this.setSelectedTrainID = this.setSelectedTrainID.bind(this);
 
     this.setAdminID = this.setAdminID.bind(this);
 
@@ -84,6 +99,48 @@ class App extends Component {
 
 
 
+  setFromStation(data) {
+    return this.setState({
+      ...this.state,
+      fromStation: data,
+    });
+  }
+
+  setToStation(data) {
+    return this.setState({
+      ...this.state,
+      toStation: data,
+    });
+  }
+
+  setJourneyDate(data) {
+    return this.setState({
+      ...this.state,
+      journyDate: data,
+    });
+  }
+
+  setClass(data) {
+    return this.setState({
+      ...this.state,
+      class: data,
+    });
+  }
+
+  setNoOfPassengers(data) {
+    return this.setState({
+      ...this.state,
+      noOfPassengers: data,
+    });
+  }
+
+  setSelectedTrainID(data) {
+    return this.setState({
+      ...this.state,
+      selectedTrainID: data,
+    });
+  }
+
 
 
   setAdminID(data) {
@@ -118,6 +175,19 @@ class App extends Component {
                 history={this.props.history}
                 setPassengerMail={this.setPassengerMail}
                 passengerMail={this.state.passengerMail}
+
+                setFromStation={this.setFromStation}
+                fromStation={this.state.fromStation}
+                setToStation={this.setToStation}
+                toStation={this.state.toStation}
+                setJourneyDate={this.setJourneyDate}
+                journyDate={this.state.journyDate}
+                setClass={this.setClass}
+                class={this.state.class}
+                setNoOfPassengers={this.setNoOfPassengers}
+                noOfPassengers={this.state.noOfPassengers}
+                setSelectedTrainID={this.setSelectedTrainID}
+                selectedTrainID={this.state.setSelectedTrainID}
               />
             )}
           />
@@ -184,6 +254,19 @@ class App extends Component {
                 history={this.props.history}
                 setPassengerMail={this.setPassengerMail}
                 passengerMail={this.state.passengerMail}
+
+                setFromStation={this.setFromStation}
+                fromStation={this.state.fromStation}
+                setToStation={this.setToStation}
+                toStation={this.state.toStation}
+                setJourneyDate={this.setJourneyDate}
+                journyDate={this.state.journyDate}
+                setClass={this.setClass}
+                class={this.state.class}
+                setNoOfPassengers={this.setNoOfPassengers}
+                noOfPassengers={this.state.noOfPassengers}
+                setSelectedTrainID={this.setSelectedTrainID}
+                selectedTrainID={this.state.setSelectedTrainID}
               />
             )}
           />
