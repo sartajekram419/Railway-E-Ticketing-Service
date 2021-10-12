@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import Header from '../components/Header'
 import HomeInfoDiv from '../components/HomeInfoDiv'
-import NavbarUser from '../components/NavbarUser'
-import PaymentLogos from '../components/PaymentLogos'
-import SidebarUser from '../components/SidebarUser'
+import AdminNavbar from '../components/AdminNavbar'
+import AdminSidebar from '../components/AdminSidebar'
 
 export default class HomeAdmin extends Component {
 
@@ -26,12 +25,11 @@ export default class HomeAdmin extends Component {
     render() {
         return (
             <div>
-                {/* <SidebarUser isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} setPassengerMail={this.props.setPassengerMail} passengerMail={this.props.passengerMail} />
-                <NavbarUser toggleSidebar={this.toggleSidebar} setPassengerMail={this.props.setPassengerMail} passengerMail={this.props.passengerMail} /> */}
+                <AdminSidebar isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} setAdminID={this.props.setAdminID} adminID={this.props.adminID} />
+                <AdminNavbar toggleSidebar={this.toggleSidebar} setAdminID={this.props.setAdminID} adminID={this.props.adminID} />
                 <Header />
                 <HomeInfoDiv />
                 <hr></hr>
-                <PaymentLogos />
                 <hr></hr>
             </div>
         )
