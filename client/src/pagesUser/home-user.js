@@ -31,10 +31,14 @@ export default class HomeUser extends Component {
                 <Header 
                 setPassengerMail={this.props.setPassengerMail} 
                 passengerMail={this.props.passengerMail}
-                setFromStation={this.props.setFromStation}
-                fromStation={this.props.fromStation}
-                setToStation={this.props.setToStation}
-                toStation={this.props.toStation}
+                setFromStationID={this.props.setFromStationID}
+                fromStationID={this.props.fromStationID}
+                setToStationID={this.props.setToStationID}
+                toStationID={this.props.toStationID}
+                setFromStationPosition={this.props.setFromStationPosition}
+                fromStationPosition={this.props.fromStationPosition}
+                setToStationPosition={this.props.setToStationPosition}
+                toStationPosition={this.props.toStationPosition}
                 setJourneyDate={this.props.setJourneyDate}
                 journeyDate={this.props.journeyDate}
                 setClass={this.props.setClass}

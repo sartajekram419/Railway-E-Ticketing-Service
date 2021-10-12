@@ -23,7 +23,7 @@ export default class FindCard extends Component {
             selectedFromStationName: "",
             selectedToStationName: "",
             selectedDate: null,
-            selectedClassName: "",
+            selectedClassID: "",
             selectedNoOfPassengers: 0, 
             
         }
@@ -31,19 +31,19 @@ export default class FindCard extends Component {
         
         Axios.post("http://localhost:3001/api/getStationList", {
         })
-            .then((res) => {
-                for (var i in res.data) {
-                    var object = res.data[i].Name;
+        .then((res) => {
+            for (var i in res.data) {
+                var object = res.data[i].Name;
 
-                    this.setState({ stationList: [...this.state.stationList, ...[object]] })
-                }
-            })
+                this.setState({ stationList: [...this.state.stationList, ...[object]] })
+            }
+        })
 
         
         this.setSelectedFromStationName = this.setSelectedFromStationName.bind(this);
         this.setSelectedToStationName = this.setSelectedToStationName.bind(this);
         this.setSelectedDate = this.setSelectedDate.bind(this);
-        this.setSelectedClassName = this.setSelectedClassName.bind(this);
+        this.setSelectedClassID = this.setSelectedClassID.bind(this);
         this.setSelectedNoOfPassengers = this.setSelectedNoOfPassengers.bind(this);
 
         this.findPressed = this.findPressed.bind(this);
@@ -68,9 +68,9 @@ export default class FindCard extends Component {
         })
     }
 
-    setSelectedClassName(data) {
+    setSelectedClassID(data) {
         this.setState({
-            selectedClassName: data,
+            selectedClassID: data,
         })
     }
 
@@ -83,7 +83,11 @@ export default class FindCard extends Component {
     findPressed = event => {
         event.preventDefault();
 
+        alert(this.state.selectedFromStationName);
+        alert(this.state.selectedToStationName);
         alert(this.state.selectedDate);
+        alert(this.state.selectedClassID);
+        alert(this.state.selectedNoOfPassengers);
 
         // Axios.post("http://localhost:3001/api/loginPassenger", {
         //     startStationName: this.state.startStationName,
@@ -114,7 +118,7 @@ export default class FindCard extends Component {
             <Container>
                 <InputContainerLeft>
                     <label style={this.state.styleLabel}>From</label>
-                    <Select>
+                    <Select onChange={(e) => { this.setSelectedFromStationName(e.target.value) }} >
                         <option value="" disabled selected>Select a station</option>
                         {this.state.stationList.map((station, index) => {
                             return <option key={index} value={station}>
@@ -126,7 +130,7 @@ export default class FindCard extends Component {
                 <SpaceContainer />
                 <InputContainerRight>
                     <label style={this.state.styleLabel}>To</label>
-                    <Select>
+                    <Select onChange={(e) => { this.setSelectedToStationName(e.target.value) }} >
                         <option value="" disabled selected>Select a station</option>
                         {this.state.stationList.map((station, index) => {
                             return <option key={index} value={station}>
@@ -150,7 +154,7 @@ export default class FindCard extends Component {
                 <SpaceContainer />
                 <InputContainerRight>
                     <label style={this.state.styleLabel}>Class</label>
-                    <Select>
+                    <Select onChange={(e) => { this.setSelectedClassID(e.target.value) }} >
                         <option value="" disabled selected>Select a class</option>
                         <option value="1" >AC</option>
                         <option value="2">Non-AC</option>
@@ -158,7 +162,7 @@ export default class FindCard extends Component {
                 </InputContainerRight>
                 <InputContainerLeft>
                     <label style={this.state.styleLabel}>Passenger(s)</label>
-                    <Select>
+                    <Select onChange={(e) => { this.setSelectedNoOfPassengers(e.target.value) }} >
                         <option value="" disabled selected>No of passenger(s)</option>
                         <option value="1" >1</option>
                         <option value="2">2</option>

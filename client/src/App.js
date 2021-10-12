@@ -26,8 +26,10 @@ class App extends Component {
       passengerMobile: 0,
       passengerPassword: "",
 
-      fromStation: 0,
-      toStation: 0,
+      fromStationID: 0,
+      toStationID: 0,
+      fromStationPosition: 0,
+      toStationPosition: 0,
       journeyDate: null,
       class: 0,
       noOfPassengers: 0,
@@ -44,8 +46,10 @@ class App extends Component {
     this.setPassengerPassword = this.setPassengerPassword.bind(this);
 
 
-    this.setFromStation = this.setFromStation.bind(this);
-    this.setToStation = this.setToStation.bind(this);
+    this.setFromStationID = this.setFromStationID.bind(this);
+    this.setToStationID = this.setToStationID.bind(this);
+    this.setFromStationPosition = this.setFromStationPosition.bind(this);
+    this.setToStationPosition = this.setToStationPosition.bind(this);
     this.setJourneyDate = this.setJourneyDate.bind(this);
     this.setClass = this.setClass.bind(this);
     this.setNoOfPassengers = this.setNoOfPassengers.bind(this);
@@ -99,17 +103,31 @@ class App extends Component {
 
 
 
-  setFromStation(data) {
+  setFromStationID(data) {
     return this.setState({
       ...this.state,
-      fromStation: data,
+      fromStationID: data,
     });
   }
 
-  setToStation(data) {
+  setToStationID(data) {
     return this.setState({
       ...this.state,
-      toStation: data,
+      toStationID: data,
+    });
+  }
+
+  setFromStationPosition(data) {
+    return this.setState({
+      ...this.state,
+      fromStationPosition: data,
+    });
+  }
+
+  setToStationPosition(data) {
+    return this.setState({
+      ...this.state,
+      toStationPosition: data,
     });
   }
 
@@ -176,10 +194,14 @@ class App extends Component {
                 setPassengerMail={this.setPassengerMail}
                 passengerMail={this.state.passengerMail}
 
-                setFromStation={this.setFromStation}
-                fromStation={this.state.fromStation}
-                setToStation={this.setToStation}
-                toStation={this.state.toStation}
+                setFromStationID={this.setFromStationID}
+                fromStationID={this.state.fromStationID}
+                setToStationID={this.setToStationID}
+                toStationID={this.state.toStationID}
+                setFromStationPosition={this.setFromStationPosition}
+                fromStationPosition={this.state.fromStationPosition}
+                setToStationPosition={this.setToStationPosition}
+                toStationPosition={this.state.toStationPosition}
                 setJourneyDate={this.setJourneyDate}
                 journyDate={this.state.journyDate}
                 setClass={this.setClass}
@@ -255,10 +277,14 @@ class App extends Component {
                 setPassengerMail={this.setPassengerMail}
                 passengerMail={this.state.passengerMail}
 
-                setFromStation={this.setFromStation}
-                fromStation={this.state.fromStation}
-                setToStation={this.setToStation}
-                toStation={this.state.toStation}
+                setFromStationID={this.setFromStationID}
+                fromStationID={this.state.fromStationID}
+                setToStationID={this.setToStationID}
+                toStationID={this.state.toStationID}
+                setFromStationPosition={this.setFromStationPosition}
+                fromStationPosition={this.state.fromStationPosition}
+                setToStationPosition={this.setToStationPosition}
+                toStationPosition={this.state.toStationPosition}
                 setJourneyDate={this.setJourneyDate}
                 journyDate={this.state.journyDate}
                 setClass={this.setClass}
