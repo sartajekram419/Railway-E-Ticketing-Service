@@ -20,13 +20,15 @@ export default class FindCard extends Component {
             date: new Date(),
             stationList: [],
 
-
+            selectedFromStationName: "",
+            selectedToStationName: "",
             selectedDate: null,
+            selectedClassName: "",
+            selectedNoOfPassengers: 0, 
             
         }
 
-        this.setSelectedDate = this.setSelectedDate.bind(this);
-
+        
         Axios.post("http://localhost:3001/api/getStationList", {
         })
             .then((res) => {
@@ -37,11 +39,27 @@ export default class FindCard extends Component {
                 }
             })
 
-
+        
+        this.setSelectedFromStationName = this.setSelectedFromStationName.bind(this);
+        this.setSelectedToStationName = this.setSelectedToStationName.bind(this);
+        this.setSelectedDate = this.setSelectedDate.bind(this);
+        this.setSelectedClassName = this.setSelectedClassName.bind(this);
+        this.setSelectedNoOfPassengers = this.setSelectedNoOfPassengers.bind(this);
 
         this.findPressed = this.findPressed.bind(this);
 
+    }
+    
+    setSelectedFromStationName(data) {
+        this.setState({
+            selectedFromStationName: data,
+        })
+    }
 
+    setSelectedToStationName(data) {
+        this.setState({
+            selectedToStationName: data,
+        })
     }
 
     setSelectedDate(data) {
@@ -50,10 +68,22 @@ export default class FindCard extends Component {
         })
     }
 
+    setSelectedClassName(data) {
+        this.setState({
+            selectedClassName: data,
+        })
+    }
+
+    setSelectedNoOfPassengers(data) {
+        this.setState({
+            selectedNoOfPassengers: data,
+        })
+    }
+
     findPressed = event => {
         event.preventDefault();
 
-        // alert(this.props.passengerMail);
+        alert(this.state.selectedDate);
 
         // Axios.post("http://localhost:3001/api/loginPassenger", {
         //     startStationName: this.state.startStationName,
@@ -107,13 +137,6 @@ export default class FindCard extends Component {
                 </InputContainerRight>
                 <InputContainerLeft>
                     <label style={this.state.styleLabel}>Date</label>
-
-                    {/* <Select>
-                        <option value="" disabled selected>Select a Date</option>
-                        <option value={new Date().date} >{new Date().date}</option>
-                        <option value="2">Non-AC</option>
-                    </Select> */}
-
                     <DatePicker
                     wrapperClassName="datePicker"calendarClassName="red-border"
                     placeholderText="Select a date"
