@@ -29,8 +29,6 @@ export default class AdminLogin extends Component {
     render() {
         return (
             <div style={this.state.style}>
-                <Sidebar isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} />
-                <Navbar toggleSidebar={this.toggleSidebar} />
 
                 <AdminLoginForm
                     setAdminID={this.props.setAdminID}
