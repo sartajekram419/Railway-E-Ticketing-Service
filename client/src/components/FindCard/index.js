@@ -100,7 +100,10 @@ class FindCard extends Component {
         })
         .then((res) => {
             this.props.setToStationID(res.data[0].Station_ID);
-            this.props.history.push({ pathname: '/train-list' });
+            if(this.props.passengerMail == "")
+                this.props.history.push({ pathname: '/trainlist' });
+            else
+            this.props.history.push({ pathname: '/trainlist-user' });
         })
         
     };

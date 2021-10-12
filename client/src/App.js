@@ -13,6 +13,8 @@ import { withRouter } from 'react-router'
 import DashboardUser from './pagesUser/dashboard-user'
 import AdminLogin from './pagesAdmin/admin-login'
 import HomeAdmin from './pagesAdmin/admin-home'
+import TrainList from './pagesUser/trainlist'
+import TrainListUser from './pagesUser/trainlist-user'
 
 class App extends Component {
 
@@ -370,8 +372,57 @@ class App extends Component {
           />
 
 
+          <Route exact path='/trainlist'
+            render={props => (
+              <TrainList {...props}
+                history={this.props.history}
+                setPassengerMail={this.setPassengerMail}
+                passengerMail={this.state.passengerMail}
+                setFromStationID={this.setFromStationID}
+                fromStationID={this.state.fromStationID}
+                setToStationID={this.setToStationID}
+                toStationID={this.state.toStationID}
+                setFromStationPosition={this.setFromStationPosition}
+                fromStationPosition={this.state.fromStationPosition}
+                setToStationPosition={this.setToStationPosition}
+                toStationPosition={this.state.toStationPosition}
+                setJourneyDate={this.setJourneyDate}
+                journyDate={this.state.journyDate}
+                setClass={this.setClass}
+                class={this.state.class}
+                setNoOfPassengers={this.setNoOfPassengers}
+                noOfPassengers={this.state.noOfPassengers}
+                setSelectedTrainID={this.setSelectedTrainID}
+                selectedTrainID={this.state.setSelectedTrainID}
+              />
+            )}
+          /> 
 
-
+          <Route exact path='/trainlist-user'
+            render={props => (
+              <TrainListUser {...props}
+                history={this.props.history}
+                setPassengerMail={this.setPassengerMail}
+                passengerMail={this.state.passengerMail}
+                setFromStationID={this.setFromStationID}
+                fromStationID={this.state.fromStationID}
+                setToStationID={this.setToStationID}
+                toStationID={this.state.toStationID}
+                setFromStationPosition={this.setFromStationPosition}
+                fromStationPosition={this.state.fromStationPosition}
+                setToStationPosition={this.setToStationPosition}
+                toStationPosition={this.state.toStationPosition}
+                setJourneyDate={this.setJourneyDate}
+                journyDate={this.state.journyDate}
+                setClass={this.setClass}
+                class={this.state.class}
+                setNoOfPassengers={this.setNoOfPassengers}
+                noOfPassengers={this.state.noOfPassengers}
+                setSelectedTrainID={this.setSelectedTrainID}
+                selectedTrainID={this.state.setSelectedTrainID}
+              />
+            )}
+          /> 
 
 
         </Switch>
