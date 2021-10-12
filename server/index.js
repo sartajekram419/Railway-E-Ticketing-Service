@@ -202,7 +202,7 @@ app.post("/api/getTrainIDFromPositionToPositionList", (req, res) => {
 
     const sqlSelectPassenger = "SELECT ts1.Train_ID as trainID, ts1.Position as fromStationPosition, ts2.Position as toStationPosition FROM train_station ts1, train_station ts2 WHERE  ts1.Station_ID = ? AND ts2.Station_ID = ? AND ts1.Train_ID = ts2.Train_ID"
     db.query(sqlSelectPassenger, [fromStationID, toStationID], (err, result) => {
-        console.log(result);
+        //console.log(result);
         return res.json(result);
     });
 
