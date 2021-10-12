@@ -131,8 +131,8 @@ class TrainInfoContainer extends Component {
         event.preventDefault();
 
         this.props.setSelectedTrainID(this.props.trainIDFromPositionToPosition.trainID);
-        this.props.setFromStationID(this.props.trainIDFromPositionToPosition.fromStationPosition);
-        this.props.setToStationID(this.props.trainIDFromPositionToPosition.toStationPosition);
+        this.props.setFromStationPosition(this.props.trainIDFromPositionToPosition.fromStationPosition);
+        this.props.setToStationPosition(this.props.trainIDFromPositionToPosition.toStationPosition);
 
         this.props.history.push({ pathname: '/traincoach' });
     };

@@ -65,12 +65,12 @@ export default class TrainList extends Component {
                     toStationPosition={this.props.toStationPosition}
                     setJourneyDate={this.props.setJourneyDate}
                     journeyDate={this.props.journeyDate}
-                    setClass={this.props.setClass}
-                    class={this.props.class}
+                    setClassID={this.props.setClassID}
+                    classID={this.props.classID}
                     setNoOfPassengers={this.props.setNoOfPassengers}
                     noOfPassengers={this.props.noOfPassengers}
                     setSelectedTrainID={this.props.setSelectedTrainID}
-                    selectedTrainID={this.props.setSelectedTrainID}
+                    selectedTrainID={this.props.selectedTrainID}
 
                     trainIDFromPositionToPositionList={this.state.trainIDFromPositionToPositionList}
                 />

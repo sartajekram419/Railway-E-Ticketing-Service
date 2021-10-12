@@ -15,6 +15,7 @@ import AdminLogin from './pagesAdmin/admin-login'
 import HomeAdmin from './pagesAdmin/admin-home'
 import TrainList from './pagesUser/trainlist'
 import TrainListUser from './pagesUser/trainlist-user'
+import TrainCoach from './pagesUser/traincoach'
 
 class App extends Component {
 
@@ -32,8 +33,8 @@ class App extends Component {
       toStationID: 0,
       fromStationPosition: 0,
       toStationPosition: 0,
-      journeyDate: null,
-      class: 0,
+      journeyDate: 0,
+      classID: 0,
       noOfPassengers: 0,
 
       selectedTrainID: 0, 
@@ -53,7 +54,7 @@ class App extends Component {
     this.setFromStationPosition = this.setFromStationPosition.bind(this);
     this.setToStationPosition = this.setToStationPosition.bind(this);
     this.setJourneyDate = this.setJourneyDate.bind(this);
-    this.setClass = this.setClass.bind(this);
+    this.setClassID = this.setClassID.bind(this);
     this.setNoOfPassengers = this.setNoOfPassengers.bind(this);
 
     this.setSelectedTrainID = this.setSelectedTrainID.bind(this);
@@ -140,10 +141,10 @@ class App extends Component {
     });
   }
 
-  setClass(data) {
+  setClassID(data) {
     return this.setState({
       ...this.state,
-      class: data,
+      classID: data,
     });
   }
 
@@ -194,9 +195,9 @@ class App extends Component {
               setToStationPosition={this.setToStationPosition}
               toStationPosition={this.state.toStationPosition}
               setJourneyDate={this.setJourneyDate}
-              journyDate={this.state.journyDate}
-              setClass={this.setClass}
-              class={this.state.class}
+              journeyDate={this.state.journeyDate}
+              setClassID={this.setClassID}
+              classID={this.state.classID}
               setNoOfPassengers={this.setNoOfPassengers}
               noOfPassengers={this.state.noOfPassengers}
               setSelectedTrainID={this.setSelectedTrainID}
@@ -220,9 +221,9 @@ class App extends Component {
                 setToStationPosition={this.setToStationPosition}
                 toStationPosition={this.state.toStationPosition}
                 setJourneyDate={this.setJourneyDate}
-                journyDate={this.state.journyDate}
-                setClass={this.setClass}
-                class={this.state.class}
+                journeyDate={this.state.journeyDate}
+                setClassID={this.setClassID}
+                classID={this.state.classID}
                 setNoOfPassengers={this.setNoOfPassengers}
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
@@ -302,9 +303,9 @@ class App extends Component {
                 setToStationPosition={this.setToStationPosition}
                 toStationPosition={this.state.toStationPosition}
                 setJourneyDate={this.setJourneyDate}
-                journyDate={this.state.journyDate}
-                setClass={this.setClass}
-                class={this.state.class}
+                journeyDate={this.state.journeyDate}
+                setClassID={this.setClassID}
+                classID={this.state.classID}
                 setNoOfPassengers={this.setNoOfPassengers}
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
@@ -387,9 +388,9 @@ class App extends Component {
                 setToStationPosition={this.setToStationPosition}
                 toStationPosition={this.state.toStationPosition}
                 setJourneyDate={this.setJourneyDate}
-                journyDate={this.state.journyDate}
-                setClass={this.setClass}
-                class={this.state.class}
+                journeyDate={this.state.journeyDate}
+                setClassID={this.setClassID}
+                classID={this.state.classID}
                 setNoOfPassengers={this.setNoOfPassengers}
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
@@ -413,9 +414,9 @@ class App extends Component {
                 setToStationPosition={this.setToStationPosition}
                 toStationPosition={this.state.toStationPosition}
                 setJourneyDate={this.setJourneyDate}
-                journyDate={this.state.journyDate}
-                setClass={this.setClass}
-                class={this.state.class}
+                journeyDate={this.state.journeyDate}
+                setClassID={this.setClassID}
+                classID={this.state.classID}
                 setNoOfPassengers={this.setNoOfPassengers}
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
@@ -423,6 +424,32 @@ class App extends Component {
               />
             )}
           /> 
+
+          <Route exact path='/traincoach'
+            render={props => (
+              <TrainCoach {...props}
+                history={this.props.history}
+                setPassengerMail={this.setPassengerMail}
+                passengerMail={this.state.passengerMail}
+                setFromStationID={this.setFromStationID}
+                fromStationID={this.state.fromStationID}
+                setToStationID={this.setToStationID}
+                toStationID={this.state.toStationID}
+                setFromStationPosition={this.setFromStationPosition}
+                fromStationPosition={this.state.fromStationPosition}
+                setToStationPosition={this.setToStationPosition}
+                toStationPosition={this.state.toStationPosition}
+                setJourneyDate={this.setJourneyDate}
+                journeyDate={this.state.journeyDate}
+                setClassID={this.setClassID}
+                classID={this.state.classID}
+                setNoOfPassengers={this.setNoOfPassengers}
+                noOfPassengers={this.state.noOfPassengers}
+                setSelectedTrainID={this.setSelectedTrainID}
+                selectedTrainID={this.state.selectedTrainID}
+              />
+            )}
+          />  
 
 
         </Switch>

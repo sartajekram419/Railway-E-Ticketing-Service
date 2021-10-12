@@ -85,8 +85,14 @@ class FindCard extends Component {
         event.preventDefault();
 
         this.props.setJourneyDate(this.state.selectedDate);
-        this.props.setClass(this.state.selectedClassID);
-        this.props.setNoOfPassengers(this.state.selectedNoOfPassengers);
+    
+        if(this.state.selectedClassID == "1")
+            this.props.setClassID(1);
+        else
+            this.props.setClassID(2);
+    
+
+        this.props.setNoOfPassengers(parseInt(this.state.selectedNoOfPassengers));
 
         Axios.post("http://localhost:3001/api/getStationIDForFindCard", {
             stationName: this.state.selectedFromStationName,
