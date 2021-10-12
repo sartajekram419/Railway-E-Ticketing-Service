@@ -209,6 +209,45 @@ app.post("/api/getTrainIDFromPositionToPositionList", (req, res) => {
 });
 
 
+app.post("/api/getStationNameFromTrainIDAndPosition", (req, res) => {
+
+    const trainID = req.body.trainID
+    const position = req.body.position
+
+    const sqlSelectPassenger = "SELECT Name FROM station WHERE Station_ID = (SELECT Station_ID FROM train_station WHERE Train_ID = ? AND Position = ?)"
+    db.query(sqlSelectPassenger, [trainID, position], (err, result) => {
+        //console.log(result);
+        return res.json(result);
+    });
+
+});
+
+app.post("/api/getUpTime", (req, res) => {
+
+    const trainID = req.body.trainID
+    const position = req.body.position
+
+    const sqlSelectPassenger = "SELECT Up_time FROM train_station WHERE Train_ID = ? AND Position = ?"
+    db.query(sqlSelectPassenger, [trainID, position], (err, result) => {
+        //console.log(result);
+        return res.json(result);
+    });
+
+});
+
+app.post("/api/getDownTime", (req, res) => {
+
+    const trainID = req.body.trainID
+    const position = req.body.position
+
+    const sqlSelectPassenger = "SELECT Down_time FROM train_station WHERE Train_ID = ? AND Position = ?"
+    db.query(sqlSelectPassenger, [trainID, position], (err, result) => {
+        //console.log(result);
+        return res.json(result);
+    });
+
+});
+
 app.listen(3001, () => {
     console.log("running");
 })

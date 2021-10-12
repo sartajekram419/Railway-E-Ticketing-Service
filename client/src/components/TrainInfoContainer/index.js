@@ -51,6 +51,46 @@ class TrainInfoContainer extends Component {
             this.setTrainName(res.data[0].Name);
         })
 
+
+
+        Axios.post("http://localhost:3001/api/getStationNameFromTrainIDAndPosition", {
+            trainID: this.props.trainIDFromPositionToPosition.trainID,
+            position: this.props.trainIDFromPositionToPosition.fromStationPosition,
+        })
+        .then((res) => {
+            this.setFromStationName(res.data[0].Name);
+        })
+
+        Axios.post("http://localhost:3001/api/getStationNameFromTrainIDAndPosition", {
+            trainID: this.props.trainIDFromPositionToPosition.trainID,
+            position: this.props.trainIDFromPositionToPosition.toStationPosition,
+        })
+        .then((res) => {
+            this.setToStationName(res.data[0].Name);
+        })
+
+
+
+        if(this.props.trainIDFromPositionToPosition.fromStationPosition<this.props.trainIDFromPositionToPosition.toStationPosition) {
+            Axios.post("http://localhost:3001/api/getUpTime", {
+            trainID: this.props.trainIDFromPositionToPosition.trainID,
+            position: this.props.trainIDFromPositionToPosition.fromStationPosition,
+            })
+            .then((res) => {
+                this.setDepartureTime(res.data[0].Up_time);
+            })
+        } else {
+            Axios.post("http://localhost:3001/api/getDownTime", {
+            trainID: this.props.trainIDFromPositionToPosition.trainID,
+            position: this.props.trainIDFromPositionToPosition.fromStationPosition,
+            })
+            .then((res) => {
+                this.setDepartureTime(res.data[0].Down_time);
+            })
+        }
+         
+        
+
         //this.props.trainIDFromPositionToPosition
         
         this.seeDetailsPressed = this.seeDetailsPressed.bind(this);

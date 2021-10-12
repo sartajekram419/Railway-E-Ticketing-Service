@@ -1,8 +1,5 @@
 import React, {Component} from 'react'
-import Header from '../components/Header'
-import HomeInfoDiv from '../components/HomeInfoDiv'
 import NavbarUser from '../components/NavbarUser'
-import PaymentLogos from '../components/PaymentLogos'
 import SidebarUser from '../components/SidebarUser'
 
 export default class TrainListUser extends Component {
