@@ -173,10 +173,22 @@ app.post("/api/verifyTicket", (req, res) => {
 
 
 app.post("/api/getStationList", (req, res) => {
-
+    
     const sqlSelectPassenger = "SELECT Name FROM station"
     db.query(sqlSelectPassenger, [], (err, result) => {
         
+        return res.json(result);
+    });
+
+});
+
+app.post("/api/getStationIDForFindCard", (req, res) => {
+
+    const stationName = req.body.stationName
+
+    const sqlSelectPassenger = "SELECT Station_ID FROM station WHERE Name = ?"
+    db.query(sqlSelectPassenger, [stationName], (err, result) => {
+        //console.log(result);
         return res.json(result);
     });
 

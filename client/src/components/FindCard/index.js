@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router';
 import { Container, Select, InputContainerRight, InputContainerLeft, SpaceContainer, Button } from './FindCardElements'
 import Axios from 'axios'
 import DatePicker from 'react-datepicker'
@@ -6,7 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import '../../App.css'
 
 
-export default class FindCard extends Component {
+class FindCard extends Component {
 
     constructor(props) {
         super(props);
@@ -83,34 +84,25 @@ export default class FindCard extends Component {
     findPressed = event => {
         event.preventDefault();
 
-        alert(this.state.selectedFromStationName);
-        alert(this.state.selectedToStationName);
-        alert(this.state.selectedDate);
-        alert(this.state.selectedClassID);
-        alert(this.state.selectedNoOfPassengers);
+        this.props.setJourneyDate(this.state.selectedDate);
+        this.props.setClass(this.state.selectedClassID);
+        this.props.setNoOfPassengers(this.state.selectedNoOfPassengers);
 
-        // Axios.post("http://localhost:3001/api/loginPassenger", {
-        //     startStationName: this.state.startStationName,
-        //     endStationName: this.state.endStationName,
+        Axios.post("http://localhost:3001/api/getStationIDForFindCard", {
+            stationName: this.state.selectedFromStationName,
+        })
+        .then((res) => {
+            this.props.setFromStationID(res.data[0].Station_ID);
+        })
 
-        //     password: this.state.password,
-        // })
-        //     .then((res) => {
-        //         if (res.data.isValid == true) {
-        //             this.props.setPassengerMail(this.state.email);
-        //             this.props.setPassengerNid(res.data.nid);
-        //             this.props.setPassengerName(res.data.name);
-        //             this.props.setPassengerMobile(res.data.mobile);
-        //             this.props.setPassengerPassword(res.data.password);
-        //             this.setEmail("-1");
-        //         } else {
-
-        //         }
-        //     })
-
-        // if(this.state.email != "") {
-        //     this.props.history.push({pathname: '/home-user'});
-        // }
+        Axios.post("http://localhost:3001/api/getStationIDForFindCard", {
+            stationName: this.state.selectedToStationName,
+        })
+        .then((res) => {
+            this.props.setToStationID(res.data[0].Station_ID);
+            this.props.history.push({ pathname: '/train-list' });
+        })
+        
     };
 
     render() {
@@ -177,3 +169,5 @@ export default class FindCard extends Component {
         )
     }
 }
+
+export default withRouter(FindCard)

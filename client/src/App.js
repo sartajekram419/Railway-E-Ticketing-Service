@@ -180,9 +180,25 @@ class App extends Component {
           <Route exact path='/'
             render={props => (
               <Home {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
+              history={this.props.history}
+              setPassengerMail={this.setPassengerMail}
+              passengerMail={this.state.passengerMail}
+              setFromStationID={this.setFromStationID}
+              fromStationID={this.state.fromStationID}
+              setToStationID={this.setToStationID}
+              toStationID={this.state.toStationID}
+              setFromStationPosition={this.setFromStationPosition}
+              fromStationPosition={this.state.fromStationPosition}
+              setToStationPosition={this.setToStationPosition}
+              toStationPosition={this.state.toStationPosition}
+              setJourneyDate={this.setJourneyDate}
+              journyDate={this.state.journyDate}
+              setClass={this.setClass}
+              class={this.state.class}
+              setNoOfPassengers={this.setNoOfPassengers}
+              noOfPassengers={this.state.noOfPassengers}
+              setSelectedTrainID={this.setSelectedTrainID}
+              selectedTrainID={this.state.setSelectedTrainID}
               />
             )}
           />
@@ -193,7 +209,6 @@ class App extends Component {
                 history={this.props.history}
                 setPassengerMail={this.setPassengerMail}
                 passengerMail={this.state.passengerMail}
-
                 setFromStationID={this.setFromStationID}
                 fromStationID={this.state.fromStationID}
                 setToStationID={this.setToStationID}
@@ -276,7 +291,6 @@ class App extends Component {
                 history={this.props.history}
                 setPassengerMail={this.setPassengerMail}
                 passengerMail={this.state.passengerMail}
-
                 setFromStationID={this.setFromStationID}
                 fromStationID={this.state.fromStationID}
                 setToStationID={this.setToStationID}

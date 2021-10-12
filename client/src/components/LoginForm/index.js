@@ -60,10 +60,6 @@ class LoginForm extends Component {
 
                 }
             })
-
-        // if(this.state.email != "") {
-        //     this.props.history.push({pathname: '/home-user'});
-        // }
     };
 
     setEmail(data) {
