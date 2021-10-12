@@ -25,7 +25,7 @@ export default class Header extends Component {
                     setToStation={this.props.setToStation}
                     toStation={this.props.toStation}
                     setJourneyDate={this.props.setJourneyDate}
-                    journyDate={this.props.journyDate}
+                    journeyDate={this.props.journeyDate}
                     setClass={this.props.setClass}
                     class={this.props.class}
                     setNoOfPassengers={this.props.setNoOfPassengers}

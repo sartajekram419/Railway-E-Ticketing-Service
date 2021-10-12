@@ -6,3 +6,17 @@
     margin: 0;
     padding: 0;
 }
+
+.datePicker {
+  width: 100%;
+}
+
+.react-datepicker-ignore-onclickoutside {
+  width: 100% !important;
+}
+
+.react-datepicker__input-container input {
+    width: 100%;
+    padding: 9px 0px 9px 0px;
+    font-size: 16px;
+}

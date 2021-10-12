@@ -28,7 +28,7 @@ class App extends Component {
 
       fromStation: 0,
       toStation: 0,
-      journyDate: 0,
+      journeyDate: null,
       class: 0,
       noOfPassengers: 0,
 
@@ -116,7 +116,7 @@ class App extends Component {
   setJourneyDate(data) {
     return this.setState({
       ...this.state,
-      journyDate: data,
+      journeyDate: data,
     });
   }
 

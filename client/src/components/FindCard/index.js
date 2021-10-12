@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { Container, Select, InputContainerRight, InputContainerLeft, SpaceContainer, Button } from './FindCardElements'
 import Axios from 'axios'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import '../../App.css'
+
 
 export default class FindCard extends Component {
 
@@ -15,7 +19,13 @@ export default class FindCard extends Component {
             },
             date: new Date(),
             stationList: [],
+
+
+            selectedDate: null,
+            
         }
+
+        this.setSelectedDate = this.setSelectedDate.bind(this);
 
         Axios.post("http://localhost:3001/api/getStationList", {
         })
@@ -32,6 +42,12 @@ export default class FindCard extends Component {
         this.findPressed = this.findPressed.bind(this);
 
 
+    }
+
+    setSelectedDate(data) {
+        this.setState({
+            selectedDate: data,
+        })
     }
 
     findPressed = event => {
@@ -91,11 +107,22 @@ export default class FindCard extends Component {
                 </InputContainerRight>
                 <InputContainerLeft>
                     <label style={this.state.styleLabel}>Date</label>
-                    <Select>
-                        <option value="" disabled selected>Select a date</option>
-                        <option value="fsfasf" >fsfsf</option>
-                        <option value="qqqqqq">qqqqqqq</option>
-                    </Select>
+
+                    {/* <Select>
+                        <option value="" disabled selected>Select a Date</option>
+                        <option value={new Date().date} >{new Date().date}</option>
+                        <option value="2">Non-AC</option>
+                    </Select> */}
+
+                    <DatePicker
+                    wrapperClassName="datePicker"calendarClassName="red-border"
+                    placeholderText="Select a date"
+                    selected={this.state.selectedDate}
+                    onChange={date => this.setSelectedDate(date)}
+                    dateFormat='yyyy-MM-dd'
+                    minDate={new Date()}
+                    maxDate={new Date(new Date().getTime()+(1*24*60*60*1000))}
+                    />
                 </InputContainerLeft>
                 <SpaceContainer />
                 <InputContainerRight>
