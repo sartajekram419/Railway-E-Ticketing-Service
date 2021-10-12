@@ -4,6 +4,7 @@ import HomeInfoDiv from '../components/HomeInfoDiv'
 import Navbar from '../components/Navbar'
 import PaymentLogos from '../components/PaymentLogos'
 import Sidebar from '../components/Sidebar'
+import Axios from 'axios'
 
 export default class TrainList extends Component {
 
@@ -12,7 +13,26 @@ export default class TrainList extends Component {
 
         this.state = {
             isSidebarOpen: false,
+            trainIDFromPositionToPositionList: [],
         }
+
+
+        Axios.post("http://localhost:3001/api/getTrainIDFromPositionToPositionList", {
+            fromStationID: this.props.fromStationID,
+            toStationID: this.props.toStationID,
+        })
+        .then((res) => {
+            for (var i in res.data) {
+                var object = {
+                    trainID: res.data[i].trainID,
+                    fromStationPosition: res.data[i].fromStationPosition,
+                    toStationPosition: res.data[i].toStationPosition,
+                };
+
+                this.setState({ trainIDFromPositionToPositionList: [...this.state.trainIDFromPositionToPositionList, ...[object]] })
+            }
+        })
+
 
         this.toggleSidebar = this.toggleSidebar.bind(this);
     }
