@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
-import Header from '../components/Header'
-import HomeInfoDiv from '../components/HomeInfoDiv'
 import Navbar from '../components/Navbar'
-import PaymentLogos from '../components/PaymentLogos'
 import Sidebar from '../components/Sidebar'
 import Axios from 'axios'
+import TrainListContainer from '../components/TrainListContainer'
 
 export default class TrainList extends Component {
 
@@ -14,6 +12,12 @@ export default class TrainList extends Component {
         this.state = {
             isSidebarOpen: false,
             trainIDFromPositionToPositionList: [],
+            
+            style: {
+                display: "flex",
+                flexDirection: "column",
+                padding: "0px 0px 80px 0px",
+            }
         }
 
 
@@ -45,10 +49,10 @@ export default class TrainList extends Component {
     
     render() {
         return (
-            <div>
+            <div style={this.state.style}>
                 <Sidebar isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} />
                 <Navbar toggleSidebar={this.toggleSidebar} />
-                {/* <Header 
+                <TrainListContainer 
                     setPassengerMail={this.props.setPassengerMail} 
                     passengerMail={this.props.passengerMail}
                     setFromStationID={this.props.setFromStationID}
@@ -67,11 +71,9 @@ export default class TrainList extends Component {
                     noOfPassengers={this.props.noOfPassengers}
                     setSelectedTrainID={this.props.setSelectedTrainID}
                     selectedTrainID={this.props.setSelectedTrainID}
+
+                    trainIDFromPositionToPositionList={this.state.trainIDFromPositionToPositionList}
                 />
-                <HomeInfoDiv />
-                <hr></hr>
-                <PaymentLogos />
-                <hr></hr> */}
             </div>
         )
     }
