@@ -35,7 +35,7 @@ export default class Header extends Component {
                     setNoOfPassengers={this.props.setNoOfPassengers}
                     noOfPassengers={this.props.noOfPassengers}
                     setSelectedTrainID={this.props.setSelectedTrainID}
-                    selectedTrainID={this.props.setSelectedTrainID}
+                    selectedTrainID={this.props.selectedTrainID}
                     />
                 </FindCardBox>
                 

@@ -220,7 +220,7 @@ class App extends Component {
                 setNoOfPassengers={this.setNoOfPassengers}
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
-                selectedTrainID={this.state.setSelectedTrainID}
+                selectedTrainID={this.state.selectedTrainID}
               />
             )}
           />
@@ -246,7 +246,7 @@ class App extends Component {
                 setNoOfPassengers={this.setNoOfPassengers}
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
-                selectedTrainID={this.state.setSelectedTrainID}
+                selectedTrainID={this.state.selectedTrainID}
               />
             )}
           />
@@ -328,7 +328,7 @@ class App extends Component {
                 setNoOfPassengers={this.setNoOfPassengers}
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
-                selectedTrainID={this.state.setSelectedTrainID}
+                selectedTrainID={this.state.selectedTrainID}
               />
             )}
           />
@@ -413,7 +413,7 @@ class App extends Component {
                 setNoOfPassengers={this.setNoOfPassengers}
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
-                selectedTrainID={this.state.setSelectedTrainID}
+                selectedTrainID={this.state.selectedTrainID}
               />
             )}
           />
@@ -439,7 +439,7 @@ class App extends Component {
                 setNoOfPassengers={this.setNoOfPassengers}
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
-                selectedTrainID={this.state.setSelectedTrainID}
+                selectedTrainID={this.state.selectedTrainID}
               />
             )}
           />

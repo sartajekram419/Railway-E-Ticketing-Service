@@ -46,7 +46,7 @@ export default class HomeUser extends Component {
                 setNoOfPassengers={this.props.setNoOfPassengers}
                 noOfPassengers={this.props.noOfPassengers}
                 setSelectedTrainID={this.props.setSelectedTrainID}
-                selectedTrainID={this.props.setSelectedTrainID}
+                selectedTrainID={this.props.selectedTrainID}
                 />
                 <HomeInfoDiv />
                 <hr></hr>
