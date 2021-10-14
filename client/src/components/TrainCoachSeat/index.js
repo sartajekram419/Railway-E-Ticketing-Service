@@ -6,16 +6,20 @@ export class TrainCoachSeat extends Component {
         super(props);
 
         this.state = {
+            
         }
 
         
     }
-
     
     render() {
         return (
             <div>
-                {this.props.selectedCoachID}
+                {this.props.seatList.map((seat, index) => {
+                        return <button key={index} value={seat}>
+                            {seat}
+                        </button>
+                    })}
             </div>
         )
     }

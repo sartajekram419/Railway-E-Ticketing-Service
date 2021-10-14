@@ -259,12 +259,26 @@ app.post("/api/getCoachesCount", (req, res) => {
     });
 
 });
+
 app.post("/api/getStation", (req, res) => {
 
     // const nid = req.body.nid
 
     const sqlSelectStation = "SELECT Name, District FROM station "
     db.query(sqlSelectStation, (err, result) => {
+        return res.json(result);
+    });
+
+});
+
+app.post("/api/getSeatCount", (req, res) => {
+
+    const trainID = req.body.trainID
+    const coachID = req.body.coachID
+
+    const sqlSelectStation = "SELECT No_of_seats FROM train_coach WHERE Train_ID=? AND Coach_ID=?"
+    db.query(sqlSelectStation, [trainID, coachID], (err, result) => {
+        console.log(result);
         return res.json(result);
     });
 
