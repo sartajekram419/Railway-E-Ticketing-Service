@@ -153,7 +153,7 @@ app.post("/api/verifyTicket", (req, res) => {
                     };
                 } else {
                     var isValid = {
-                    isValid: false,
+                        isValid: false,
                     };
                 }
                 return res.json(isValid);
@@ -166,17 +166,17 @@ app.post("/api/verifyTicket", (req, res) => {
             };
             return res.json(isValid);
         }
-        
+
     });
 
 });
 
 
 app.post("/api/getStationList", (req, res) => {
-    
+
     const sqlSelectPassenger = "SELECT Name FROM station"
     db.query(sqlSelectPassenger, [], (err, result) => {
-        
+
         return res.json(result);
     });
 
@@ -255,6 +255,16 @@ app.post("/api/getCoachesCount", (req, res) => {
     const sqlSelectPassenger = "SELECT No_of_coaches FROM train WHERE Train_ID = ?"
     db.query(sqlSelectPassenger, [trainID], (err, result) => {
         //console.log(result);
+        return res.json(result);
+    });
+
+});
+app.post("/api/getStation", (req, res) => {
+
+    // const nid = req.body.nid
+
+    const sqlSelectStation = "SELECT Name, District FROM station "
+    db.query(sqlSelectStation, (err, result) => {
         return res.json(result);
     });
 

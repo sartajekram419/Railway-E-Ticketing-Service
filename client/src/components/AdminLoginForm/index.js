@@ -72,7 +72,7 @@ class AdminLoginForm extends Component {
             id: data,
         }, () => {
             if (this.state.id != "" && this.state.id == -1) {
-                this.props.history.push({ pathname: '/admin-home' });
+                this.props.history.push({ pathname: '/stations' });
             }
         })
     }

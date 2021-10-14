@@ -12,7 +12,7 @@ import ContactUsUser from './pagesUser/contactus-user'
 import { withRouter } from 'react-router'
 import DashboardUser from './pagesUser/dashboard-user'
 import AdminLogin from './pagesAdmin/admin-login'
-import HomeAdmin from './pagesAdmin/admin-home'
+import HomeAdmin from './pagesAdmin/stations'
 import TrainList from './pagesUser/trainlist'
 import TrainListUser from './pagesUser/trainlist-user'
 import TrainCoach from './pagesUser/traincoach'
@@ -37,7 +37,7 @@ class App extends Component {
       classID: 0,
       noOfPassengers: 0,
 
-      selectedTrainID: 0, 
+      selectedTrainID: 0,
       selectedCoachID: 1,
       selectedSeats: [],
 
@@ -202,25 +202,25 @@ class App extends Component {
           <Route exact path='/'
             render={props => (
               <Home {...props}
-              history={this.props.history}
-              setPassengerMail={this.setPassengerMail}
-              passengerMail={this.state.passengerMail}
-              setFromStationID={this.setFromStationID}
-              fromStationID={this.state.fromStationID}
-              setToStationID={this.setToStationID}
-              toStationID={this.state.toStationID}
-              setFromStationPosition={this.setFromStationPosition}
-              fromStationPosition={this.state.fromStationPosition}
-              setToStationPosition={this.setToStationPosition}
-              toStationPosition={this.state.toStationPosition}
-              setJourneyDate={this.setJourneyDate}
-              journeyDate={this.state.journeyDate}
-              setClassID={this.setClassID}
-              classID={this.state.classID}
-              setNoOfPassengers={this.setNoOfPassengers}
-              noOfPassengers={this.state.noOfPassengers}
-              setSelectedTrainID={this.setSelectedTrainID}
-              selectedTrainID={this.state.setSelectedTrainID}
+                history={this.props.history}
+                setPassengerMail={this.setPassengerMail}
+                passengerMail={this.state.passengerMail}
+                setFromStationID={this.setFromStationID}
+                fromStationID={this.state.fromStationID}
+                setToStationID={this.setToStationID}
+                toStationID={this.state.toStationID}
+                setFromStationPosition={this.setFromStationPosition}
+                fromStationPosition={this.state.fromStationPosition}
+                setToStationPosition={this.setToStationPosition}
+                toStationPosition={this.state.toStationPosition}
+                setJourneyDate={this.setJourneyDate}
+                journeyDate={this.state.journeyDate}
+                setClassID={this.setClassID}
+                classID={this.state.classID}
+                setNoOfPassengers={this.setNoOfPassengers}
+                noOfPassengers={this.state.noOfPassengers}
+                setSelectedTrainID={this.setSelectedTrainID}
+                selectedTrainID={this.state.setSelectedTrainID}
               />
             )}
           />
@@ -381,7 +381,7 @@ class App extends Component {
             )}
           />
 
-          <Route exact path='/admin-home'
+          <Route exact path='/stations'
             render={props => (
               <HomeAdmin {...props}
                 history={this.props.history}
@@ -416,7 +416,7 @@ class App extends Component {
                 selectedTrainID={this.state.setSelectedTrainID}
               />
             )}
-          /> 
+          />
 
           <Route exact path='/trainlist-user'
             render={props => (
@@ -442,7 +442,7 @@ class App extends Component {
                 selectedTrainID={this.state.setSelectedTrainID}
               />
             )}
-          /> 
+          />
 
           <Route exact path='/traincoach'
             render={props => (
@@ -473,7 +473,7 @@ class App extends Component {
                 selectedSeats={this.state.selectedSeats}
               />
             )}
-          />  
+          />
 
 
         </Switch>

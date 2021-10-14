@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import HomeInfoDiv from '../components/HomeInfoDiv'
 import AdminNavbar from '../components/AdminNavbar'
 import AdminSidebar from '../components/AdminSidebar'
+import StationList from '../components/StationList'
 
 export default class HomeAdmin extends Component {
 
@@ -11,6 +12,14 @@ export default class HomeAdmin extends Component {
 
         this.state = {
             isSidebarOpen: false,
+
+            styleHr: {
+                background: "transparent",
+                color: "transparent",
+                margin: "0",
+                borderStyle: "none",
+                height: "14vw",
+            },
         }
 
         this.toggleSidebar = this.toggleSidebar.bind(this);
@@ -27,10 +36,8 @@ export default class HomeAdmin extends Component {
             <div>
                 <AdminSidebar isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} setAdminID={this.props.setAdminID} adminID={this.props.adminID} />
                 <AdminNavbar toggleSidebar={this.toggleSidebar} setAdminID={this.props.setAdminID} adminID={this.props.adminID} />
-                <Header />
-                <HomeInfoDiv />
-                <hr></hr>
-                <hr></hr>
+                <hr style={this.state.styleHr}></hr>
+                <StationList />
             </div>
         )
     }
