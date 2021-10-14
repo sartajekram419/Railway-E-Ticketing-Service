@@ -109,3 +109,4 @@ class LoginForm extends Component {
 
 export default withRouter(LoginForm)
 
+//Login form checked
