@@ -33,6 +33,10 @@ export default class TrainList extends Component {
                     toStationPosition: res.data[i].toStationPosition,
                 };
 
+                // alert(object.trainID);
+                // alert(object.fromStationPosition);
+                // alert(object.toStationPosition)
+
                 this.setState({ trainIDFromPositionToPositionList: [...this.state.trainIDFromPositionToPositionList, ...[object]] })
             }
         })

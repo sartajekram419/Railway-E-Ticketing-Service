@@ -24,7 +24,7 @@ class FindCard extends Component {
             selectedFromStationName: "",
             selectedToStationName: "",
             selectedDate: null,
-            selectedClassID: "",
+            selectedClassID: 0,
             selectedNoOfPassengers: 0, 
             
         }
@@ -84,21 +84,20 @@ class FindCard extends Component {
     findPressed = event => {
         event.preventDefault();
 
-        this.props.setJourneyDate(this.state.selectedDate);
-    
-        if(this.state.selectedClassID == "1")
-            this.props.setClassID(1);
-        else
-            this.props.setClassID(2);
-    
-
-        this.props.setNoOfPassengers(parseInt(this.state.selectedNoOfPassengers));
-
+        
         Axios.post("http://localhost:3001/api/getStationIDForFindCard", {
             stationName: this.state.selectedFromStationName,
         })
         .then((res) => {
             this.props.setFromStationID(res.data[0].Station_ID);
+            this.props.setJourneyDate(this.state.selectedDate);
+
+            //alert(this.props.fromStationID);
+        
+            this.props.setClassID(parseInt(this.state.selectedClassID));
+
+            this.props.setNoOfPassengers(parseInt(this.state.selectedNoOfPassengers));
+
         })
 
         Axios.post("http://localhost:3001/api/getStationIDForFindCard", {
@@ -106,6 +105,7 @@ class FindCard extends Component {
         })
         .then((res) => {
             this.props.setToStationID(res.data[0].Station_ID);
+            //alert(this.props.toStationID);
             if(this.props.passengerMail == "")
                 this.props.history.push({ pathname: '/trainlist' });
             else
