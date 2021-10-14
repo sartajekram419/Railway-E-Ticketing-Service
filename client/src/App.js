@@ -38,6 +38,8 @@ class App extends Component {
       noOfPassengers: 0,
 
       selectedTrainID: 0, 
+      selectedCoachID: 1,
+      selectedSeats: [],
 
       adminID: 0,
     }
@@ -58,6 +60,8 @@ class App extends Component {
     this.setNoOfPassengers = this.setNoOfPassengers.bind(this);
 
     this.setSelectedTrainID = this.setSelectedTrainID.bind(this);
+    this.setSelectedCoachID = this.setSelectedCoachID.bind(this);
+    this.setSelectedSeats = this.setSelectedSeats.bind(this);
 
     this.setAdminID = this.setAdminID.bind(this);
 
@@ -155,6 +159,8 @@ class App extends Component {
     });
   }
 
+
+
   setSelectedTrainID(data) {
     return this.setState({
       ...this.state,
@@ -162,6 +168,19 @@ class App extends Component {
     });
   }
 
+  setSelectedCoachID(data) {
+    return this.setState({
+      ...this.state,
+      selectedCoachID: data,
+    });
+  }
+
+  setSelectedSeats(data) {
+    return this.setState({
+      ...this.state,
+      selectedSeats: data,
+    });
+  }
 
 
   setAdminID(data) {
@@ -447,6 +466,11 @@ class App extends Component {
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
                 selectedTrainID={this.state.selectedTrainID}
+
+                setSelectedCoachID={this.setSelectedCoachID}
+                selectedCoachID={this.state.selectedCoachID}
+                setSelectedSeats={this.setSelectedSeats}
+                selectedSeats={this.state.selectedSeats}
               />
             )}
           />  
