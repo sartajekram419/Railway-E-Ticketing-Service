@@ -248,6 +248,18 @@ app.post("/api/getDownTime", (req, res) => {
 
 });
 
+app.post("/api/getCoachesCount", (req, res) => {
+
+    const trainID = req.body.trainID
+
+    const sqlSelectPassenger = "SELECT No_of_coaches FROM train WHERE Train_ID = ?"
+    db.query(sqlSelectPassenger, [trainID], (err, result) => {
+        //console.log(result);
+        return res.json(result);
+    });
+
+});
+
 app.listen(3001, () => {
     console.log("running");
 })
