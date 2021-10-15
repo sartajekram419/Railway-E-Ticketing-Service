@@ -1,20 +1,55 @@
 import styled from 'styled-components'
 
 
-export const Container = styled.div`
-
-    background-color: rgba(41,38,38,.85);
-
+export const Container1 = styled.div`
+    background: #fff;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    padding: 30px 0px 30px 0px;
-    margin: auto;
+    margin-top: 50px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+
+    border-radius:10px 10px 10px 10px;
+    border: 2px solid #a4b0af;
+
+    flex-direction: column;
     width: 90%;
     @media (max-width: 768px) {
-        width: 95%;
+        flex-direction: column;
+        width: 90%;
+    }
+`;
+
+export const UserInfoContainer = styled.div`
+    background: #fff;
+    display: flex;
+    align-items: flex-start;
+    margin: auto;
+    padding: 10px 0px 45px 0px;
+    border-radius:0px 0px 7px 7px;
+    border: 2px solid transparent;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+    }
+`;
+
+export const InfoDiv = styled.div`
+    width: 40%;
+    padding: 30px 50px 0px 50px;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 768px) {
+        padding: 30px 0px 0px 0px;
+        width: 80%;
     }
 `;
 
@@ -50,7 +85,7 @@ export const InputContainerRight = styled.div`
 `;
 
 export const Select = styled.select`
-    width: 100%;
+    width: 70%;
     padding: 9px 0px 9px 0px;
     font-size: 16px;
 `;

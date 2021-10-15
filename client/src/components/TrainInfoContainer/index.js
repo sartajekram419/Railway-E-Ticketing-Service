@@ -90,7 +90,7 @@ class TrainInfoContainer extends Component {
         }
          
         
-        this.seeDetailsPressed = this.seeDetailsPressed.bind(this);
+        //this.seeDetailsPressed = this.seeDetailsPressed.bind(this);
 
         this.setTrainName = this.setTrainName.bind(this);
         this.setFromStationName = this.setFromStationName.bind(this);
@@ -126,10 +126,15 @@ class TrainInfoContainer extends Component {
 
     seeDetailsPressed = event => {
         event.preventDefault();
-
         this.props.setSelectedTrainID(this.props.trainIDFromPositionToPosition.trainID);
         this.props.setFromStationPosition(this.props.trainIDFromPositionToPosition.fromStationPosition);
         this.props.setToStationPosition(this.props.trainIDFromPositionToPosition.toStationPosition);
+        
+        
+        //this.props.setPassengerMail("fsdfasf")
+        
+
+        
 
 
         // alert(this.props.trainIDFromPositionToPosition.trainID);
@@ -139,6 +144,7 @@ class TrainInfoContainer extends Component {
         // alert(this.props.selectedTrainID);
         // alert(this.props.fromStationPosition);
         // alert(this.props.toStationPosition);
+        // alert(this.props.passengerMail)
 
         this.props.history.push({ pathname: '/traincoach' });
     };
