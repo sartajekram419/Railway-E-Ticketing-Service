@@ -135,7 +135,7 @@ class DashboardUserContainer extends Component {
 
                         <InfoDiv>
                             <label style={this.state.styleLabel}>Mobile No:</label>
-                            <text style={this.state.styleText}>0{this.props.passengerMobile}</text>
+                            <text style={this.state.styleText}>0{parseInt(this.props.passengerMobile)}</text>
                         </InfoDiv>
                     </UserInfoContainer>
                 </Container1>

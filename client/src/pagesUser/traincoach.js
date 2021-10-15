@@ -87,7 +87,6 @@ export class TrainCoach extends Component {
         .then((res) => {
             this.setTrainName(res.data[0].Name);
         })
-
         Axios.post("http://localhost:3001/api/getStationNameFromTrainIDAndPosition", {
             trainID: this.props.selectedTrainID,
             position: this.props.fromStationPosition,
