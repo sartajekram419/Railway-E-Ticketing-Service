@@ -29,6 +29,7 @@ export class TrainCoach extends Component {
             coachClassID: 0,
             coachClassName: "",
             seatList: [],
+            seatStatusList: [],
 
             style: {
                 display: "flex",
@@ -197,9 +198,28 @@ export class TrainCoach extends Component {
                 coachClassID: res.data[0].Class_ID,
             })
             this.setState({seatList:[]})
+            this.setState({seatStatusList: []})
             for (let i = 1; i <= res.data[0].No_of_seats; i++) {
 
                 this.setState({ seatList: [...this.state.seatList, [i]] })
+
+                var dateAndTime = '2021-10-15';
+
+                Axios.post("http://localhost:3001/api/getSeatStatus", {
+                trainID: this.props.selectedTrainID,
+                coachID: this.props.selectedCoachID,
+                fromPosition: this.props.fromStationPosition,
+                toPosition: this.props.toStationPosition,
+                date: dateAndTime,
+                seatID: i,
+                })
+                .then((res1) => {
+                    if(res1.data.isAvailable == true) {
+                        this.setState({ seatStatusList: [...this.state.seatStatusList, [true]] })
+                    } else {
+                        this.setState({ seatStatusList: [...this.state.seatStatusList, [false]] })
+                    }
+                })
             }
             if(this.state.coachClassID==1) {
                 this.setState({
@@ -315,7 +335,10 @@ export class TrainCoach extends Component {
                         setSelectedSeats={this.props.setSelectedSeats}
                         selectedSeats={this.props.selectedSeats}
 
+                        noOfSeats={this.state.noOfSeats}
+
                         seatList={this.state.seatList}
+                        seatStatusList={this.state.seatStatusList}
                         />
                     </Container3>
 

@@ -284,6 +284,35 @@ app.post("/api/getSeatCount", (req, res) => {
 
 });
 
+app.post("/api/getSeatStatus", (req, res) => {
+
+    const trainID = req.body.trainID
+    const coachID = req.body.coachID
+    const fromPosition = req.body.fromPosition
+    const toPosition = req.body.toPosition
+    const date = req.body.date
+    const seatID = req.body.seatID
+
+    const sqlInsertPassenger = "SELECT * FROM booking_status WHERE Train_ID=? AND Coach_ID=? AND Date=? AND Start_Position=? AND End_Position=? AND Seat_no=?"
+    db.query(sqlInsertPassenger, [trainID, coachID, date, fromPosition, toPosition, seatID], (err, result) => {
+        //console.log("fsfds");
+        if (result.length == 1) {
+            var object = {
+                isAvailable: false,
+            };
+        } else {
+            var object = {
+                isAvailable: true,
+            };
+        }
+        //console.log(object);
+        return res.json(object);
+    });
+
+});
+
+
+
 app.listen(3001, () => {
     console.log("running");
 })

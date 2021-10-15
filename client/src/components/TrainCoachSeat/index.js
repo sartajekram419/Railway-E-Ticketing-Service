@@ -16,16 +16,22 @@ export class TrainCoachSeat extends Component {
                 alignItems: "center",
                 width: "90%"
             },
-            seatStatusList: [true, false, true, false, true, true, true],
             
         }
+
+        // alert(this.props.selectedTrainID)
+        // alert(this.props.selectedCoachID)
+        // alert(this.props.fromStationPosition)
+        // alert(this.props.toStationPosition)
+        // alert(this.props.journeyDate)
+
     }
     
     render() {
         return (
             <div style={this.state.style}>
                 {this.props.seatList.map((seat, index) => {
-                        return <SeatButton key={index} seat={seat} seatStatus={this.state.seatStatusList[index]}/>
+                        return <SeatButton key={index} seat={seat} seatStatus={this.props.seatStatusList[index]}/>
                 })}
             </div>
         )
