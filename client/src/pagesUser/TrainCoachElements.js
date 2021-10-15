@@ -85,9 +85,12 @@ export const InputContainerRight = styled.div`
 `;
 
 export const Select = styled.select`
-    width: 70%;
+    width: 45%;
     padding: 9px 0px 9px 0px;
     font-size: 16px;
+    @media (max-width: 768px) {
+        width: 60%;
+    }
 `;
 
 export const Heading = styled.div`
@@ -121,4 +124,26 @@ export const Button = styled.button`
     border-radius:10px 10px 10px 10px;
     border: 2px solid #102f63;
 
+`;
+
+export const Container2 = styled.div`
+    background: #fff;
+    display: flex;
+    align-items: center;
+    margin-top: 45px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    padding: 0px 0px 30px 0px;
+
+    border-radius:10px 10px 10px 10px;
+    border: 2px solid #a4b0af;
+
+    flex-direction: column;
+    width: 90%;
+    @media (max-width: 768px) {
+        flex-direction: column;
+        width: 90%;
+    }
 `;

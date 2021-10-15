@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import React, { Component } from 'react'
 import TrainCoachSeat from '../components/TrainCoachSeat';
-import { Container1, Select, InfoDiv, UserInfoContainer, SpaceContainer, Button, Heading } from './TrainCoachElements'
+import { Container1, Select, InfoDiv, UserInfoContainer, SpaceContainer, Button, Heading, Container2 } from './TrainCoachElements'
 
 export class TrainCoach extends Component {
     constructor(props) {
@@ -13,19 +13,42 @@ export class TrainCoach extends Component {
             trainName: "",
             fromStationName: "",
             toStationName: "",
-            fare: "",
+            fare: 0,
             departureTime: "",
 
             noOfCoaches: 0,
             coachList: [],
             
             noOfSeats: 0,
+            coachClassID: 0,
+            coachClassName: "",
             seatList: [],
 
             style: {
                 display: "flex",
                 flexDirection: "column",
                 padding: "0px 0px 80px 0px",
+            },
+            styleSelectDiv: {
+                display: "flex",
+                flexDirection: "row",
+                padding: "40px 0px 0px 0px",
+                width: "90%",
+                alignItems: "center",
+                justifyContent: "center",
+            },
+            styleClassFare: {
+                display: "flex",
+                flexDirection: "row",
+                padding: "40px 0px 0px 0px",
+                width: "70%",
+                alignItems: "center",
+                justifyContent: "space-between",
+            },
+            styleSelectLabel: {
+                fontSize: "18px",
+                fontWeight: "bold",
+                padding: "0px 10px 0px 0px",
             },
             styleHeading: {
                 color: "#fff",
@@ -34,7 +57,7 @@ export class TrainCoach extends Component {
             styleLabel: {
                 fontSize: "20px",
                 fontWeight: "bold",
-                padding: "5px 0px 5px 0px",
+                padding: "0px 0px 10px 0px",
             },
             styleText: {
                 fontSize: "20px",
@@ -162,10 +185,21 @@ export class TrainCoach extends Component {
         .then((res) => {
             this.setState({
                 noOfSeats: res.data[0].No_of_seats,
+                coachClassID: res.data[0].Class_ID,
             })
             this.setState({seatList:[]})
             for (let i = 1; i <= res.data[0].No_of_seats; i++) {
-                this.setState({ seatList: [...this.state.seatList, [i.toString()]] })
+                
+                this.setState({ seatList: [...this.state.seatList, [i]] })
+            }
+            if(this.state.coachClassID==1) {
+                this.setState({
+                    coachClassName: "AC",
+                })
+            } else {
+                this.setState({
+                    coachClassName: "Non-AC",
+                })
             }
         })
     }
@@ -210,43 +244,59 @@ export class TrainCoach extends Component {
 
                 </Container1>
 
-                <label >Select a Coach</label>
-                <Select onChange={(e) => { this.changeCoachSeat(e.target.value) }} >
-                <option value="" disabled selected>Select a coach</option>
-                    {this.state.coachList.map((coach, index) => {
-                        return <option key={index} value={coach}>
-                            {coach}
-                        </option>
-                    })}
-                </Select>
+                <Container2>
+                    <Heading>
+                        <h2 style={this.state.styleHeading}>Train Coach Information</h2>
+                    </Heading>
+                    
+                    <div style={this.state.styleSelectDiv}>
+                        <label style={this.state.styleSelectLabel}>Coach No</label>
+                        <Select onChange={(e) => { this.changeCoachSeat(e.target.value) }} >
+                        <option value="" disabled selected>Select a coach</option>
+                            {this.state.coachList.map((coach, index) => {
+                                return <option key={index} value={coach}>
+                                    {coach}
+                                </option>
+                            })}
+                        </Select>
+                        <br></br>
+                    </div>
 
-                <TrainCoachSeat
-                setPassengerMail={this.props.setPassengerMail} 
-                passengerMail={this.props.passengerMail}
-                setFromStationID={this.props.setFromStationID}
-                fromStationID={this.props.fromStationID}
-                setToStationID={this.props.setToStationID}
-                toStationID={this.props.toStationID}
-                setFromStationPosition={this.props.setFromStationPosition}
-                fromStationPosition={this.props.fromStationPosition}
-                setToStationPosition={this.props.setToStationPosition}
-                toStationPosition={this.props.toStationPosition}
-                setJourneyDate={this.props.setJourneyDate}
-                journeyDate={this.props.journeyDate}
-                setClassID={this.props.setClassID}
-                classID={this.props.classID}
-                setNoOfPassengers={this.props.setNoOfPassengers}
-                noOfPassengers={this.props.noOfPassengers}
-                setSelectedTrainID={this.props.setSelectedTrainID}
-                selectedTrainID={this.props.selectedTrainID}
+                    <div style={this.state.styleClassFare}>
+                        <text style={this.state.styleText}>Class: {this.state.coachClassName}</text>
+                    
+                        <text style={this.state.styleText}>Fare: {this.state.fare}</text>
+                    </div>
+                
+                    <TrainCoachSeat
+                    setPassengerMail={this.props.setPassengerMail} 
+                    passengerMail={this.props.passengerMail}
+                    setFromStationID={this.props.setFromStationID}
+                    fromStationID={this.props.fromStationID}
+                    setToStationID={this.props.setToStationID}
+                    toStationID={this.props.toStationID}
+                    setFromStationPosition={this.props.setFromStationPosition}
+                    fromStationPosition={this.props.fromStationPosition}
+                    setToStationPosition={this.props.setToStationPosition}
+                    toStationPosition={this.props.toStationPosition}
+                    setJourneyDate={this.props.setJourneyDate}
+                    journeyDate={this.props.journeyDate}
+                    setClassID={this.props.setClassID}
+                    classID={this.props.classID}
+                    setNoOfPassengers={this.props.setNoOfPassengers}
+                    noOfPassengers={this.props.noOfPassengers}
+                    setSelectedTrainID={this.props.setSelectedTrainID}
+                    selectedTrainID={this.props.selectedTrainID}
 
-                setSelectedCoachID={this.props.setSelectedCoachID}
-                selectedCoachID={this.props.selectedCoachID}
-                setSelectedSeats={this.props.setSelectedSeats}
-                selectedSeats={this.props.selectedSeats}
+                    setSelectedCoachID={this.props.setSelectedCoachID}
+                    selectedCoachID={this.props.selectedCoachID}
+                    setSelectedSeats={this.props.setSelectedSeats}
+                    selectedSeats={this.props.selectedSeats}
 
-                seatList={this.state.seatList}
-                />
+                    seatList={this.state.seatList}
+                    />
+                
+                </Container2>
                 
             </div>
         )

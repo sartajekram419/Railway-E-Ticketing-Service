@@ -276,9 +276,9 @@ app.post("/api/getSeatCount", (req, res) => {
     const trainID = req.body.trainID
     const coachID = req.body.coachID
 
-    const sqlSelectStation = "SELECT No_of_seats FROM train_coach WHERE Train_ID=? AND Coach_ID=?"
+    const sqlSelectStation = "SELECT No_of_seats, Class_ID FROM train_coach WHERE Train_ID=? AND Coach_ID=?"
     db.query(sqlSelectStation, [trainID, coachID], (err, result) => {
-        console.log(result);
+        //console.log(result);
         return res.json(result);
     });
 
