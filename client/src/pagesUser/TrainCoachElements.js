@@ -53,37 +53,6 @@ export const InfoDiv = styled.div`
     }
 `;
 
-export const SpaceContainer = styled.div`
-
-    display: flex;
-    align-items: center;
-    padding: 0px 0px 30px 0px;
-    margin: 0px;
-    width: 5%;
-`;
-
-export const InputContainerLeft = styled.div`
-
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    padding: 0px 0px 30px 0px;
-    margin: 0px;
-    width: 42.5%;
-`;
-
-export const InputContainerRight = styled.div`
-
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    padding: 0px 0px 30px 0px;
-    margin: 0px;
-    width: 42.5%;
-`;
-
 export const Select = styled.select`
     width: 45%;
     padding: 9px 0px 9px 0px;
@@ -104,26 +73,17 @@ export const Heading = styled.div`
     width: 100%;
 `;
 
-export const Table = styled.table`
-    width: 100%;
-    background: #fff;
-    border-collapse: collapse;
-    @media (max-width: 768px) {
-        width: 100%;
-        padding: 100px 0px 0px 0px;
-    }
-`;
-
 
 export const Button = styled.button`
     background: #102f63;
     color: white;
-    width: 90%;
-    height: 40px;
+    font-size: 20px;
+    margin-top: 40px; 
+    padding: 10px 10px 10px 10px;
     cursor: pointer;
     border-radius:10px 10px 10px 10px;
     border: 2px solid #102f63;
-
+    display: ${({ passengerMail }) => (passengerMail=="" ? 'none' : 'flex')};
 `;
 
 export const Container2 = styled.div`
@@ -144,6 +104,27 @@ export const Container2 = styled.div`
     width: 90%;
     @media (max-width: 768px) {
         flex-direction: column;
+        width: 90%;
+    }
+`;
+
+export const Container3 = styled.div`
+    background: #fff;
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    padding: 30px 0px 30px 0px;
+
+    border-radius:10px 10px 10px 10px;
+    border: 2px solid #a4b0af;
+
+    flex-direction: row;
+    width: 60%;
+    @media (max-width: 768px) {
         width: 90%;
     }
 `;

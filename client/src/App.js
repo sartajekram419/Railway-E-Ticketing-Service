@@ -31,13 +31,13 @@ class App extends Component {
 
       fromStationID: 0,
       toStationID: 0,
-      fromStationPosition: 0,
-      toStationPosition: 0,
+      fromStationPosition: 11,
+      toStationPosition: 13,
       journeyDate: 0,
       classID: 0,
       noOfPassengers: 0,
 
-      selectedTrainID: 0,
+      selectedTrainID: 1,
       selectedCoachID: 1,
       selectedSeats: [],
 

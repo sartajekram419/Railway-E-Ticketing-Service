@@ -7,7 +7,15 @@ export class TrainCoachSeat extends Component {
         super(props);
 
         this.state = {
-
+            style: {
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                padding: "0px 4% 0px 0px",
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "90%"
+            },
             seatStatusList: [true, false, true, false, true, true, true],
             
         }
@@ -15,7 +23,7 @@ export class TrainCoachSeat extends Component {
     
     render() {
         return (
-            <div>
+            <div style={this.state.style}>
                 {this.props.seatList.map((seat, index) => {
                         return <SeatButton key={index} seat={seat} seatStatus={this.state.seatStatusList[index]}/>
                 })}

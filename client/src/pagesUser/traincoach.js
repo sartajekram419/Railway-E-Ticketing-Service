@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import React, { Component } from 'react'
 import TrainCoachSeat from '../components/TrainCoachSeat';
-import { Container1, Select, InfoDiv, UserInfoContainer, SpaceContainer, Button, Heading, Container2 } from './TrainCoachElements'
+import { Container1, Select, InfoDiv, UserInfoContainer, Button, Heading, Container2, Container3 } from './TrainCoachElements'
 
 export class TrainCoach extends Component {
     constructor(props) {
@@ -65,6 +65,8 @@ export class TrainCoach extends Component {
             },
 
         }
+
+        
 
         Axios.post("http://localhost:3001/api/getCoachesCount", {
             trainID: this.props.selectedTrainID,
@@ -207,6 +209,13 @@ export class TrainCoach extends Component {
     render() {
         return (
             <div style={this.state.style}>
+                
+                {/* {this.props.passengerMail.map((coapch, index) => {
+                                return <option key={index} value={coach}>
+                                    {coach}
+                                </option>
+                            })} */}
+
 
                 <Container1>
                 
@@ -268,33 +277,42 @@ export class TrainCoach extends Component {
                         <text style={this.state.styleText}>Fare: {this.state.fare}</text>
                     </div>
                 
-                    <TrainCoachSeat
+                    <Container3>
+                        <TrainCoachSeat
+                        setPassengerMail={this.props.setPassengerMail} 
+                        passengerMail={this.props.passengerMail}
+                        setFromStationID={this.props.setFromStationID}
+                        fromStationID={this.props.fromStationID}
+                        setToStationID={this.props.setToStationID}
+                        toStationID={this.props.toStationID}
+                        setFromStationPosition={this.props.setFromStationPosition}
+                        fromStationPosition={this.props.fromStationPosition}
+                        setToStationPosition={this.props.setToStationPosition}
+                        toStationPosition={this.props.toStationPosition}
+                        setJourneyDate={this.props.setJourneyDate}
+                        journeyDate={this.props.journeyDate}
+                        setClassID={this.props.setClassID}
+                        classID={this.props.classID}
+                        setNoOfPassengers={this.props.setNoOfPassengers}
+                        noOfPassengers={this.props.noOfPassengers}
+                        setSelectedTrainID={this.props.setSelectedTrainID}
+                        selectedTrainID={this.props.selectedTrainID}
+
+                        setSelectedCoachID={this.props.setSelectedCoachID}
+                        selectedCoachID={this.props.selectedCoachID}
+                        setSelectedSeats={this.props.setSelectedSeats}
+                        selectedSeats={this.props.selectedSeats}
+
+                        seatList={this.state.seatList}
+                        />
+                    </Container3>
+
+                    <Button 
                     setPassengerMail={this.props.setPassengerMail} 
                     passengerMail={this.props.passengerMail}
-                    setFromStationID={this.props.setFromStationID}
-                    fromStationID={this.props.fromStationID}
-                    setToStationID={this.props.setToStationID}
-                    toStationID={this.props.toStationID}
-                    setFromStationPosition={this.props.setFromStationPosition}
-                    fromStationPosition={this.props.fromStationPosition}
-                    setToStationPosition={this.props.setToStationPosition}
-                    toStationPosition={this.props.toStationPosition}
-                    setJourneyDate={this.props.setJourneyDate}
-                    journeyDate={this.props.journeyDate}
-                    setClassID={this.props.setClassID}
-                    classID={this.props.classID}
-                    setNoOfPassengers={this.props.setNoOfPassengers}
-                    noOfPassengers={this.props.noOfPassengers}
-                    setSelectedTrainID={this.props.setSelectedTrainID}
-                    selectedTrainID={this.props.selectedTrainID}
-
-                    setSelectedCoachID={this.props.setSelectedCoachID}
-                    selectedCoachID={this.props.selectedCoachID}
-                    setSelectedSeats={this.props.setSelectedSeats}
-                    selectedSeats={this.props.selectedSeats}
-
-                    seatList={this.state.seatList}
-                    />
+                    >
+                    Purchase
+                    </Button>
                 
                 </Container2>
                 
