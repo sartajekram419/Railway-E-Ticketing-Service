@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Button = styled.button`
-    background: #102f63;
+    background: ${({ seatStatus }) => (seatStatus ? 'green' : 'red')};
     color: white;
     width: 90%;
     height: 40px;

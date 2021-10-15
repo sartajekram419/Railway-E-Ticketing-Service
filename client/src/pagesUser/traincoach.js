@@ -189,7 +189,7 @@ export class TrainCoach extends Component {
             })
             this.setState({seatList:[]})
             for (let i = 1; i <= res.data[0].No_of_seats; i++) {
-                
+
                 this.setState({ seatList: [...this.state.seatList, [i]] })
             }
             if(this.state.coachClassID==1) {
