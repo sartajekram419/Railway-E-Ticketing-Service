@@ -1,13 +1,19 @@
 import Axios from 'axios';
 import React, { Component } from 'react'
 import TrainCoachSeat from '../components/TrainCoachSeat';
+import Navbar from '../components/Navbar'
+import Sidebar from '../components/Sidebar'
 import { Container1, Select, InfoDiv, UserInfoContainer, Button, Heading, Container2, Container3 } from './TrainCoachElements'
+import SidebarUser from '../components/SidebarUser';
+import NavbarUser from '../components/NavbarUser';
 
 export class TrainCoach extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+
+            isSidebarOpen: false,
 
 
             trainName: "",
@@ -138,6 +144,8 @@ export class TrainCoach extends Component {
         this.setToStationName = this.setToStationName.bind(this);
         this.setFare = this.setFare.bind(this)
         this.setDepartureTime = this.setDepartureTime.bind(this);
+
+        this.toggleSidebar = this.toggleSidebar.bind(this);
     }
 
     setTrainName(data) {
@@ -205,16 +213,21 @@ export class TrainCoach extends Component {
         })
     }
 
+    toggleSidebar = () => {
+        this.setState({
+            isSidebarOpen: !this.state.isSidebarOpen,
+        })
+    }
+
     render() {
         return (
             <div style={this.state.style}>
                 
-                {/* {this.props.passengerMail.map((coapch, index) => {
-                                return <option key={index} value={coach}>
-                                    {coach}
-                                </option>
-                            })} */}
+                {this.props.passengerMail=="" && <Sidebar isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} />}
+                {this.props.passengerMail=="" && <Navbar toggleSidebar={this.toggleSidebar} />}
 
+                {this.props.passengerMail!="" && <SidebarUser isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} setPassengerMail={this.props.setPassengerMail} passengerMail={this.props.passengerMail}/>}
+                {this.props.passengerMail!="" && <NavbarUser toggleSidebar={this.toggleSidebar} setPassengerMail={this.props.setPassengerMail} passengerMail={this.props.passengerMail}/>}
 
                 <Container1>
                 
