@@ -130,12 +130,12 @@ INSERT INTO `railway_management_database`.booking_clerk (Name, Mobile, Password,
 VALUES ('Ami Clerk', '0123435123', '1234', 2);
 
 INSERT INTO `railway_management_database`.train_coach 
-VALUES (1, 1, 1, 4),
-(1, 2, 2, 4),
-(1, 3, 2, 4),
-(2, 1, 1, 5),
-(2, 2, 2, 6),
-(2, 3, 2, 7);
+VALUES (1, 1, 1, 12),
+(1, 2, 2, 14),
+(1, 3, 2, 16),
+(2, 1, 1, 8),
+(2, 2, 2, 16),
+(2, 3, 2, 24);
 
 
 INSERT INTO `railway_management_database`.train_station (Train_ID, Station_ID, Up_time, Down_time, Position)
