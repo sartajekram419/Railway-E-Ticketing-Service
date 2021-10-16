@@ -105,7 +105,7 @@ export const Table = styled.table`
 
 
 export const Button = styled.button`
-    background: #102f63;
+    background: #1ce636;
     color: white;
     width: 100%;
     max-width: 150px;
@@ -113,9 +113,12 @@ export const Button = styled.button`
     @media (max-width: 768px) {
         width: 35%;
     }
+
+    margin-top: 20px;
+    margin-bottom: 20px;
     cursor: pointer;
     border-radius:10px 10px 10px 10px;
-    border: 2px solid #102f63;
+    border: 2px solid #1ce636;
 
 `;
 
@@ -144,16 +147,4 @@ export const NavLink = styled(Link)`
     height: 100%;
     cursor: pointer;
 
-`;
-
-export const ButtonAndNavLinkBox = styled.div`
-    background: #fff;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-
-    @media (max-width: 768px) {
-        width: 100%;
-    }
 `;

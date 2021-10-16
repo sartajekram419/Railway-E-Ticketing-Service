@@ -297,11 +297,11 @@ app.post("/api/getSeatStatus", (req, res) => {
 
     const sqlInsertPassenger = "SELECT Date FROM booking_status WHERE Train_ID=? AND Coach_ID=? AND Start_position=? AND End_position=? AND Seat_no=?"
     db.query(sqlInsertPassenger, [trainID, coachID, fromPosition, toPosition, seatID], (err, result) => {
-        
-        for(var i=0; i<result.length; i++) {
+
+        for (var i = 0; i < result.length; i++) {
             //console.log(result[i].Date.toISOString());
             //console.log(date.toString())
-            if ( date.toString() == result[i].Date.toISOString()) {
+            if (date.toString() == result[i].Date.toISOString()) {
                 var object = {
                     isAvailable: false,
                 };
@@ -309,18 +309,30 @@ app.post("/api/getSeatStatus", (req, res) => {
                 return res.json(object);
             }
         }
-        
+
         var object = {
             isAvailable: true,
         };
-    
+
         //console.log(object);
         return res.json(object);
     });
 
 });
 
+app.post("/api/addNewStation", (req, res) => {
 
+    const station_name = req.body.station_name
+    const station_district = req.body.station_district
+
+    console.log(station_name, station_district);
+
+    const sqlSelectStation = "Insert into station (Name, District) Values (?, ?)";
+    db.query(sqlSelectStation, [station_name, station_district], (err, result) => {
+        return res.json(result);
+    });
+
+});
 
 app.listen(3001, () => {
     console.log("running");
