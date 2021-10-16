@@ -6,7 +6,7 @@ export const Container1 = styled.div`
     background: #fff;
     display: flex;
     align-items: center;
-    margin-top: 130px;
+    margin-top: 100px;
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
@@ -27,7 +27,7 @@ export const Container2 = styled.div`
     background: #fff;
     display: flex;
     align-items: center;
-    margin-top: auto;
+    margin-top: 150px;
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
@@ -114,7 +114,7 @@ export const Button = styled.button`
         width: 35%;
     }
 
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 20px;
     cursor: pointer;
     border-radius:10px 10px 10px 10px;

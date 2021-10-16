@@ -327,12 +327,21 @@ app.post("/api/addNewStation", (req, res) => {
 
     console.log(station_name, station_district);
 
-    const sqlSelectStation = "Insert into station (Name, District) Values (?, ?)";
-    db.query(sqlSelectStation, [station_name, station_district], (err, result) => {
-        return res.json(result);
-    });
+    const sqlInsertStation = "Insert into station (Name, District) Values (?, ?)";
+    db.query(sqlInsertStation, [station_name, station_district], (err) => {
 
+
+        if (err == null) {
+            var isValid = { isValid: true };
+        } else {
+            // console.log(err);
+            // console.log("Hello");
+            var isValid = { isValid: false };
+        }
+        return res.json(isValid);
+    });
 });
+
 
 app.listen(3001, () => {
     console.log("running");

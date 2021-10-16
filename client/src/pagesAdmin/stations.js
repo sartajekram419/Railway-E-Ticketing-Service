@@ -36,7 +36,7 @@ export default class HomeAdmin extends Component {
             <div>
                 <AdminSidebar isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} setAdminID={this.props.setAdminID} adminID={this.props.adminID} />
                 <AdminNavbar toggleSidebar={this.toggleSidebar} setAdminID={this.props.setAdminID} adminID={this.props.adminID} />
-                <hr style={this.state.styleHr}></hr>
+                {/* <hr style={this.state.styleHr}></hr> */}
                 <StationList />
             </div>
         )

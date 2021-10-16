@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import { Container2, Heading, Table, Button } from '../StationList/StationListElements'
 import Axios from 'axios'
 import StationListContainer from '../StationListContainer';
+import AddStationContainer from '../AddStationContainer';
 
 class StationList extends Component {
 
@@ -11,11 +12,9 @@ class StationList extends Component {
 
         this.state = {
 
-            email: "",
-            password: "",
 
-            station_name: "",
-            station_district: "",
+            isAddStationContainerOpen: false,
+
 
             items: [],
 
@@ -65,7 +64,7 @@ class StationList extends Component {
 
 
         Axios.post("http://localhost:3001/api/getStation", {
-            // nid: this.props.passengerNid,
+
         })
             .then((res) => {
                 for (var i in res.data) {
@@ -79,68 +78,27 @@ class StationList extends Component {
                 }
             })
 
-        // this.loginPressed = this.loginPressed.bind(this);
 
-        //this.setEmail = this.setEmail.bind(this);
-        // this.setPassword = this.setPassword.bind(this);
+        this.setIsAddStationContainerOpen = this.setIsAddStationContainerOpen.bind(this);
     }
 
-    loginPressed = event => {
-        event.preventDefault();
-
-        alert(this.props.passengerMail);
-
-        Axios.post("http://localhost:3001/api/loginPassenger", {
-            email: this.state.email,
-            password: this.state.password,
-        })
-            .then((res) => {
-                if (res.data.isValid == true) {
-                    this.props.setPassengerMail(this.state.email);
-                    this.props.setPassengerNid(res.data.nid);
-                    this.props.setPassengerName(res.data.name);
-                    this.props.setPassengerMobile(res.data.mobile);
-                    this.props.setPassengerPassword(res.data.password);
-                    this.setEmail("-1");
-                } else {
-
-                }
-            })
-    };
 
     addNewStation = event => {
         event.preventDefault();
 
-        Axios.post("http://localhost:3001/api/addNewStation", {
-            station_name: "Airport",
-            station_district: "Dacca",
+        this.setState({
+            isAddStationContainerOpen: !this.state.isAddStationContainerOpen,
         })
-            .then((res) => {
-                if (res.affectedRows == 0) {
-                    alert("Station already exits!");
-                } else {
-                    alert("Station is not added!");
-                }
-
-            })
 
     };
 
-    // setEmail(data) {
-    //     this.setState({
-    //         email: data,
-    //     },()=>{
-    //         if(this.state.email != "" && this.state.email =="-1") {
-    //             this.props.history.push({pathname: '/home-user'});
-    //         }
-    //     })
-    // }
 
-    // setPassword(data) {
-    //     this.setState({
-    //         password: data,
-    //     })
-    // }
+
+    setIsAddStationContainerOpen() {
+        this.setState({
+            isAddStationContainerOpen: !this.state.isAddStationContainerOpen,
+        })
+    }
 
     render() {
         return (
@@ -169,6 +127,9 @@ class StationList extends Component {
                 </Container2>
 
                 <Button onClick={this.addNewStation}>Add New Station</Button>
+
+                {this.state.isAddStationContainerOpen && <AddStationContainer setIsAddStationContainerOpen={this.setIsAddStationContainerOpen} isAddStationContainerOpen={this.state.isAddStationContainerOpen} />}
+
             </div>
 
         )
