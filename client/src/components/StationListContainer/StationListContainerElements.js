@@ -28,5 +28,22 @@ export const Table = styled.table`
         width: 90%;
     }
 `;
+export const Button = styled.button`
+  
+    color: white;
+    height: 30px; 
+    width: 30px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+
+    border: 0px solid transparent;
+    background-image: url("delete.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+`;
 
 

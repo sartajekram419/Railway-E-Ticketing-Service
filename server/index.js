@@ -325,10 +325,30 @@ app.post("/api/addNewStation", (req, res) => {
     const station_name = req.body.station_name
     const station_district = req.body.station_district
 
-    console.log(station_name, station_district);
+
 
     const sqlInsertStation = "Insert into station (Name, District) Values (?, ?)";
     db.query(sqlInsertStation, [station_name, station_district], (err) => {
+
+
+        if (err == null) {
+            var isValid = { isValid: true };
+        } else {
+            // console.log(err);
+            // console.log("Hello");
+            var isValid = { isValid: false };
+        }
+        return res.json(isValid);
+    });
+});
+
+
+app.post("/api/deleteStation", (req, res) => {
+
+    const station_name = req.body.station_name
+
+    const sqlDeleteStation = "Delete from station Where Name =?";
+    db.query(sqlDeleteStation, [station_name], (err) => {
 
 
         if (err == null) {

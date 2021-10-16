@@ -50,7 +50,7 @@ class StationList extends Component {
                 fontSize: "18px",
                 fontWeight: "bold",
                 padding: "10px 0px 10px 10px",
-                width: "40%",
+                width: "45%",
                 verticalAlign: "top",
                 borderRight: "1px solid #a4b0af",
             },
