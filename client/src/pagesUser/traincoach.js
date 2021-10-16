@@ -203,21 +203,23 @@ export class TrainCoach extends Component {
 
                 this.setState({ seatList: [...this.state.seatList, [i]] })
 
-                var dateAndTime = '2021-10-15';
 
                 Axios.post("http://localhost:3001/api/getSeatStatus", {
                 trainID: this.props.selectedTrainID,
                 coachID: this.props.selectedCoachID,
                 fromPosition: this.props.fromStationPosition,
                 toPosition: this.props.toStationPosition,
-                date: dateAndTime,
+                date: this.props.journeyDate,
                 seatID: i,
                 })
                 .then((res1) => {
                     if(res1.data.isAvailable == true) {
-                        this.setState({ seatStatusList: [...this.state.seatStatusList, [true]] })
+                        
+                        this.setState({ seatStatusList: [...this.state.seatStatusList, true] })
                     } else {
-                        this.setState({ seatStatusList: [...this.state.seatStatusList, [false]] })
+                        
+                        this.setState({ seatStatusList: [...this.state.seatStatusList, false] })
+                        
                     }
                 })
             }

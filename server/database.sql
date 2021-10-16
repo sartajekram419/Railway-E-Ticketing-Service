@@ -170,6 +170,8 @@ VALUES (1, 1, '2021-10-15', 11, 12, 1),
 (2, 1, '2021-10-15', 13, 12, 4),
 (2, 2, '2021-10-15', 11, 13, 2);
 
+INSERT INTO `railway_management_database`.booking_status (Train_ID, Coach_ID, Date, Start_position, End_position, Seat_no) VALUES (2, 2, '2021-10-16', 11, 13, 2);
+
 INSERT INTO `railway_management_database`.ticket (Issue_time, Journey_time, Start_position, End_position, Train_ID, Class_ID, Coach_ID, No_of_seats, Fare, Passenger_ID)
 VALUES ('2021-10-04 05:40:30', '2021-10-15 07:00:00', 11, 12, 1, 1, 1, 2, 800, 1), 
 ('2021-10-04 05:40:30', '2021-10-15 09:00:00', 12, 13, 1, 2, 2, 1, 400, 2),

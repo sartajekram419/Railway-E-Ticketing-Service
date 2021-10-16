@@ -293,18 +293,27 @@ app.post("/api/getSeatStatus", (req, res) => {
     const date = req.body.date
     const seatID = req.body.seatID
 
-    const sqlInsertPassenger = "SELECT * FROM booking_status WHERE Train_ID=? AND Coach_ID=? AND Date=? AND Start_Position=? AND End_Position=? AND Seat_no=?"
-    db.query(sqlInsertPassenger, [trainID, coachID, date, fromPosition, toPosition, seatID], (err, result) => {
-        //console.log("fsfds");
-        if (result.length == 1) {
-            var object = {
-                isAvailable: false,
-            };
-        } else {
-            var object = {
-                isAvailable: true,
-            };
+    //console.log(date);
+
+    const sqlInsertPassenger = "SELECT Date FROM booking_status WHERE Train_ID=? AND Coach_ID=? AND Start_position=? AND End_position=? AND Seat_no=?"
+    db.query(sqlInsertPassenger, [trainID, coachID, fromPosition, toPosition, seatID], (err, result) => {
+        
+        for(var i=0; i<result.length; i++) {
+            //console.log(result[i].Date.toISOString());
+            //console.log(date.toString())
+            if ( date.toString() == result[i].Date.toISOString()) {
+                var object = {
+                    isAvailable: false,
+                };
+                //console.log(seatID);
+                return res.json(object);
+            }
         }
+        
+        var object = {
+            isAvailable: true,
+        };
+    
         //console.log(object);
         return res.json(object);
     });
@@ -322,7 +331,7 @@ app.listen(3001, () => {
 
 
 
-
+//2021-10-15T18:00:00.000Z
 
 
 

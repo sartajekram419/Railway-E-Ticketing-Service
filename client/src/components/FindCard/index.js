@@ -92,7 +92,8 @@ class FindCard extends Component {
             this.props.setFromStationID(res.data[0].Station_ID);
             this.props.setJourneyDate(this.state.selectedDate);
 
-            //alert(this.props.fromStationID);
+            // alert(this.state.selectedDate);
+            // alert(this.props.journeyDate);
         
             this.props.setClassID(parseInt(this.state.selectedClassID));
 
@@ -143,7 +144,8 @@ class FindCard extends Component {
                 <InputContainerLeft>
                     <label style={this.state.styleLabel}>Date</label>
                     <DatePicker
-                    wrapperClassName="datePicker"calendarClassName="red-border"
+                    wrapperClassName="datePicker"
+                    calendarClassName="red-border"
                     placeholderText="Select a date"
                     selected={this.state.selectedDate}
                     onChange={date => this.setSelectedDate(date)}
