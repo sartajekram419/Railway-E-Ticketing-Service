@@ -16,6 +16,7 @@ import HomeAdmin from './pagesAdmin/stations'
 import TrainList from './pagesUser/trainlist'
 import TrainListUser from './pagesUser/trainlist-user'
 import TrainCoach from './pagesUser/traincoach'
+import Clerks from './pagesAdmin/clerks'
 
 class App extends Component {
 
@@ -44,6 +45,12 @@ class App extends Component {
       selectedSeats: [],
 
       adminID: 0,
+
+      // clerkID: 0,
+      // clerkName: "",
+      // clerkMobile: 0,
+      // clerkPassword: "",
+      // clerkStationID: 0,
     }
 
     this.setSelectedTrainIDFromPositionToPosition = this.setSelectedTrainIDFromPositionToPosition.bind(this);
@@ -68,6 +75,12 @@ class App extends Component {
     this.setSelectedSeats = this.setSelectedSeats.bind(this);
 
     this.setAdminID = this.setAdminID.bind(this);
+
+    // this.setClerkID = this.setClerkID(this);
+    // this.setClerkName = this.setClerkName(this);
+    // this.setClerkMobile = this.setClerkMobile(this);
+    // this.setClerkPassword = this.setClerkPassword(this);
+    // this.setClerkStationID = this.setClerkStationID(this);
 
   }
 
@@ -201,6 +214,45 @@ class App extends Component {
     });
   }
 
+
+  setClerkID(data) {
+    return this.setState({
+      ...this.state,
+      clerkID: data,
+    });
+  }
+
+
+  setClerkName(data) {
+    return this.setState({
+      ...this.state,
+      clerkName: data,
+    });
+  }
+
+
+  setClerkMobile(data) {
+    return this.setState({
+      ...this.state,
+      clerkMobile: data,
+    });
+  }
+
+
+  setClerkPassword(data) {
+    return this.setState({
+      ...this.state,
+      clerkPassword: data,
+    });
+  }
+
+
+  setClerkStationID(data) {
+    return this.setState({
+      ...this.state,
+      clerkStationID: data,
+    });
+  }
 
 
 
@@ -398,6 +450,21 @@ class App extends Component {
                 history={this.props.history}
                 setAdminID={this.setAdminID}
                 adminID={this.state.adminID}
+              />
+            )}
+          />
+
+          <Route exact path='/clerks'
+            render={props => (
+              <Clerks {...props}
+                history={this.props.history}
+                setAdminID={this.setAdminID}
+                adminID={this.state.adminID}
+              // clerkID={this.state.clerkID}
+              // clerkName={this.clerkName}
+              // clerkMobile={this.clerkMobile}
+              // clerkPassword={this.clerkPassword}
+              // clerkStationID={this.clerkStationID}
               />
             )}
           />

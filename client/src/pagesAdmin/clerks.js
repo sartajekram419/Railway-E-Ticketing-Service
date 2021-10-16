@@ -1,17 +1,23 @@
 import React, { Component } from 'react'
-import Header from '../components/Header'
-import HomeInfoDiv from '../components/HomeInfoDiv'
 import AdminNavbar from '../components/AdminNavbar'
 import AdminSidebar from '../components/AdminSidebar'
-import StationList from '../components/StationList'
+import FindClerkContainer from '../components/FindClerkContainer';
+import ShowClerkContainer from '../components/ShowClerkContainer';
 
-export default class HomeAdmin extends Component {
+
+
+export default class Clerks extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             isSidebarOpen: false,
+            style: {
+                display: "flex",
+                flexDirection: "column",
+                padding: "0px 0px 80px 0px",
+            }
 
         }
 
@@ -26,10 +32,11 @@ export default class HomeAdmin extends Component {
 
     render() {
         return (
-            <div>
+            <div style={this.state.style}>
                 <AdminSidebar isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} setAdminID={this.props.setAdminID} adminID={this.props.adminID} />
                 <AdminNavbar toggleSidebar={this.toggleSidebar} setAdminID={this.props.setAdminID} adminID={this.props.adminID} />
-                <StationList />
+                <FindClerkContainer />
+
             </div>
         )
     }

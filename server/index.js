@@ -362,6 +362,53 @@ app.post("/api/deleteStation", (req, res) => {
     });
 });
 
+app.post("/api/findClerk", (req, res) => {
+
+    const clerk_ID = req.body.clerk_ID
+
+    const sqlFindClerk = "SELECT * FROM booking_clerk WHERE Clerk_ID =?"
+    db.query(sqlFindClerk, [clerk_ID], (err, result) => {
+
+
+        if (result.length == 1) {
+            var clerk = {
+                isValid: true,
+                id: result[0].Clerk_ID,
+                name: result[0].Name,
+                mobile: result[0].Mobile,
+                stationID: result[0].Station_ID,
+            }
+        }
+        else {
+            var clerk = {
+                isValid: false,
+            };
+        }
+        return res.json(clerk);
+    });
+});
+
+app.post("/api/deleteClerk", (req, res) => {
+
+    const clerk_ID = req.body.clerk_ID
+
+    const sqlDeleteClerk = "Delete from booking_clerk Where Clerk_ID =?";
+
+    db.query(sqlDeleteClerk, [clerk_ID], (err) => {
+
+
+        if (err == null) {
+            var isValid = { isValid: true };
+        } else {
+            // console.log(err);
+            // console.log("Hello");
+            var isValid = { isValid: false };
+        }
+        return res.json(isValid);
+    });
+});
+
+
 
 app.listen(3001, () => {
     console.log("running");

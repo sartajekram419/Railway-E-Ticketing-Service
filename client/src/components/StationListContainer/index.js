@@ -39,7 +39,6 @@ export default class StationListContainer extends Component {
             station_name: this.props.item.Name,
         })
             .then((res) => {
-
                 if (res.data.isValid) {
                     alert("Station Deleted Successfully!");
                 } else {
