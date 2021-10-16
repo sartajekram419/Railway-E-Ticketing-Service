@@ -19,7 +19,8 @@ export class TrainCoachSeat extends Component {
             
         }
 
-        // alert(this.props.selectedTrainID)
+        
+        // alert(this.props.seatStatusList[i]);
         // alert(this.props.selectedCoachID)
         // alert(this.props.fromStationPosition)
         // alert(this.props.toStationPosition)
@@ -31,7 +32,7 @@ export class TrainCoachSeat extends Component {
         return (
             <div style={this.state.style}>
                 {this.props.seatList.map((seat, index) => {
-                        return <SeatButton key={index} seat={seat} seatStatus={this.props.seatStatusList[index]}/>
+                        return <SeatButton key={index} seat={seat} seatStatus={this.props.seatStatusList1[index]}/>
                 })}
             </div>
         )

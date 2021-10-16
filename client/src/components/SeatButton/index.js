@@ -7,13 +7,16 @@ export class SeatButton extends Component {
         super(props);
 
         this.state = {
-            
+            seatStatus: true,
         }
+
+        // if(this.props.seatStatusList.find(this.props.seat))
+        // this.setState({seatStatus: true})
     }
     
     render() {
         return (
-            <Button seatStatus={this.props.seatStatus}>
+            <Button seat={this.props.seat} seatStatus={this.props.seatStatus}>
                 {this.props.seat}
             </Button>
         )

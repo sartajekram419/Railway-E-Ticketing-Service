@@ -30,6 +30,7 @@ export class TrainCoach extends Component {
             coachClassName: "",
             seatList: [],
             seatStatusList: [],
+            seatStatusList1: [],
 
             style: {
                 display: "flex",
@@ -199,6 +200,7 @@ export class TrainCoach extends Component {
             })
             this.setState({seatList:[]})
             this.setState({seatStatusList: []})
+
             for (let i = 1; i <= res.data[0].No_of_seats; i++) {
 
                 this.setState({ seatList: [...this.state.seatList, [i]] })
@@ -214,15 +216,30 @@ export class TrainCoach extends Component {
                 })
                 .then((res1) => {
                     if(res1.data.isAvailable == true) {
-                        
-                        this.setState({ seatStatusList: [...this.state.seatStatusList, true] })
+
+                        this.setState({ seatStatusList: [...this.state.seatStatusList, i] })
+
+                        this.setState({seatStatusList1: []})
+                        for(var j=0; j<this.state.seatList.length; j++) {
+
+                            var ind=false;
+                
+                            for(var k=0; k<this.state.seatStatusList.length; k++) {
+                                if(this.state.seatList[j] == this.state.seatStatusList[k]) {
+                                    ind = true; 
+                                    break;
+                                }
+                            }
+                
+                            this.setState({ seatStatusList1: [...this.state.seatStatusList1, ind] })
+                        }
                     } else {
-                        
-                        this.setState({ seatStatusList: [...this.state.seatStatusList, false] })
+                        //this.setState({ seatStatusList: [...this.state.seatStatusList, [i]] })
                         
                     }
                 })
             }
+
             if(this.state.coachClassID==1) {
                 this.setState({
                     coachClassName: "AC",
@@ -340,7 +357,7 @@ export class TrainCoach extends Component {
                         noOfSeats={this.state.noOfSeats}
 
                         seatList={this.state.seatList}
-                        seatStatusList={this.state.seatStatusList}
+                        seatStatusList1={this.state.seatStatusList1}
                         />
                     </Container3>
 
