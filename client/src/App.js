@@ -37,12 +37,16 @@ class App extends Component {
       classID: 0,
       noOfPassengers: 0,
 
+      selectedTrainIDFromPositionToPosition: null,
+
       selectedTrainID: 1,
       selectedCoachID: 1,
       selectedSeats: [],
 
       adminID: 0,
     }
+
+    this.setSelectedTrainIDFromPositionToPosition = this.setSelectedTrainIDFromPositionToPosition.bind(this);
 
     this.setPassengerMail = this.setPassengerMail.bind(this);
     this.setPassengerNid = this.setPassengerNid.bind(this);
@@ -70,6 +74,13 @@ class App extends Component {
   setState(state) {
     window.localStorage.setItem('state', JSON.stringify(state));
     super.setState(state);
+  }
+
+  setSelectedTrainIDFromPositionToPosition(data) {
+    return this.setState({
+      ...this.state,
+      selectedTrainIDFromPositionToPosition: data,
+    });
   }
 
   setPassengerMail(data) {
@@ -414,6 +425,9 @@ class App extends Component {
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
                 selectedTrainID={this.state.selectedTrainID}
+
+                selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
+                setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
               />
             )}
           />
@@ -440,6 +454,9 @@ class App extends Component {
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
                 selectedTrainID={this.state.selectedTrainID}
+
+                selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
+                setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
               />
             )}
           />
@@ -471,6 +488,9 @@ class App extends Component {
                 selectedCoachID={this.state.selectedCoachID}
                 setSelectedSeats={this.setSelectedSeats}
                 selectedSeats={this.state.selectedSeats}
+                
+                selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
+                setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
               />
             )}
           />

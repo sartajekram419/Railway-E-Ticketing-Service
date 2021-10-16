@@ -45,6 +45,9 @@ export default class TrainListContainer extends Component {
                                 setSelectedTrainID={this.props.setSelectedTrainID}
                                 selectedTrainID={this.props.selectedTrainID}
                                 trainIDFromPositionToPosition={trainIDFromPositionToPosition}
+
+                                selectedTrainIDFromPositionToPosition={this.props.selectedTrainIDFromPositionToPosition}
+                                setSelectedTrainIDFromPositionToPosition={this.props.setSelectedTrainIDFromPositionToPosition}
                                 />
                     })}
 

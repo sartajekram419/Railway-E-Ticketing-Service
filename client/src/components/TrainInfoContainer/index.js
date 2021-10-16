@@ -135,7 +135,7 @@ class TrainInfoContainer extends Component {
         
         //this.props.setPassengerMail("fsdfasf")
         
-
+        this.props.setSelectedTrainIDFromPositionToPosition(this.props.trainIDFromPositionToPosition)
         
 
 
@@ -143,9 +143,10 @@ class TrainInfoContainer extends Component {
         // alert(this.props.trainIDFromPositionToPosition.fromStationPosition);
         // alert(this.props.trainIDFromPositionToPosition.toStationPosition);
 
-        alert(this.props.selectedTrainID);
-        alert(this.props.fromStationPosition);
-        alert(this.props.toStationPosition);
+
+        // alert(this.props.selectedTrainID);
+        // alert(this.props.fromStationPosition);
+        // alert(this.props.toStationPosition);
         // alert(this.props.passengerMail)
 
         this.props.history.push({ pathname: '/traincoach' });

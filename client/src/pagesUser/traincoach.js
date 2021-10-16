@@ -74,10 +74,12 @@ export class TrainCoach extends Component {
 
         }
 
-        
+        // alert(this.props.selectedTrainIDFromPositionToPosition.trainID);
+        // alert(this.props.selectedTrainIDFromPositionToPosition.fromStationPosition);
+        // alert(this.props.selectedTrainIDFromPositionToPosition.toStationPosition);
 
         Axios.post("http://localhost:3001/api/getCoachesCount", {
-            trainID: this.props.selectedTrainID,
+            trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
         })
         .then((res) => {
             this.setState({
@@ -90,22 +92,22 @@ export class TrainCoach extends Component {
 
 
         Axios.post("http://localhost:3001/api/getTrainName", {
-            trainID: this.props.selectedTrainID,
+            trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
         })
         .then((res) => {
             this.setTrainName(res.data[0].Name);
         })
         Axios.post("http://localhost:3001/api/getStationNameFromTrainIDAndPosition", {
-            trainID: this.props.selectedTrainID,
-            position: this.props.fromStationPosition,
+            trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
+            position: this.props.selectedTrainIDFromPositionToPosition.fromStationPosition,
         })
         .then((res) => {
             this.setFromStationName(res.data[0].Name);
         })
 
         Axios.post("http://localhost:3001/api/getStationNameFromTrainIDAndPosition", {
-            trainID: this.props.selectedTrainID,
-            position: this.props.toStationPosition,
+            trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
+            position: this.props.selectedTrainIDFromPositionToPosition.toStationPosition,
         })
         .then((res) => {
             this.setToStationName(res.data[0].Name);
@@ -115,16 +117,16 @@ export class TrainCoach extends Component {
 
         if(this.props.fromStationPosition<this.props.toStationPosition) {
             Axios.post("http://localhost:3001/api/getUpTime", {
-                trainID: this.props.selectedTrainID,
-                position: this.props.fromStationPosition,
+                trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
+                position: this.props.selectedTrainIDFromPositionToPosition.fromStationPosition,
             })
             .then((res) => {
                 this.setDepartureTime(res.data[0].Up_time);
             })
         } else {
             Axios.post("http://localhost:3001/api/getDownTime", {
-                trainID: this.props.selectedTrainID,
-                position: this.props.fromStationPosition,
+                trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
+                position: this.props.selectedTrainIDFromPositionToPosition.fromStationPosition,
             })
             .then((res) => {
                 this.setDepartureTime(res.data[0].Down_time);
@@ -190,7 +192,7 @@ export class TrainCoach extends Component {
         this.props.setSelectedCoachID(parseInt(data));
 
         Axios.post("http://localhost:3001/api/getSeatCount", {
-            trainID: this.props.selectedTrainID,
+            trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
             coachID: data,
         })
         .then((res) => {
@@ -207,10 +209,10 @@ export class TrainCoach extends Component {
 
 
                 Axios.post("http://localhost:3001/api/getSeatStatus", {
-                trainID: this.props.selectedTrainID,
+                trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
                 coachID: this.props.selectedCoachID,
-                fromPosition: this.props.fromStationPosition,
-                toPosition: this.props.toStationPosition,
+                fromPosition: this.props.selectedTrainIDFromPositionToPosition.fromStationPosition,
+                toPosition: this.props.selectedTrainIDFromPositionToPosition.toStationPosition,
                 date: this.props.journeyDate,
                 seatID: i,
                 })
@@ -358,6 +360,9 @@ export class TrainCoach extends Component {
 
                         seatList={this.state.seatList}
                         seatStatusList1={this.state.seatStatusList1}
+
+                        selectedTrainIDFromPositionToPosition={this.props.selectedTrainIDFromPositionToPosition}
+                        setSelectedTrainIDFromPositionToPosition={this.props.setSelectedTrainIDFromPositionToPosition}
                         />
                     </Container3>
 

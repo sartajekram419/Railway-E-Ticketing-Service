@@ -77,6 +77,9 @@ export default class TrainList extends Component {
                     selectedTrainID={this.props.selectedTrainID}
 
                     trainIDFromPositionToPositionList={this.state.trainIDFromPositionToPositionList}
+                    
+                    selectedTrainIDFromPositionToPosition={this.props.selectedTrainIDFromPositionToPosition}
+                    setSelectedTrainIDFromPositionToPosition={this.props.setSelectedTrainIDFromPositionToPosition}
                 />
             </div>
         )
