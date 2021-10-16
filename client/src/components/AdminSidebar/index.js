@@ -14,7 +14,7 @@ class AdminSidebar extends Component {
         event.preventDefault();
         alert(this.props.setAdminId);
         this.props.setAdminID(0);
-        this.props.history.push("/home");
+        this.props.history.push("/admin-login");
     }
 
     render() {
@@ -29,7 +29,7 @@ class AdminSidebar extends Component {
                         <SidebarLink to='/stations' activeStyle>Stations</SidebarLink>
                         <SidebarLink to='/trains' activeStyle>Trains</SidebarLink>
                         <SidebarLink to='/clerks' activeStyle>Clerks</SidebarLink>
-                        <SidebarLink to='/home' onClick={this.logoutPressed} activeStyle>Logout</SidebarLink>
+                        <SidebarLink to='/admin-login' onClick={this.logoutPressed} activeStyle>Logout</SidebarLink>
                     </SidebarMenu>
                 </SidebarWrapper>
 

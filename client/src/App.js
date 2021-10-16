@@ -488,7 +488,7 @@ class App extends Component {
                 selectedCoachID={this.state.selectedCoachID}
                 setSelectedSeats={this.setSelectedSeats}
                 selectedSeats={this.state.selectedSeats}
-                
+
                 selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
                 setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
               />

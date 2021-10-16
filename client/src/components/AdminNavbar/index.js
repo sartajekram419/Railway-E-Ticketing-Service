@@ -21,7 +21,7 @@ class AdminNavbar extends Component {
         event.preventDefault();
         alert(this.props.adminID);
         this.props.setAdminID(0);
-        this.props.history.push("/home");
+        this.props.history.push("/admin-login");
     }
 
 
@@ -43,7 +43,7 @@ class AdminNavbar extends Component {
                         <NavLink to='/clerks' activeStyle>
                             Clerks
                         </NavLink>
-                        <NavLink to='/home' onClick={this.logoutPressed} activeStyle>
+                        <NavLink to='/admin-login' onClick={this.logoutPressed} activeStyle>
                             Logout
                         </NavLink>
                     </NavMenu>
