@@ -126,8 +126,10 @@ class TrainInfoContainer extends Component {
 
     seeDetailsPressed = event => {
         event.preventDefault();
+
         this.props.setSelectedTrainID(this.props.trainIDFromPositionToPosition.trainID);
         this.props.setFromStationPosition(this.props.trainIDFromPositionToPosition.fromStationPosition);
+
         this.props.setToStationPosition(this.props.trainIDFromPositionToPosition.toStationPosition);
         
         
@@ -141,9 +143,9 @@ class TrainInfoContainer extends Component {
         // alert(this.props.trainIDFromPositionToPosition.fromStationPosition);
         // alert(this.props.trainIDFromPositionToPosition.toStationPosition);
 
-        // alert(this.props.selectedTrainID);
-        // alert(this.props.fromStationPosition);
-        // alert(this.props.toStationPosition);
+        alert(this.props.selectedTrainID);
+        alert(this.props.fromStationPosition);
+        alert(this.props.toStationPosition);
         // alert(this.props.passengerMail)
 
         this.props.history.push({ pathname: '/traincoach' });

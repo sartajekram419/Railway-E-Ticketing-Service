@@ -92,8 +92,7 @@ class FindCard extends Component {
             this.props.setFromStationID(res.data[0].Station_ID);
             this.props.setJourneyDate(this.state.selectedDate);
 
-            // alert(this.state.selectedDate);
-            // alert(this.props.journeyDate);
+            //alert(this.props.fromStationID);
         
             this.props.setClassID(parseInt(this.state.selectedClassID));
 
