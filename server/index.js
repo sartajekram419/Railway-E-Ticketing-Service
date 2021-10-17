@@ -409,6 +409,36 @@ app.post("/api/deleteClerk", (req, res) => {
 });
 
 
+app.post("/api/addNewClerk", (req, res) => {
+
+    const clerkName = req.body.clerkName
+    const clerkMobile = req.body.clerkMobile
+    const clerkPassword = req.body.clerkPassword
+    const selectedStationName = req.body.selectedStationName
+
+
+    const sqlInsertStation = "SELECT Station_ID FROM station WHERE Name=?";
+    db.query(sqlInsertStation, [selectedStationName], (err1, result1) => {
+
+        const selectedStationID = result1[0].Station_ID;
+        const sqlCommand = "Insert into booking_clerk (Name, Mobile, Password, Station_ID) Values (?, ?, ?, ?)"
+        //console.log(selectedStationID);
+        db.query(sqlCommand, [clerkName, clerkMobile, clerkPassword, selectedStationID], (err) => {
+            if (err == null) {
+                var isValid = { isValid: true };
+            } else {
+                // console.log(err);
+                // console.log("Hello");
+                var isValid = { isValid: false };
+            }
+            return res.json(isValid);
+        
+
+        });
+    });
+});
+
+
 
 app.listen(3001, () => {
     console.log("running");

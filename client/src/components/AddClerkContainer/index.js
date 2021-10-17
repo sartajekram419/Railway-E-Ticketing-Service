@@ -10,8 +10,10 @@ class AddClerkContainer extends Component {
 
         this.state = {
 
-            stationName: "",
-            stationDistrict: "",
+            selectedStationName: "",
+            clerkName: "",
+            clerkMobile: 0,
+            clerkPassword: "",
 
             stationList: [],
 
@@ -47,40 +49,55 @@ class AddClerkContainer extends Component {
 
         this.addPressed = this.addPressed.bind(this);
 
-        this.setStationName = this.setStationName.bind(this);
-        this.setStationDistrict = this.setStationDistrict.bind(this);
+        this.setSelectedStationName = this.setSelectedStationName.bind(this);
+        this.setClerkName = this.setClerkName.bind(this);
+        this.setClerkMobile = this.setClerkMobile.bind(this);
+        this.setClerkPassword = this.setClerkPassword.bind(this);
+    }
+
+    setSelectedStationName(data) {
+        this.setState({
+            selectedStationName: data,
+        })
+    }
+
+    setClerkName(data) {
+        this.setState({
+            clerkName: data,
+        })
+    }
+
+    setClerkMobile(data) {
+        this.setState({
+            clerkMobile: data,
+        })
+    }
+
+    setClerkPassword(data) {
+        this.setState({
+            clerkPassword: data,
+        })
     }
 
     addPressed = event => {
         event.preventDefault();
 
-        Axios.post("http://localhost:3001/api/addNewStation", {
-            station_name: this.state.stationName,
-            station_district: this.state.stationDistrict,
+        Axios.post("http://localhost:3001/api/addNewClerk", {
+            clerkName: this.state.clerkName,
+            clerkMobile: this.state.clerkMobile,
+            clerkPassword: this.state.clerkPassword,
+            selectedStationName: this.state.selectedStationName,
         })
             .then((res) => {
                 if (res.data.isValid) {
-                    alert("Station Added Successfully!");
+                    alert("Clerk Added Successfully!");
                 } else {
-                    alert("Staion already exits!");
+                    alert("Clerk already exits!");
                 }
             })
 
-        this.props.setIsAddStationContainerOpen();
-
     };
 
-    setStationName(data) {
-        this.setState({
-            stationName: data,
-        })
-    }
-
-    setStationDistrict(data) {
-        this.setState({
-            stationDistrict: data,
-        })
-    }
 
     render() {
         return (
@@ -92,27 +109,22 @@ class AddClerkContainer extends Component {
                 <Form>
                     <label style={this.state.styleLabel}>Clerk Name</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setStationName(e.target.value) }} type="text" placeholder="Enter Name" />
-                    <br ></br>
-
-                    <label style={this.state.styleLabel}>Clerk Email</label>
-                    <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setStationName(e.target.value) }} type="text" placeholder="Enter Email" />
+                    <input style={this.state.styleInput} onChange={(e) => { this.setClerkName(e.target.value) }} type="text" placeholder="Enter Name" />
                     <br ></br>
 
                     <label style={this.state.styleLabel}>Clerk Mobile No.</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setStationDistrict(e.target.value) }} type="number" placeholder="Enter Mobile No" />
+                    <input style={this.state.styleInput} onChange={(e) => { this.setClerkMobile(e.target.value) }} type="number" placeholder="Enter Mobile No" />
                     <br></br>
 
                     <label style={this.state.styleLabel}>Clerk Password</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setStationDistrict(e.target.value) }} type="password" placeholder="Enter Password" />
+                    <input style={this.state.styleInput} onChange={(e) => { this.setClerkPassword(e.target.value) }} type="password" placeholder="Enter Password" />
                     <br></br>
 
                     <label style={this.state.styleLabel}>Station Name</label>
                     <hr style={this.state.styleHr}></hr>
-                    <Select onChange={(e) => { this.setSelectedFromStationName(e.target.value) }} >
+                    <Select onChange={(e) => { this.setSelectedStationName(e.target.value) }} >
                         <option value="" disabled selected>Select a station</option>
                         {this.state.stationList.map((station, index) => {
                             return <option key={index} value={station}>
