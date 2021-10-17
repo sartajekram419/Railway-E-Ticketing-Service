@@ -66,6 +66,13 @@ export const Form = styled.form`
     }
 `;
 
+export const Select = styled.select`
+    background: #fff;
+    padding: 0px 0px 0px 10px;
+    font-size: 14px;
+    height: 40px;
+`;
+
 export const NavLink = styled(Link)`
     color: #0099ff;
     display: flex;
