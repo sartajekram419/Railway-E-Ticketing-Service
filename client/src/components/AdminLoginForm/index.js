@@ -42,10 +42,6 @@ class AdminLoginForm extends Component {
     loginPressed = event => {
         event.preventDefault();
 
-        alert(this.props.adminID);
-
-
-
         Axios.post("http://localhost:3001/api/loginAdmin", {
             id: this.state.id,
             password: this.state.password,

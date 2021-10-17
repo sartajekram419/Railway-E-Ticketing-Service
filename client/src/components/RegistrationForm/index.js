@@ -50,8 +50,6 @@ class RegistrationForm extends Component {
     signUpPressed = event => {
         event.preventDefault();
 
-        alert(this.props.passengerMail);
-
         Axios.post("http://localhost:3001/api/registerPassenger", {
             name: this.state.name,
             nid: this.state.nid,

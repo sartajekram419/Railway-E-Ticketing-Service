@@ -12,7 +12,6 @@ class AdminSidebar extends Component {
 
     logoutPressed = event => {
         event.preventDefault();
-        alert(this.props.setAdminId);
         this.props.setAdminID(0);
         this.props.history.push("/admin-login");
     }

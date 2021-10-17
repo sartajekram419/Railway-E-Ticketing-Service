@@ -42,8 +42,6 @@ class LoginForm extends Component {
     loginPressed = event => {
         event.preventDefault();
 
-        alert(this.props.passengerMail);
-
         Axios.post("http://localhost:3001/api/loginPassenger", {
             email: this.state.email,
             password: this.state.password,
