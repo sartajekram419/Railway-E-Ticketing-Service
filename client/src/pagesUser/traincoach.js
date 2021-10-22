@@ -157,6 +157,8 @@ export class TrainCoach extends Component {
         this.clearChosenSeatList = this.clearChosenSeatList.bind(this);
         this.addChosenSeatList = this.addChosenSeatList.bind(this);
         this.removeChosenSeatList = this.removeChosenSeatList.bind(this);
+
+        this.purchasePressed = this.purchasePressed.bind(this);
     }
 
     clearChosenSeatList() {
@@ -292,10 +294,10 @@ export class TrainCoach extends Component {
         })
     }
 
-    purchasePressed = event => {
+    async purchasePressed (event) {
         event.preventDefault();
 
-        Axios.post("http://localhost:3001/api/addTicket", {
+        await Axios.post("http://localhost:3001/api/addTicket", {
             issueTime: '2021-10-22 05:40:30',
             journeyTime: this.props.journeyDate.split('T')[0] +' ' + this.state.departureTime,
             startPositon: this.props.selectedTrainIDFromPositionToPosition.fromStationPosition,
@@ -326,27 +328,27 @@ export class TrainCoach extends Component {
         })
 
 
-        // for(var s=0; s<this.state.chosenSeatList.length; s++) {
-        //     for(var f=1; f<this.props.selectedTrainIDFromPositionToPosition.toStationPosition; f++) {
-        //         //alert("fdsf");
-        //         for(var t=this.props.selectedTrainIDFromPositionToPosition.fromStationPosition+1; t<14; t++) {
-        //             if(t<=f)
-        //                 t=f+1;
-        //             Axios.post("http://localhost:3001/api/addBookingStatus", {
-        //                 trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
-        //                 coachID: this.props.selectedCoachID,
-        //                 // date: this.props.journeyDate.split('T')[0],
-        //                 date: '2021-10-22',
-        //                 startPositon: f,
-        //                 endPosition: t,
-        //                 seatNo: this.state.chosenSeatList[s],
-        //             })
-        //             .then((res2) => {
-        //             })
-        //         }
-        //     }
+        for(var seat=0; seat<this.state.chosenSeatList.length; seat++) {
+            for(var f=11; f<this.props.selectedTrainIDFromPositionToPosition.toStationPosition; f++) {
+                //alert("fdsf");
+                for(var t=this.props.selectedTrainIDFromPositionToPosition.fromStationPosition+1; t<14; t++) {
+                    if(t<=f)
+                        t=f+1;
+                    Axios.post("http://localhost:3001/api/addBookingStatus", {
+                        trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
+                        coachID: this.props.selectedCoachID,
+                        // date: this.props.journeyDate.split('T')[0],
+                        date: '2021-10-22',
+                        startPositon: f,
+                        endPosition: t,
+                        seatNo: this.state.chosenSeatList[seat],
+                    })
+                    .then((res2) => {
+                    })
+                }
+            }
             
-        // }
+        }
         
         // this.props.history.push({ pathname: '/home-user' });
     };
