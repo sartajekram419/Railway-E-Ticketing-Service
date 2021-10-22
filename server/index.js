@@ -441,7 +441,8 @@ app.post("/api/addNewClerk", (req, res) => {
 
 app.post("/api/addTicket", (req, res) => {
 
-    const issueTime = req.body.issueTime
+    //const issueTime = req.body.issueTime
+    const issueTime = '2021-10-22 05:40:30'
     const journeyTime = req.body.journeyTime
     const startPositon = req.body.startPositon
     const endPosition = req.body.endPosition
@@ -452,16 +453,19 @@ app.post("/api/addTicket", (req, res) => {
     const fare = req.body.fare
     const passengerID = req.body.passengerID
 
-    console.log(journeyTime);
+    //console.log(journeyTime);
 
     const sqlInsertPassenger = "INSERT INTO ticket (Issue_time, Journey_time, Start_position, End_position, Train_ID, Class_ID, Coach_ID, No_of_seats, Fare, Passenger_ID) VALUES (?,?,?,?,?,?,?,?,?,?)"
     db.query(sqlInsertPassenger, [issueTime, journeyTime, startPositon, endPosition, trainID, classID, coachID, noOfSeats, fare, passengerID], (err) => {
         if (err == null) {
-            console.log("fsfds");
+            // console.log("fsfds");
+
+
         } else {
             var ticketID = { ticketID: -1 };
+            console.log(err);
         }
-        return res.json(ticketID.ticketID);
+        //return res.json(ticketID.ticketID);
     });
 
 });

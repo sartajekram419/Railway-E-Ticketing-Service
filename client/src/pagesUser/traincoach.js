@@ -295,8 +295,8 @@ export class TrainCoach extends Component {
         event.preventDefault();
 
         Axios.post("http://localhost:3001/api/addTicket", {
-            issueTime: new Date(),
-            journeyTime: this.state.departureTime,
+            issueTime: '2021-10-22 05:40:30',
+            journeyTime: this.props.journeyDate.split('T')[0] +' ' + this.state.departureTime,
             startPositon: this.props.selectedTrainIDFromPositionToPosition.fromStationPosition,
             endPosition: this.props.selectedTrainIDFromPositionToPosition.toStationPosition,
             trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
