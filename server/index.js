@@ -504,7 +504,7 @@ app.post("/api/addBookingStatus", (req, res) => {
     const endPosition = req.body.endPosition
     const seatNo = req.body.seatNo
 
-    console.log(seatNo);
+    //console.log(seatNo);
     
     const sqlInsertPassenger = "INSERT INTO booking_status (Train_ID, Coach_ID, Date, Start_position, End_position, Seat_no) VALUES (?,?,?,?,?,?)"
     db.query(sqlInsertPassenger, [trainID, coachID, date, startPositon, endPosition, seatNo], (err) => {

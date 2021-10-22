@@ -350,7 +350,7 @@ export class TrainCoach extends Component {
             
         }
         
-        // this.props.history.push({ pathname: '/home-user' });
+        this.props.history.push({ pathname: '/home-user' });
     };
 
     render() {
