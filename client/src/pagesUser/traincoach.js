@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import React, { Component } from 'react'
+import { withRouter } from 'react-router';
 import TrainCoachSeat from '../components/TrainCoachSeat';
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
@@ -307,28 +308,47 @@ export class TrainCoach extends Component {
             passengerID: this.props.passengerNid,
         })
         .then((res) => {
-            // for (var i in res.data) {
-            //     var object = {
-            //         trainID: res.data[i].trainID,
-            //         fromStationPosition: res.data[i].fromStationPosition,
-            //         toStationPosition: res.data[i].toStationPosition,
-            //     };
 
-            //     // alert(object.trainID);
-            //     // alert(object.fromStationPosition);
-            //     // alert(object.toStationPosition)
+            var x = res.data[0].Ticket_ID;
+            //alert(x);
 
-            //     this.setState({ trainIDFromPositionToPositionList: [...this.state.trainIDFromPositionToPositionList, ...[object]] })
-            // }
+            if(x !== -1) {
+                for(var s=0; s<this.state.chosenSeatList.length; s++) {
+                    Axios.post("http://localhost:3001/api/addTicketSeat", {
+                        ticketID: x,
+                        seatID: this.state.chosenSeatList[s],
+                    })
+                    .then((res1) => {
+                    })
+                }
+            }
+            
         })
 
 
-        for(var x=0; x<this.state.chosenSeatList.length; x++) {
-
-            alert(this.state.chosenSeatList[x]);
-        }
+        // for(var s=0; s<this.state.chosenSeatList.length; s++) {
+        //     for(var f=1; f<this.props.selectedTrainIDFromPositionToPosition.toStationPosition; f++) {
+        //         //alert("fdsf");
+        //         for(var t=this.props.selectedTrainIDFromPositionToPosition.fromStationPosition+1; t<14; t++) {
+        //             if(t<=f)
+        //                 t=f+1;
+        //             Axios.post("http://localhost:3001/api/addBookingStatus", {
+        //                 trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
+        //                 coachID: this.props.selectedCoachID,
+        //                 // date: this.props.journeyDate.split('T')[0],
+        //                 date: '2021-10-22',
+        //                 startPositon: f,
+        //                 endPosition: t,
+        //                 seatNo: this.state.chosenSeatList[s],
+        //             })
+        //             .then((res2) => {
+        //             })
+        //         }
+        //     }
+            
+        // }
         
-        //this.props.history.push({ pathname: '/home-user' });
+        // this.props.history.push({ pathname: '/home-user' });
     };
 
     render() {
@@ -456,4 +476,4 @@ export class TrainCoach extends Component {
     }
 }
 
-export default TrainCoach
+export default withRouter(TrainCoach)

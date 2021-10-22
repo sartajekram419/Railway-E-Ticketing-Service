@@ -460,17 +460,63 @@ app.post("/api/addTicket", (req, res) => {
         if (err == null) {
             // console.log("fsfds");
 
+            const sqlCommand = "SELECT Ticket_ID FROM ticket WHERE Issue_time=? AND Journey_time=? AND Start_position=? AND End_position=? AND Train_ID=? AND Class_ID=? AND Coach_ID=? AND No_of_seats=? AND Fare=? AND Passenger_ID=?"
+            db.query(sqlCommand, [issueTime, journeyTime, startPositon, endPosition, trainID, classID, coachID, noOfSeats, fare, passengerID], (err1, result1) => {
+                console.log(result1[0].Ticket_ID);
+                // var insertedTicketID = { insertedTicketID: result1[0].Ticket_ID };
+                // console.log(insertedTicketID.insertedTicketID);
+                return res.json(result1);
+            });
 
         } else {
-            var ticketID = { ticketID: -1 };
-            console.log(err);
+            var insertedTicketID = { insertedTicketID: -1 };
+            //console.log(err);
+            return res.json(insertedTicketID.insertedTicketID);
         }
-        //return res.json(ticketID.ticketID);
+        
     });
 
 });
 
+app.post("/api/addTicketSeat", (req, res) => {
 
+    const ticketID = req.body.ticketID
+    const seatID = req.body.seatID
+    
+    const sqlInsertPassenger = "INSERT INTO ticket_seat (Ticket_ID, Seat_ID) VALUES (?,?)"
+    db.query(sqlInsertPassenger, [ticketID, seatID], (err) => {
+        if (err == null) {
+            return res.json(true);
+        } else {
+
+        }
+        
+    });
+
+});
+
+app.post("/api/addBookingStatus", (req, res) => {
+
+    const trainID = req.body.trainID
+    const coachID = req.body.coachID
+    const date = req.body.date
+    const startPositon = req.body.startPositon
+    const endPosition = req.body.endPosition
+    const seatNo = req.body.seatNo
+
+    console.log(seatNo);
+    
+    const sqlInsertPassenger = "INSERT INTO booking_status (Train_ID, Coach_ID, Date, Start_position, End_position, Seat_no) VALUES (?,?,?,?,?,?)"
+    db.query(sqlInsertPassenger, [trainID, coachID, date, startPositon, endPosition, seatNo], (err) => {
+        if (err == null) {
+        
+        } else {
+            console.log(err);
+        }
+        
+    });
+
+});
 
 app.listen(3001, () => {
     console.log("running");
