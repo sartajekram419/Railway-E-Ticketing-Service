@@ -439,6 +439,34 @@ app.post("/api/addNewClerk", (req, res) => {
 });
 
 
+app.post("/api/addTicket", (req, res) => {
+
+    const issueTime = req.body.issueTime
+    const journeyTime = req.body.journeyTime
+    const startPositon = req.body.startPositon
+    const endPosition = req.body.endPosition
+    const trainID = req.body.trainID
+    const classID = req.body.classID
+    const coachID = req.body.coachID
+    const noOfSeats = req.body.noOfSeats
+    const fare = req.body.fare
+    const passengerID = req.body.passengerID
+
+    console.log(journeyTime);
+
+    const sqlInsertPassenger = "INSERT INTO ticket (Issue_time, Journey_time, Start_position, End_position, Train_ID, Class_ID, Coach_ID, No_of_seats, Fare, Passenger_ID) VALUES (?,?,?,?,?,?,?,?,?,?)"
+    db.query(sqlInsertPassenger, [issueTime, journeyTime, startPositon, endPosition, trainID, classID, coachID, noOfSeats, fare, passengerID], (err) => {
+        if (err == null) {
+            console.log("fsfds");
+        } else {
+            var ticketID = { ticketID: -1 };
+        }
+        return res.json(ticketID.ticketID);
+    });
+
+});
+
+
 
 app.listen(3001, () => {
     console.log("running");

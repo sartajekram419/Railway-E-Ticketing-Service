@@ -32,7 +32,14 @@ export class TrainCoachSeat extends Component {
         return (
             <div style={this.state.style}>
                 {this.props.seatList.map((seat, index) => {
-                        return <SeatButton key={index} seat={seat} seatStatus={this.props.seatStatusList1[index]}/>
+                        return <SeatButton 
+                                key={index} seat={seat} 
+                                seatStatus={this.props.seatStatusList1[index]}
+                                
+                                chosenSeatList={this.props.chosenSeatList}
+                                addChosenSeatList={this.props.addChosenSeatList}
+                                removeChosenSeatList={this.props.removeChosenSeatList}
+                                />
                 })}
             </div>
         )

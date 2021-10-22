@@ -534,6 +534,10 @@ class App extends Component {
                 history={this.props.history}
                 setPassengerMail={this.setPassengerMail}
                 passengerMail={this.state.passengerMail}
+                
+                setPassengerNid={this.setPassengerNid}
+                passengerNid={this.state.passengerNid}
+                
                 setFromStationID={this.setFromStationID}
                 fromStationID={this.state.fromStationID}
                 setToStationID={this.setToStationID}

@@ -32,6 +32,8 @@ export class TrainCoach extends Component {
             seatStatusList: [],
             seatStatusList1: [],
 
+            chosenSeatList: [],
+
             style: {
                 display: "flex",
                 flexDirection: "column",
@@ -150,7 +152,34 @@ export class TrainCoach extends Component {
         this.setDepartureTime = this.setDepartureTime.bind(this);
 
         this.toggleSidebar = this.toggleSidebar.bind(this);
+
+        this.clearChosenSeatList = this.clearChosenSeatList.bind(this);
+        this.addChosenSeatList = this.addChosenSeatList.bind(this);
+        this.removeChosenSeatList = this.removeChosenSeatList.bind(this);
     }
+
+    clearChosenSeatList() {
+        this.setState({ 
+            chosenSeatList: [] 
+        })
+    }
+
+    addChosenSeatList(data) {
+        this.setState({ 
+            chosenSeatList: [...this.state.chosenSeatList, data] 
+        })
+    }
+
+    removeChosenSeatList(data) {
+        this.setState({chosenSeatList: this.state.chosenSeatList.filter(function(seat) { 
+            return seat !== data 
+        })});
+
+        // this.setState({ 
+        //     chosenSeatList: [...this.state.chosenSeatList, data] 
+        // })
+    }
+
 
     setTrainName(data) {
         this.setState({
@@ -190,6 +219,8 @@ export class TrainCoach extends Component {
 
     changeCoachSeat (data) {
         this.props.setSelectedCoachID(parseInt(data));
+
+        this.clearChosenSeatList();
 
         Axios.post("http://localhost:3001/api/getSeatCount", {
             trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
@@ -259,6 +290,46 @@ export class TrainCoach extends Component {
             isSidebarOpen: !this.state.isSidebarOpen,
         })
     }
+
+    purchasePressed = event => {
+        event.preventDefault();
+
+        Axios.post("http://localhost:3001/api/addTicket", {
+            issueTime: new Date(),
+            journeyTime: this.state.departureTime,
+            startPositon: this.props.selectedTrainIDFromPositionToPosition.fromStationPosition,
+            endPosition: this.props.selectedTrainIDFromPositionToPosition.toStationPosition,
+            trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
+            classID: this.state.coachClassID,
+            coachID: this.props.selectedCoachID,
+            noOfSeats: this.state.chosenSeatList.length,
+            fare: this.state.fare,
+            passengerID: this.props.passengerNid,
+        })
+        .then((res) => {
+            // for (var i in res.data) {
+            //     var object = {
+            //         trainID: res.data[i].trainID,
+            //         fromStationPosition: res.data[i].fromStationPosition,
+            //         toStationPosition: res.data[i].toStationPosition,
+            //     };
+
+            //     // alert(object.trainID);
+            //     // alert(object.fromStationPosition);
+            //     // alert(object.toStationPosition)
+
+            //     this.setState({ trainIDFromPositionToPositionList: [...this.state.trainIDFromPositionToPositionList, ...[object]] })
+            // }
+        })
+
+
+        for(var x=0; x<this.state.chosenSeatList.length; x++) {
+
+            alert(this.state.chosenSeatList[x]);
+        }
+        
+        //this.props.history.push({ pathname: '/home-user' });
+    };
 
     render() {
         return (
@@ -363,12 +434,17 @@ export class TrainCoach extends Component {
 
                         selectedTrainIDFromPositionToPosition={this.props.selectedTrainIDFromPositionToPosition}
                         setSelectedTrainIDFromPositionToPosition={this.props.setSelectedTrainIDFromPositionToPosition}
+                        
+                        chosenSeatList={this.state.chosenSeatList}
+                        addChosenSeatList={this.addChosenSeatList}
+                        removeChosenSeatList={this.removeChosenSeatList}
                         />
                     </Container3>
 
                     <Button 
                     setPassengerMail={this.props.setPassengerMail} 
                     passengerMail={this.props.passengerMail}
+                    onClick={this.purchasePressed}
                     >
                     Purchase
                     </Button>
