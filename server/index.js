@@ -518,6 +518,30 @@ app.post("/api/addBookingStatus", (req, res) => {
 
 });
 
+app.post("/api/loginClerk", (req, res) => {
+
+    const id = req.body.id
+    const password = req.body.password
+
+    const sqlSelectPassenger = "SELECT * FROM booking_clerk WHERE Clerk_ID = ? AND Password = ?"
+    db.query(sqlSelectPassenger, [id, password], (err, result) => {
+
+        if (result.length == 1) {
+            var clerk = {
+                isValid: true,
+                id: result[0].Clerk_ID,
+            };
+        } else {
+            var clerk = {
+                isValid: false,
+            };
+        }
+
+        return res.json(clerk);
+    });
+
+});
+
 app.listen(3001, () => {
     console.log("running");
 })

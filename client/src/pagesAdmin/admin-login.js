@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import Navbar from '../components/Navbar'
-import Sidebar from '../components/Sidebar'
 import AdminLoginForm from '../components/AdminLoginForm'
 
 export default class AdminLogin extends Component {

@@ -17,6 +17,7 @@ import TrainList from './pagesUser/trainlist'
 import TrainListUser from './pagesUser/trainlist-user'
 import TrainCoach from './pagesUser/traincoach'
 import Clerks from './pagesAdmin/clerks'
+import ClerkLogin from './pagesClerk/clerk-login'
 
 class App extends Component {
 
@@ -46,7 +47,7 @@ class App extends Component {
 
       adminID: 0,
 
-      // clerkID: 0,
+      clerkID: 0,
       // clerkName: "",
       // clerkMobile: 0,
       // clerkPassword: "",
@@ -76,7 +77,7 @@ class App extends Component {
 
     this.setAdminID = this.setAdminID.bind(this);
 
-    // this.setClerkID = this.setClerkID(this);
+    this.setClerkID = this.setClerkID.bind(this);
     // this.setClerkName = this.setClerkName(this);
     // this.setClerkMobile = this.setClerkMobile(this);
     // this.setClerkPassword = this.setClerkPassword(this);
@@ -440,6 +441,16 @@ class App extends Component {
                 history={this.props.history}
                 setAdminID={this.setAdminID}
                 adminID={this.state.adminID}
+              />
+            )}
+          />
+
+          <Route exact path='/clerk-login'
+            render={props => (
+              <ClerkLogin {...props}
+                history={this.props.history}
+                setClerkID={this.setClerkID}
+                clerkID={this.state.clerkID}
               />
             )}
           />
