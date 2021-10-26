@@ -19,6 +19,8 @@ import TrainCoach from './pagesUser/traincoach'
 import Clerks from './pagesAdmin/clerks'
 import ClerkLogin from './pagesClerk/clerk-login'
 import HomeClerk from './pagesClerk/clerk-home'
+import TrainListClerk from './pagesClerk/trainlist-clerk'
+import { TrainCoachClerk } from './pagesClerk/traincoach-clerk'
 
 class App extends Component {
 
@@ -569,6 +571,38 @@ class App extends Component {
             )}
           />
 
+          <Route exact path='/trainlist-clerk'
+            render={props => (
+              <TrainListClerk {...props}
+                history={this.props.history}
+                setPassengerMail={this.setPassengerMail}
+                passengerMail={this.state.passengerMail}
+                setFromStationID={this.setFromStationID}
+                fromStationID={this.state.fromStationID}
+                setToStationID={this.setToStationID}
+                toStationID={this.state.toStationID}
+                setFromStationPosition={this.setFromStationPosition}
+                fromStationPosition={this.state.fromStationPosition}
+                setToStationPosition={this.setToStationPosition}
+                toStationPosition={this.state.toStationPosition}
+                setJourneyDate={this.setJourneyDate}
+                journeyDate={this.state.journeyDate}
+                setClassID={this.setClassID}
+                classID={this.state.classID}
+                setNoOfPassengers={this.setNoOfPassengers}
+                noOfPassengers={this.state.noOfPassengers}
+                setSelectedTrainID={this.setSelectedTrainID}
+                selectedTrainID={this.state.selectedTrainID}
+
+                selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
+                setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
+
+                setClerkID={this.setClerkID}
+                clerkID={this.state.clerkID}
+              />
+            )}
+          />
+
           <Route exact path='/traincoach'
             render={props => (
               <TrainCoach {...props}
@@ -603,6 +637,47 @@ class App extends Component {
 
                 selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
                 setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
+              />
+            )}
+          />
+
+          <Route exact path='/traincoach-clerk'
+            render={props => (
+              <TrainCoachClerk {...props}
+                history={this.props.history}
+                setPassengerMail={this.setPassengerMail}
+                passengerMail={this.state.passengerMail}
+                
+                setPassengerNid={this.setPassengerNid}
+                passengerNid={this.state.passengerNid}
+                
+                setFromStationID={this.setFromStationID}
+                fromStationID={this.state.fromStationID}
+                setToStationID={this.setToStationID}
+                toStationID={this.state.toStationID}
+                setFromStationPosition={this.setFromStationPosition}
+                fromStationPosition={this.state.fromStationPosition}
+                setToStationPosition={this.setToStationPosition}
+                toStationPosition={this.state.toStationPosition}
+                setJourneyDate={this.setJourneyDate}
+                journeyDate={this.state.journeyDate}
+                setClassID={this.setClassID}
+                classID={this.state.classID}
+                setNoOfPassengers={this.setNoOfPassengers}
+                noOfPassengers={this.state.noOfPassengers}
+                setSelectedTrainID={this.setSelectedTrainID}
+                selectedTrainID={this.state.selectedTrainID}
+
+                setSelectedCoachID={this.setSelectedCoachID}
+                selectedCoachID={this.state.selectedCoachID}
+                setSelectedSeats={this.setSelectedSeats}
+                selectedSeats={this.state.selectedSeats}
+
+                selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
+                setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
+
+                setClerkID={this.setClerkID}
+                clerkID={this.state.clerkID}
               />
             )}
           />

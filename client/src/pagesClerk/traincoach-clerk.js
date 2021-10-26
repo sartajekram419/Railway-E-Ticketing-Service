@@ -2,13 +2,11 @@ import Axios from 'axios';
 import React, { Component } from 'react'
 import { withRouter } from 'react-router';
 import TrainCoachSeat from '../components/TrainCoachSeat';
-import Navbar from '../components/Navbar'
-import Sidebar from '../components/Sidebar'
-import { Container1, Select, InfoDiv, UserInfoContainer, Button, Heading, Container2, Container3 } from './TrainCoachElements'
-import SidebarUser from '../components/SidebarUser';
-import NavbarUser from '../components/NavbarUser';
+import { Container1, Select, InfoDiv, UserInfoContainer, Button, Heading, Container2, Container3 } from './TrainCoachClerkElements'
+import SidebarClerk from '../components/SidebarClerk';
+import NavbarClerk from '../components/NavbarClerk';
 
-export class TrainCoach extends Component {
+export class TrainCoachClerk extends Component {
     constructor(props) {
         super(props);
 
@@ -350,19 +348,16 @@ export class TrainCoach extends Component {
             
         }
         
-        this.props.history.push({ pathname: '/home-user' });
+        this.props.history.push({ pathname: '/clerk-home' });
     };
 
     render() {
         return (
             <div style={this.state.style}>
                 
-                {this.props.passengerMail=="" && <Sidebar isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} />}
-                {this.props.passengerMail=="" && <Navbar toggleSidebar={this.toggleSidebar} />}
-
-                {this.props.passengerMail!="" && <SidebarUser isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} setPassengerMail={this.props.setPassengerMail} passengerMail={this.props.passengerMail}/>}
-                {this.props.passengerMail!="" && <NavbarUser toggleSidebar={this.toggleSidebar} setPassengerMail={this.props.setPassengerMail} passengerMail={this.props.passengerMail}/>}
-
+                <SidebarClerk isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} setClerkID={this.props.setClerkID} clerkID={this.props.clerkID}/>
+                <NavbarClerk toggleSidebar={this.toggleSidebar} setClerkID={this.props.setClerkID} clerkID={this.props.clerkID}/>
+                
                 <Container1>
                 
                 <Heading>
@@ -393,6 +388,11 @@ export class TrainCoach extends Component {
                         <InfoDiv>
                             <label style={this.state.styleLabel}>Departure Time:</label>
                             <text style={this.state.styleText}>{this.state.departureTime}</text>
+                        </InfoDiv>
+
+                        <InfoDiv>
+                            <label style={this.state.styleLabel}>Passenger Mail:</label>
+                            <text style={this.state.styleText}>{this.props.passengerMail}</text>
                         </InfoDiv>
                     </UserInfoContainer>
 
@@ -460,7 +460,6 @@ export class TrainCoach extends Component {
                         chosenSeatList={this.state.chosenSeatList}
                         addChosenSeatList={this.addChosenSeatList}
                         removeChosenSeatList={this.removeChosenSeatList}
-
                                                                  
                         setClerkID={this.props.setClerkID} 
                         clerkID={this.props.clerkID}
@@ -469,11 +468,11 @@ export class TrainCoach extends Component {
                     </Container3>
 
                     <Button 
-                    setPassengerMail={this.props.setPassengerMail} 
-                    passengerMail={this.props.passengerMail}
+                    setClerkID={this.props.setClerkID} 
+                    clerkID={this.props.clerkID}
                     onClick={this.purchasePressed}
                     >
-                    Purchase
+                    Sell
                     </Button>
                 
                 </Container2>
@@ -483,4 +482,4 @@ export class TrainCoach extends Component {
     }
 }
 
-export default withRouter(TrainCoach)
+export default withRouter(TrainCoachClerk)

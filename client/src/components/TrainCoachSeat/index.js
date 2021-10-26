@@ -38,7 +38,10 @@ export class TrainCoachSeat extends Component {
                                 
                                 chosenSeatList={this.props.chosenSeatList}
                                 addChosenSeatList={this.props.addChosenSeatList}
-                                removeChosenSeatList={this.props.removeChosenSeatList}
+                                removeChosenSeatList={this.props.removeChosenSeatList}                                         
+                                setClerkID={this.props.setClerkID} 
+                                clerkID={this.props.clerkID}
+
                                 />
                 })}
             </div>

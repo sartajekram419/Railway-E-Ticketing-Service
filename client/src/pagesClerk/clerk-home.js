@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
-import Header from '../components/Header'
-import HomeInfoDiv from '../components/HomeInfoDiv'
+import FindCardClerk from '../components/FindCardClerk'
 import NavbarClerk from '../components/NavbarClerk'
-import PaymentLogos from '../components/PaymentLogos'
 import SidebarClerk from '../components/SidebarClerk'
 
 export default class HomeClerk extends Component {
@@ -12,6 +10,11 @@ export default class HomeClerk extends Component {
 
         this.state = {
             isSidebarOpen: false,
+            style: {
+                display: "flex",
+                flexDirection: "column",
+                padding: "0px 0px 80px 0px",
+            }
         }
 
         this.toggleSidebar = this.toggleSidebar.bind(this);
@@ -25,10 +28,11 @@ export default class HomeClerk extends Component {
     
     render() {
         return (
-            <div>
+            <div style={this.state.style}>
                 <SidebarClerk isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} setClerkID={this.props.setClerkID} clerkID={this.props.clerkID}/>
                 <NavbarClerk toggleSidebar={this.toggleSidebar} setClerkID={this.props.setClerkID} clerkID={this.props.clerkID}/>
-                {/* <Header 
+                
+                <FindCardClerk
                     setPassengerMail={this.props.setPassengerMail} 
                     passengerMail={this.props.passengerMail}
                     setFromStationID={this.props.setFromStationID}
@@ -47,11 +51,11 @@ export default class HomeClerk extends Component {
                     noOfPassengers={this.props.noOfPassengers}
                     setSelectedTrainID={this.props.setSelectedTrainID}
                     selectedTrainID={this.props.selectedTrainID}
+
+                    setClerkID={this.props.setClerkID} 
+                    clerkID={this.props.clerkID}
                 />
-                <HomeInfoDiv />
-                <hr></hr>
-                <PaymentLogos />
-                <hr></hr> */}
+
             </div>
         )
     }

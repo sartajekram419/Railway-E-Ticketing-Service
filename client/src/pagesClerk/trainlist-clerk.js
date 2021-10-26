@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import NavbarUser from '../components/NavbarUser'
-import SidebarUser from '../components/SidebarUser'
 import Axios from 'axios'
 import TrainListContainer from '../components/TrainListContainer'
+import SidebarClerk from '../components/SidebarClerk'
+import NavbarClerk from '../components/NavbarClerk'
 
-export default class TrainListUser extends Component {
+export default class TrainListClerk extends Component {
 
     constructor(props) {
         super(props);
@@ -19,6 +19,8 @@ export default class TrainListUser extends Component {
                 padding: "0px 0px 80px 0px",
             }
         }
+
+        // alert(this.props.passengerMail);
 
 
         Axios.post("http://localhost:3001/api/getTrainIDFromPositionToPositionList", {
@@ -51,8 +53,8 @@ export default class TrainListUser extends Component {
     render() {
         return (
             <div style={this.state.style}>
-                <SidebarUser isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} setPassengerMail={this.props.setPassengerMail} passengerMail={this.props.passengerMail} />
-                <NavbarUser toggleSidebar={this.toggleSidebar} setPassengerMail={this.props.setPassengerMail} passengerMail={this.props.passengerMail} />
+                <SidebarClerk isSidebarOpen={this.state.isSidebarOpen} toggleSidebar={this.toggleSidebar} setPassengerMail={this.props.setPassengerMail} passengerMail={this.props.passengerMail} />
+                <NavbarClerk toggleSidebar={this.toggleSidebar} setPassengerMail={this.props.setPassengerMail} passengerMail={this.props.passengerMail} />
                 <TrainListContainer 
                     setPassengerMail={this.props.setPassengerMail} 
                     passengerMail={this.props.passengerMail}
@@ -77,12 +79,10 @@ export default class TrainListUser extends Component {
                     
                     selectedTrainIDFromPositionToPosition={this.props.selectedTrainIDFromPositionToPosition}
                     setSelectedTrainIDFromPositionToPosition={this.props.setSelectedTrainIDFromPositionToPosition}
-                
-                                                             
+         
                     setClerkID={this.props.setClerkID} 
                     clerkID={this.props.clerkID}
-
-                />
+               />
             </div>
         )
     }
