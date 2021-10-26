@@ -18,6 +18,7 @@ import TrainListUser from './pagesUser/trainlist-user'
 import TrainCoach from './pagesUser/traincoach'
 import Clerks from './pagesAdmin/clerks'
 import ClerkLogin from './pagesClerk/clerk-login'
+import HomeClerk from './pagesClerk/clerk-home'
 
 class App extends Component {
 
@@ -449,6 +450,35 @@ class App extends Component {
             render={props => (
               <ClerkLogin {...props}
                 history={this.props.history}
+                setClerkID={this.setClerkID}
+                clerkID={this.state.clerkID}
+              />
+            )}
+          />
+
+          <Route exact path='/clerk-home'
+            render={props => (
+              <HomeClerk {...props}
+                history={this.props.history}
+                setPassengerMail={this.setPassengerMail}
+                passengerMail={this.state.passengerMail}
+                setFromStationID={this.setFromStationID}
+                fromStationID={this.state.fromStationID}
+                setToStationID={this.setToStationID}
+                toStationID={this.state.toStationID}
+                setFromStationPosition={this.setFromStationPosition}
+                fromStationPosition={this.state.fromStationPosition}
+                setToStationPosition={this.setToStationPosition}
+                toStationPosition={this.state.toStationPosition}
+                setJourneyDate={this.setJourneyDate}
+                journeyDate={this.state.journeyDate}
+                setClassID={this.setClassID}
+                classID={this.state.classID}
+                setNoOfPassengers={this.setNoOfPassengers}
+                noOfPassengers={this.state.noOfPassengers}
+                setSelectedTrainID={this.setSelectedTrainID}
+                selectedTrainID={this.state.selectedTrainID}
+
                 setClerkID={this.setClerkID}
                 clerkID={this.state.clerkID}
               />
