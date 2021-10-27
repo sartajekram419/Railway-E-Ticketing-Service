@@ -21,6 +21,7 @@ import ClerkLogin from './pagesClerk/clerk-login'
 import HomeClerk from './pagesClerk/clerk-home'
 import TrainListClerk from './pagesClerk/trainlist-clerk'
 import { TrainCoachClerk } from './pagesClerk/traincoach-clerk'
+import Trains from './pagesAdmin/trains'
 
 class App extends Component {
 
@@ -508,6 +509,16 @@ class App extends Component {
               // clerkMobile={this.clerkMobile}
               // clerkPassword={this.clerkPassword}
               // clerkStationID={this.clerkStationID}
+              />
+            )}
+          />
+
+          <Route exact path='/trains'
+            render={props => (
+              <Trains {...props}
+                history={this.props.history}
+                setAdminID={this.setAdminID}
+                adminID={this.state.adminID}
               />
             )}
           />

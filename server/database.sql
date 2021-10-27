@@ -23,8 +23,6 @@ CREATE TABLE `railway_management_database`.`admin` (
 CREATE TABLE `railway_management_database`.`train` (
   `Train_ID` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(50) NOT NULL,
-  `Up_start_time` TIME NOT NULL,
-  `Down_start_time` TIME NOT NULL,
   `No_of_coaches` INT NOT NULL,
   `No_of_classes` INT NOT NULL,
   PRIMARY KEY (`Train_ID`));
