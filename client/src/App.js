@@ -289,6 +289,9 @@ class App extends Component {
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
                 selectedTrainID={this.state.selectedTrainID}
+
+                setClerkID={this.setClerkID}
+                clerkID={this.state.clerkID}
               />
             )}
           />
@@ -315,6 +318,9 @@ class App extends Component {
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
                 selectedTrainID={this.state.selectedTrainID}
+
+                setClerkID={this.setClerkID}
+                clerkID={this.state.clerkID}
               />
             )}
           />
@@ -397,6 +403,9 @@ class App extends Component {
                 noOfPassengers={this.state.noOfPassengers}
                 setSelectedTrainID={this.setSelectedTrainID}
                 selectedTrainID={this.state.selectedTrainID}
+
+                setClerkID={this.setClerkID}
+                clerkID={this.state.clerkID}
               />
             )}
           />
@@ -549,6 +558,9 @@ class App extends Component {
 
                 selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
                 setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
+              
+                setClerkID={this.setClerkID}
+                clerkID={this.state.clerkID}
               />
             )}
           />
@@ -578,6 +590,9 @@ class App extends Component {
 
                 selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
                 setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
+              
+                setClerkID={this.setClerkID}
+                clerkID={this.state.clerkID}
               />
             )}
           />

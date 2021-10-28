@@ -43,6 +43,7 @@ class TrainInfoContainer extends Component {
             },
             
         }
+        alert(this.props.clerkID);
 
         Axios.post("http://localhost:3001/api/getTrainName", {
             trainID: this.props.trainIDFromPositionToPosition.trainID,
