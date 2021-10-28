@@ -38,52 +38,46 @@ class AddTrainContainer extends Component {
 
         this.addPressed = this.addPressed.bind(this);
 
-        this.setSelectedStationName = this.setSelectedStationName.bind(this);
-        this.setClerkName = this.setClerkName.bind(this);
-        this.setClerkMobile = this.setClerkMobile.bind(this);
-        this.setClerkPassword = this.setClerkPassword.bind(this);
+        this.setTrainName = this.setTrainName.bind(this);
+        this.setNoOfCoaches = this.setNoOfCoaches.bind(this);
+        this.setNoOfClasses = this.setNoOfClasses.bind(this);
     }
 
-    setSelectedStationName(data) {
+    setTrainName(data) {
         this.setState({
-            selectedStationName: data,
+            trainName: data,
         })
     }
 
-    setClerkName(data) {
+    setNoOfCoaches(data) {
         this.setState({
-            clerkName: data,
+            noOfCoaches: data,
         })
     }
 
-    setClerkMobile(data) {
+    setNoOfClasses(data) {
         this.setState({
-            clerkMobile: data,
+            noOfClasses: data,
         })
     }
 
-    setClerkPassword(data) {
-        this.setState({
-            clerkPassword: data,
-        })
-    }
 
     addPressed = event => {
         event.preventDefault();
 
-        Axios.post("http://localhost:3001/api/addNewClerk", {
-            clerkName: this.state.clerkName,
-            clerkMobile: this.state.clerkMobile,
-            clerkPassword: this.state.clerkPassword,
-            selectedStationName: this.state.selectedStationName,
-        })
-            .then((res) => {
-                if (res.data.isValid) {
-                    alert("Clerk Added Successfully!");
-                } else {
-                    alert("Clerk already exits!");
-                }
-            })
+        // Axios.post("http://localhost:3001/api/addNewClerk", {
+        //     clerkName: this.state.clerkName,
+        //     clerkMobile: this.state.clerkMobile,
+        //     clerkPassword: this.state.clerkPassword,
+        //     selectedStationName: this.state.selectedStationName,
+        // })
+        //     .then((res) => {
+        //         if (res.data.isValid) {
+        //             alert("Clerk Added Successfully!");
+        //         } else {
+        //             alert("Clerk already exits!");
+        //         }
+        //     })
 
     };
 
@@ -98,16 +92,16 @@ class AddTrainContainer extends Component {
                 <Form>
                     <label style={this.state.styleLabel}>Train Name</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setClerkName(e.target.value) }} type="text" placeholder="Enter Name" />
+                    <input style={this.state.styleInput} onChange={(e) => { this.setTrainName(e.target.value) }} type="text" placeholder="Enter Name" />
                     <br ></br>
 
                     <label style={this.state.styleLabel}>No of Coaches</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setClerkMobile(e.target.value) }} type="number" placeholder="Enter no of coaches" />
+                    <input style={this.state.styleInput} onChange={(e) => { this.setNoOfClasses(e.target.value) }} type="number" placeholder="Enter no of coaches" />
                     <br></br>
                     <label style={this.state.styleLabel}>No of Classes</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setClerkMobile(e.target.value) }} type="number" placeholder="Enter no of classes" />
+                    <input style={this.state.styleInput} onChange={(e) => { this.setNoOfClasses(e.target.value) }} type="number" placeholder="Enter no of classes" />
                     
                     <br></br>
                     <hr style={this.state.styleHr}></hr>
