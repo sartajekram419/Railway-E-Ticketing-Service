@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router';
 import { Container, Button, Heading, Form, Select, ButtonAndNavLinkBox } from './AddTrainContainerElements'
 import Axios from 'axios'
+import AddTrainCoachContainer from '../AddTrainCoachContainer';
 
 class AddTrainContainer extends Component {
 
@@ -13,12 +14,19 @@ class AddTrainContainer extends Component {
             trainName: "",
             noOfCoaches: 0,
             noOfClasses: 2,
+            isAddTrainCoachContainerVisible: false,
+            coachList: [],
 
             stationList: [],
 
             styleHeading: {
                 color: "#fff",
                 textAlign: "center",
+            },
+            style: {
+                display: "flex",
+                flexDirection: "column",
+                padding: "0px 0px 80px 0px",
             },
             styleInput: {
                 height: "40px",
@@ -73,10 +81,15 @@ class AddTrainContainer extends Component {
             .then((res) => {
                 if (res.data.isValid) {
                     alert("Train Added Successfully!");
+                    this.setState({isAddTrainCoachContainerVisible: true})
+
+                    for(let i=1; i<=this.state.noOfCoaches; i++) {
+                        this.setState({ coachList: [...this.state.coachList, [i]] });
+                    }
                 }
-                // } else {
-                //     alert("Clerk already exits!");
-                // }
+                else {
+                    alert("Train already exits!");
+                }
             })
 
     };
@@ -84,30 +97,51 @@ class AddTrainContainer extends Component {
 
     render() {
         return (
-            <Container>
-                <Heading>
-                    <h2 style={this.state.styleHeading}>Add New Train</h2>
-                </Heading>
+            <div style={this.state.style}>
+                {!this.state.isAddTrainCoachContainerVisible && 
+                    <Container>
+                    <Heading>
+                        <h2 style={this.state.styleHeading}>Add New Train</h2>
+                    </Heading>
 
-                <Form>
-                    <label style={this.state.styleLabel}>Train Name</label>
-                    <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setTrainName(e.target.value) }} type="text" placeholder="Enter Name" />
-                    <br ></br>
+                    <Form>
+                        <label style={this.state.styleLabel}>Train Name</label>
+                        <hr style={this.state.styleHr}></hr>
+                        <input style={this.state.styleInput} onChange={(e) => { this.setTrainName(e.target.value) }} type="text" placeholder="Enter Name" />
+                        <br ></br>
 
-                    <label style={this.state.styleLabel}>No of Coaches</label>
-                    <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setNoOfCoaches(e.target.value) }} type="number" placeholder="Enter no of coaches" />
-                    <br></br>
+                        <label style={this.state.styleLabel}>No of Coaches</label>
+                        <hr style={this.state.styleHr}></hr>
+                        <input style={this.state.styleInput} onChange={(e) => { this.setNoOfCoaches(e.target.value) }} type="number" placeholder="Enter no of coaches" />
+                        <br></br>
 
-                    <hr style={this.state.styleHr}></hr>
+                        <hr style={this.state.styleHr}></hr>
 
-                    <ButtonAndNavLinkBox>
-                        <Button onClick={this.addPressed}>Add</Button>
-                    </ButtonAndNavLinkBox>
-                </Form>
+                        <ButtonAndNavLinkBox>
+                            <Button onClick={this.addPressed}>Add</Button>
+                        </ButtonAndNavLinkBox>
+                    </Form>
 
-            </Container>
+                    </Container>
+                }
+                {this.state.isAddTrainCoachContainerVisible && <br></br>}
+                {this.state.isAddTrainCoachContainerVisible && <br></br>}
+                {this.state.isAddTrainCoachContainerVisible && <br></br>}
+                {this.state.isAddTrainCoachContainerVisible && <br></br>}
+                {this.state.isAddTrainCoachContainerVisible && <br></br>}
+                {this.state.isAddTrainCoachContainerVisible && <br></br>}
+                
+
+                {this.state.isAddTrainCoachContainerVisible && this.state.coachList.map((coach, index) => {
+                    return <AddTrainCoachContainer
+                            key={index} coach={coach} 
+                            trainName={this.state.trainName}
+                            />
+                })}
+
+                
+
+            </div>
         )
     }
 }

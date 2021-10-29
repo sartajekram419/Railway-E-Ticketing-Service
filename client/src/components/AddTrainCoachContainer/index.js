@@ -10,12 +10,22 @@ class AddTrainCoachContainer extends Component {
 
         this.state = {
 
-            stationName: "",
-            stationDistrict: "",
+            classID: 0,
+            noOfSeats: "",
+            isVisible: true,
 
             styleHeading: {
                 color: "#fff",
                 textAlign: "center",
+            },
+            style: {
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                padding: "0px 4% 0px 0px",
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "90%"
             },
             styleInput: {
                 height: "40px",
@@ -33,76 +43,72 @@ class AddTrainCoachContainer extends Component {
             },
         }
 
-        this.addPressed = this.addPressed.bind(this);
+        this.savePressed = this.savePressed.bind(this);
 
-        this.setStationName = this.setStationName.bind(this);
-        this.setStationDistrict = this.setStationDistrict.bind(this);
+        this.setClassID = this.setClassID.bind(this);
+        this.setNoOfSeats = this.setNoOfSeats.bind(this);
     }
 
-    addPressed = event => {
+    savePressed = event => {
         event.preventDefault();
 
-        Axios.post("http://localhost:3001/api/addNewStation", {
-            station_name: this.state.stationName,
-            station_district: this.state.stationDistrict,
+        Axios.post("http://localhost:3001/api/addNewTrainCoach", {
+            trainName: this.props.trainName,
+            coachID: this.props.coach,
+            classID: this.state.classID,
+            noOfSeats: this.state.noOfSeats,
         })
-            .then((res) => {
-                if (res.data.isValid) {
-                    alert("Station Added Successfully!");
-                } else {
-                    alert("Staion already exits!");
-                }
-            })
+        .then((res) => {
+            this.setState({isVisible: false});
+        })
 
-        this.props.setIsAddStationContainerOpen();
+        
 
     };
 
-    cancelPressed = event => {
-        event.preventDefault();
-
-        this.props.setIsAddStationContainerOpen();
-
-
-    };
-
-    setStationName(data) {
+    setClassID(data) {
         this.setState({
-            stationName: data,
+            classID: data,
         })
     }
 
-    setStationDistrict(data) {
+    setNoOfSeats(data) {
         this.setState({
-            stationDistrict: data,
+            noOfSeats: data,
         })
     }
 
     render() {
         return (
-            <Container>
+            <div>
+            {this.state.isVisible && 
+                <Container>
                 <Heading>
-                    <h2 style={this.state.styleHeading}>Add New Station</h2>
+                    <h2 style={this.state.styleHeading}>Coach no {this.props.coach}</h2>
                 </Heading>
 
                 <Form>
-                    <label style={this.state.styleLabel}>Station Name</label>
+                    <label style={this.state.styleLabel}>Class ID</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setStationName(e.target.value) }} type="text" placeholder="Enter Station Name" />
+                    <input style={this.state.styleInput} onChange={(e) => { this.setClassID(e.target.value) }} type="number" placeholder="Enter Class ID" />
                     <br ></br>
 
-                    <label style={this.state.styleLabel}>Station District</label>
+                    <label style={this.state.styleLabel}>No of Seats</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setStationDistrict(e.target.value) }} type="text" placeholder="Enter Station District" />
+                    <input style={this.state.styleInput} onChange={(e) => { this.setNoOfSeats(e.target.value) }} type="number" placeholder="Enter No of Seats" />
                     <br></br>
 
                     <ButtonAndNavLinkBox>
-                        <Button onClick={this.addPressed}>Add</Button>
-                        <Button onClick={this.cancelPressed}>Cancel</Button>
+                        <Button onClick={this.savePressed}>Save</Button>
                     </ButtonAndNavLinkBox>
                 </Form>
 
-            </Container>
+                </Container>
+            }
+            </div>
+                
+
+            
         )
     }
 }

@@ -572,6 +572,26 @@ app.post("/api/loginClerk", (req, res) => {
 
 });
 
+app.post("/api/addNewTrainCoach", (req, res) => {
+
+    const trainName = req.body.trainName
+    const coachID = req.body.coachID
+    const classID = req.body.classID
+    const noOfSeats = req.body.noOfSeats
+    
+    const sqlInsertPassenger = "SELECT Train_ID FROM train WHERE Name=?"
+    db.query(sqlInsertPassenger, [trainName], (err, result) => {
+        const trainID = result[0].Train_ID;
+
+        const sqlCommand = "INSERT INTO train_coach (Train_ID, Coach_ID, Class_ID, No_of_seats) VALUES (?,?,?,?)"
+        db.query(sqlCommand, [trainID, coachID, classID, noOfSeats], (err1) => {
+            return res.json(true);
+        });
+    
+    });
+
+});
+
 app.listen(3001, () => {
     console.log("running");
 })
