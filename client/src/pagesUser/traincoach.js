@@ -237,44 +237,42 @@ export class TrainCoach extends Component {
             this.setState({seatList:[]})
             this.setState({seatStatusList: []})
 
+            let promises = [];
+            this.setState({ seatStatusList1: [] })
+
             for (let i = 1; i <= res.data[0].No_of_seats; i++) {
 
                 this.setState({ seatList: [...this.state.seatList, [i]] })
 
+                promises.push(
+                    Axios.post("http://localhost:3001/api/getSeatStatus", {
+                    trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
+                    coachID: this.props.selectedCoachID,
+                    fromPosition: this.props.selectedTrainIDFromPositionToPosition.fromStationPosition,
+                    toPosition: this.props.selectedTrainIDFromPositionToPosition.toStationPosition,
+                    date: this.props.journeyDate,
+                    seatID: i,
+                    })
+                );
 
-                Axios.post("http://localhost:3001/api/getSeatStatus", {
-                trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
-                coachID: this.props.selectedCoachID,
-                fromPosition: this.props.selectedTrainIDFromPositionToPosition.fromStationPosition,
-                toPosition: this.props.selectedTrainIDFromPositionToPosition.toStationPosition,
-                date: this.props.journeyDate,
-                seatID: i,
-                })
-                .then((res1) => {
-                    if(res1.data.isAvailable == true) {
-
-                        this.setState({ seatStatusList: [...this.state.seatStatusList, i] })
-
-                        this.setState({seatStatusList1: []})
-                        for(var j=0; j<this.state.seatList.length; j++) {
-
-                            var ind=false;
                 
-                            for(var k=0; k<this.state.seatStatusList.length; k++) {
-                                if(this.state.seatList[j] == this.state.seatStatusList[k]) {
-                                    ind = true; 
-                                    break;
-                                }
-                            }
-                
-                            this.setState({ seatStatusList1: [...this.state.seatStatusList1, ind] })
-                        }
+            }
+
+            Promise.all(promises)
+            .then((results) => {
+                for(let i=0; i<results.length; i++) {
+                    if(results[i].data.isAvailable == true) {
+
+                        this.setState({ seatStatusList1: [...this.state.seatStatusList1, true] })
+
                     } else {
-                        //this.setState({ seatStatusList: [...this.state.seatStatusList, [i]] })
+                        this.setState({ seatStatusList1: [...this.state.seatStatusList1, false] })
                         
                     }
-                })
-            }
+                }
+            })
+
+
 
             if(this.state.coachClassID==1) {
                 this.setState({
@@ -298,7 +296,7 @@ export class TrainCoach extends Component {
         event.preventDefault();
 
         await Axios.post("http://localhost:3001/api/addTicket", {
-            issueTime: '2021-10-22 05:40:30',
+            issueTime: '2021-10-29 05:40:30',
             journeyTime: this.props.journeyDate.split('T')[0] +' ' + this.state.departureTime,
             startPositon: this.props.selectedTrainIDFromPositionToPosition.fromStationPosition,
             endPosition: this.props.selectedTrainIDFromPositionToPosition.toStationPosition,
@@ -328,27 +326,36 @@ export class TrainCoach extends Component {
         })
 
 
+        let promises = [];
         for(var seat=0; seat<this.state.chosenSeatList.length; seat++) {
+            //alert(this.state.chosenSeatList[seat]);
             for(var f=11; f<this.props.selectedTrainIDFromPositionToPosition.toStationPosition; f++) {
                 //alert("fdsf");
                 for(var t=this.props.selectedTrainIDFromPositionToPosition.fromStationPosition+1; t<14; t++) {
                     if(t<=f)
                         t=f+1;
-                    Axios.post("http://localhost:3001/api/addBookingStatus", {
-                        trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
-                        coachID: this.props.selectedCoachID,
-                        // date: this.props.journeyDate.split('T')[0],
-                        date: '2021-10-22',
-                        startPositon: f,
-                        endPosition: t,
-                        seatNo: this.state.chosenSeatList[seat],
-                    })
-                    .then((res2) => {
-                    })
+                    //alert(1);
+                    promises.push(
+                        Axios.post("http://localhost:3001/api/addBookingStatus", {
+                            trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
+                            coachID: this.props.selectedCoachID,
+                            date: this.props.journeyDate.split('T')[0],
+                            //date: '2021-10-29',
+                            startPositon: f,
+                            endPosition: t,
+                            seatNo: this.state.chosenSeatList[seat],
+                        })
+                    );
+
                 }
             }
             
         }
+
+        Promise.all(promises)
+        .then((results) => {
+
+        })
         
         this.props.history.push({ pathname: '/home-user' });
     };
