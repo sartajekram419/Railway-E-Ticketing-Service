@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router';
-import { Container, Button, Heading, Form, Select, ButtonAndNavLinkBox } from './AddTrainContainerElements'
+import { Container, Button, Heading, Form, Select, ButtonAndNavLinkBox, Button1 } from './AddTrainContainerElements'
 import Axios from 'axios'
 import AddTrainCoachContainer from '../AddTrainCoachContainer';
 
@@ -15,7 +15,9 @@ class AddTrainContainer extends Component {
             noOfCoaches: 0,
             noOfClasses: 2,
             isAddTrainCoachContainerVisible: false,
+            isAddTrainStationContainerVisible: false,
             coachList: [],
+            stationCount: 0,
 
             stationList: [],
 
@@ -27,6 +29,8 @@ class AddTrainContainer extends Component {
                 display: "flex",
                 flexDirection: "column",
                 padding: "0px 0px 80px 0px",
+                justifyContent: "center",
+                alignItems: "center",
             },
             styleInput: {
                 height: "40px",
@@ -44,11 +48,29 @@ class AddTrainContainer extends Component {
             },
         }
 
+        Axios.post("http://localhost:3001/api/getStationList", {
+        })
+        .then((res) => {
+            for (var i in res.data) {
+                var object = res.data[i].Name;
+
+                this.setState({ stationList: [...this.state.stationList, ...[object]] })
+            }
+        })
+
         this.addPressed = this.addPressed.bind(this);
+        this.addNewStationToPathPressed = this.addNewStationToPathPressed.bind(this);
 
         this.setTrainName = this.setTrainName.bind(this);
         this.setNoOfCoaches = this.setNoOfCoaches.bind(this);
         this.setNoOfClasses = this.setNoOfClasses.bind(this);
+        this.setIsAddTrainStationContainerVisibleToFalse = this.setIsAddTrainStationContainerVisibleToFalse.bind(this);
+    }
+
+    setIsAddTrainStationContainerVisibleToFalse() {
+        this.setState({
+            isAddTrainStationContainerVisible: false
+        })
     }
 
     setTrainName(data) {
@@ -92,6 +114,13 @@ class AddTrainContainer extends Component {
                 }
             })
 
+    };
+
+    addNewStationToPathPressed = event => {
+        event.preventDefault();
+        this.setState({stationCount: this.state.stationCount+1});
+
+        this.setState({isAddTrainStationContainerVisible: true});
     };
 
 
@@ -139,7 +168,17 @@ class AddTrainContainer extends Component {
                             />
                 })}
 
+                {<br></br>}
+                {<br></br>}
                 
+                <Button1 onClick={this.addNewStationToPathPressed}>Add Next Station to Path</Button1>
+
+                {this.state.isAddTrainStationContainerVisible && <br></br>}
+                {this.state.isAddTrainStationContainerVisible && <br></br>}
+                {this.state.isAddTrainStationContainerVisible && <br></br>}
+
+                
+                {this.state.isAddTrainStationContainerVisible && <br></br>}
 
             </div>
         )

@@ -50,6 +50,17 @@ export const Button = styled.button`
 
 `;
 
+export const Button1 = styled.button`
+    background: #102f63;
+    color: white;
+    height: 40px;
+    cursor: pointer;
+    padding: 0px 20px 0px 20px;
+    border-radius:10px 10px 10px 10px;
+    border: 2px solid #102f63;
+
+`;
+
 export const Form = styled.form`
     background: #fff;
     display: flex;
