@@ -250,7 +250,7 @@ export class TrainCoach extends Component {
                     coachID: this.props.selectedCoachID,
                     fromPosition: this.props.selectedTrainIDFromPositionToPosition.fromStationPosition,
                     toPosition: this.props.selectedTrainIDFromPositionToPosition.toStationPosition,
-                    date: this.props.journeyDate,
+                    date: this.props.journeyDate.split('T')[0],
                     seatID: i,
                     })
                 );

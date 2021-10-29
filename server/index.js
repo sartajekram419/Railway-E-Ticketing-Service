@@ -295,27 +295,32 @@ app.post("/api/getSeatStatus", (req, res) => {
 
     //console.log(date);
 
-    const sqlInsertPassenger = "SELECT Date FROM booking_status WHERE Train_ID=? AND Coach_ID=? AND Start_position=? AND End_position=? AND Seat_no=?"
-    db.query(sqlInsertPassenger, [trainID, coachID, fromPosition, toPosition, seatID], (err, result) => {
+    const sqlInsertPassenger = "SELECT * FROM booking_status WHERE Train_ID=? AND Coach_ID=? AND Start_position=? AND End_position=? AND Seat_no=? AND Date=?"
+    db.query(sqlInsertPassenger, [trainID, coachID, fromPosition, toPosition, seatID, date], (err, result) => {
 
-        for (var i = 0; i < result.length; i++) {
-            //console.log(result[i].Date.toISOString());
-            //console.log(date.toString())
-            if (date.toString() == result[i].Date.toISOString()) {
-                var object = {
-                    isAvailable: false,
-                };
-                //console.log(seatID);
-                return res.json(object);
-            }
+        if (result.length == 1) {
+            var object = {
+                isAvailable: false,
+            };
+            //console.log(seatID);
+            return res.json(object);
+        } else {
+            var object = {
+                isAvailable: true,
+            };
+    
+            //console.log(object);
+            return res.json(object);
         }
+        // for (var i = 0; i < result.length; i++) {
+        //     //console.log(result[i].Date.toISOString());
+        //     //console.log(date.toString())
+        //     if (date.toString() == result[i].Date.toISOString()) {
+                
+        //     }
+        // }
 
-        var object = {
-            isAvailable: true,
-        };
-
-        //console.log(object);
-        return res.json(object);
+        
     });
 
 });
@@ -498,7 +503,7 @@ app.post("/api/addTicketSeat", (req, res) => {
 app.post("/api/addBookingStatus", (req, res) => {
 
 
-    //console.log("1");
+    console.log("1");
 
     const trainID = req.body.trainID
     const coachID = req.body.coachID

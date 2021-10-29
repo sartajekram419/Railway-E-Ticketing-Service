@@ -49,8 +49,8 @@ CREATE TABLE `railway_management_database`.`train_coach` (
 CREATE TABLE `railway_management_database`.`train_station` (
   `Train_ID` INT NOT NULL,
   `Station_ID` INT NOT NULL,
-  `Up_time` TIME NOT NULL,
-  `Down_time` TIME NOT NULL,
+  `Up_time` VARCHAR(50) NOT NULL,
+  `Down_time` VARCHAR(50) NOT NULL,
   `Position` INT NOT NULL,
   PRIMARY KEY (`Train_ID`, `Station_ID`),
   FOREIGN KEY (Train_ID) REFERENCES train(Train_ID) ON DELETE CASCADE,
@@ -72,7 +72,7 @@ CREATE TABLE `railway_management_database`.`fare` (
 CREATE TABLE `railway_management_database`.`booking_status` (
   `Train_ID` INT NOT NULL,
   `Coach_ID` INT NOT NULL,
-  `Date` DATE NOT NULL,
+  `Date` VARCHAR(50) NOT NULL,
   `Start_position` INT NOT NULL,
   `End_position` INT NOT NULL,
   `Seat_no` INT NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE `railway_management_database`.`booking_status` (
 CREATE TABLE `railway_management_database`.`ticket` (
   `Ticket_ID` INT NOT NULL AUTO_INCREMENT,
   `Issue_time` DATETIME NOT NULL,
-  `Journey_time` DATETIME NOT NULL,
+  `Journey_time` VARCHAR(50) NOT NULL,
   `Start_position` INT NOT NULL,
   `End_position` INT NOT NULL,
   `Train_ID` INT NOT NULL,
@@ -121,8 +121,8 @@ VALUES (1, 'p1@gmail.com', 'Passenger 1', 1521370630, '1'), (2, 'p2@gmail.com', 
 INSERT INTO `railway_management_database`.station (Name, District)
 VALUES ('Chittagong Railway Station', 'Chittagong'), ('Cumilla Railway Station', 'Cumilla'), ('Komolapur Railway Station', 'Dhaka');
 
-INSERT INTO `railway_management_database`.train (Name, Up_start_time, Down_start_time, No_of_coaches, No_of_classes)
-VALUES ('Suborno Express', '07:00:00', '15:00:00', 3, 2), ('Turna Express', '23:00:00', '07:00:00', 3, 2);
+INSERT INTO `railway_management_database`.train (Name, No_of_coaches, No_of_classes)
+VALUES ('Suborno Express', 3, 2), ('Turna Express', 3, 2);
 
 INSERT INTO `railway_management_database`.booking_clerk (Name, Mobile, Password, Station_ID)
 VALUES ('Clerk 1', 1934562345, '1', 2);
