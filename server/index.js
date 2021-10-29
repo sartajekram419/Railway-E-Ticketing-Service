@@ -308,7 +308,7 @@ app.post("/api/getSeatStatus", (req, res) => {
             var object = {
                 isAvailable: true,
             };
-    
+
             //console.log(object);
             return res.json(object);
         }
@@ -316,11 +316,11 @@ app.post("/api/getSeatStatus", (req, res) => {
         //     //console.log(result[i].Date.toISOString());
         //     //console.log(date.toString())
         //     if (date.toString() == result[i].Date.toISOString()) {
-                
+
         //     }
         // }
 
-        
+
     });
 
 });
@@ -437,10 +437,33 @@ app.post("/api/addNewClerk", (req, res) => {
                 var isValid = { isValid: false };
             }
             return res.json(isValid);
-        
+
 
         });
     });
+});
+
+
+
+app.post("/api/addNewTrain", (req, res) => {
+
+    const trainName = req.body.trainName
+    const noOfCoaches = req.body.noOfCoaches
+    const noOfClasses = req.body.noOfClasses
+
+    const sqlInsertPassenger = "INSERT INTO train (Name, No_of_coaches, No_of_classes) VALUES (?,?,?)"
+    db.query(sqlInsertPassenger, [trainName, noOfCoaches, noOfClasses], (err) => {
+        if (err == null) {
+            var isValid = { isValid: true };
+        } else {
+            // console.log(err);
+            // console.log("Hello");
+            var isValid = { isValid: false };
+        }
+        return res.json(isValid);
+
+    });
+
 });
 
 
@@ -478,7 +501,7 @@ app.post("/api/addTicket", (req, res) => {
             //console.log(err);
             return res.json(insertedTicketID.insertedTicketID);
         }
-        
+
     });
 
 });
@@ -487,7 +510,7 @@ app.post("/api/addTicketSeat", (req, res) => {
 
     const ticketID = req.body.ticketID
     const seatID = req.body.seatID
-    
+
     const sqlInsertPassenger = "INSERT INTO ticket_seat (Ticket_ID, Seat_ID) VALUES (?,?)"
     db.query(sqlInsertPassenger, [ticketID, seatID], (err) => {
         if (err == null) {
@@ -495,7 +518,7 @@ app.post("/api/addTicketSeat", (req, res) => {
         } else {
 
         }
-        
+
     });
 
 });
@@ -512,15 +535,15 @@ app.post("/api/addBookingStatus", (req, res) => {
     const endPosition = req.body.endPosition
     const seatNo = req.body.seatNo
 
-    
+
     const sqlInsertPassenger = "INSERT INTO booking_status (Train_ID, Coach_ID, Date, Start_position, End_position, Seat_no) VALUES (?,?,?,?,?,?)"
     db.query(sqlInsertPassenger, [trainID, coachID, date, startPositon, endPosition, seatNo], (err) => {
         if (err == null) {
-        
+
         } else {
             console.log(err);
         }
-        
+
     });
 
 });

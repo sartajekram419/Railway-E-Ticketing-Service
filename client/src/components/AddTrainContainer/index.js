@@ -12,7 +12,7 @@ class AddTrainContainer extends Component {
 
             trainName: "",
             noOfCoaches: 0,
-            noOfClasses: 0,
+            noOfClasses: 2,
 
             stationList: [],
 
@@ -65,19 +65,19 @@ class AddTrainContainer extends Component {
     addPressed = event => {
         event.preventDefault();
 
-        // Axios.post("http://localhost:3001/api/addNewClerk", {
-        //     clerkName: this.state.clerkName,
-        //     clerkMobile: this.state.clerkMobile,
-        //     clerkPassword: this.state.clerkPassword,
-        //     selectedStationName: this.state.selectedStationName,
-        // })
-        //     .then((res) => {
-        //         if (res.data.isValid) {
-        //             alert("Clerk Added Successfully!");
-        //         } else {
-        //             alert("Clerk already exits!");
-        //         }
-        //     })
+        Axios.post("http://localhost:3001/api/addNewTrain", {
+            trainName: this.state.trainName,
+            noOfCoaches: this.state.noOfCoaches,
+            noOfClasses: this.state.noOfClasses,
+        })
+            .then((res) => {
+                if (res.data.isValid) {
+                    alert("Train Added Successfully!");
+                }
+                // } else {
+                //     alert("Clerk already exits!");
+                // }
+            })
 
     };
 
@@ -97,13 +97,9 @@ class AddTrainContainer extends Component {
 
                     <label style={this.state.styleLabel}>No of Coaches</label>
                     <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setNoOfClasses(e.target.value) }} type="number" placeholder="Enter no of coaches" />
+                    <input style={this.state.styleInput} onChange={(e) => { this.setNoOfCoaches(e.target.value) }} type="number" placeholder="Enter no of coaches" />
                     <br></br>
-                    <label style={this.state.styleLabel}>No of Classes</label>
-                    <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setNoOfClasses(e.target.value) }} type="number" placeholder="Enter no of classes" />
-                    
-                    <br></br>
+
                     <hr style={this.state.styleHr}></hr>
 
                     <ButtonAndNavLinkBox>
