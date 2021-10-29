@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import { Container, Button, Heading, Form, Select, ButtonAndNavLinkBox, Button1 } from './AddTrainContainerElements'
 import Axios from 'axios'
 import AddTrainCoachContainer from '../AddTrainCoachContainer';
+import AddTrainStationContainer from '../AddTrainStationContainer';
 
 class AddTrainContainer extends Component {
 
@@ -64,6 +65,7 @@ class AddTrainContainer extends Component {
         this.setTrainName = this.setTrainName.bind(this);
         this.setNoOfCoaches = this.setNoOfCoaches.bind(this);
         this.setNoOfClasses = this.setNoOfClasses.bind(this);
+        this.decrementStationCount = this.decrementStationCount.bind(this);
         this.setIsAddTrainStationContainerVisibleToFalse = this.setIsAddTrainStationContainerVisibleToFalse.bind(this);
     }
 
@@ -71,6 +73,10 @@ class AddTrainContainer extends Component {
         this.setState({
             isAddTrainStationContainerVisible: false
         })
+    }
+
+    decrementStationCount() {
+        this.setState({stationCount: this.state.stationCount-1});
     }
 
     setTrainName(data) {
@@ -178,7 +184,17 @@ class AddTrainContainer extends Component {
                 {this.state.isAddTrainStationContainerVisible && <br></br>}
 
                 
-                {this.state.isAddTrainStationContainerVisible && <br></br>}
+                {this.state.isAddTrainStationContainerVisible &&
+                <AddTrainStationContainer
+                    trainName={this.state.trainName}
+                    stationList={this.state.stationList}
+
+                    stationCount={this.state.stationCount}
+                    decrementStationCount={this.decrementStationCount}
+
+                    setIsAddTrainStationContainerVisibleToFalse={this.setIsAddTrainStationContainerVisibleToFalse}
+                />
+                }
 
             </div>
         )
