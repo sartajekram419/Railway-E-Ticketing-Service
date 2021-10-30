@@ -326,29 +326,38 @@ export class TrainCoachClerk extends Component {
             })
 
 
-        for (var seat = 0; seat < this.state.chosenSeatList.length; seat++) {
-            for (var f = 1; f < this.props.selectedTrainIDFromPositionToPosition.toStationPosition; f++) {
-                //alert("fdsf");
-                for (var t = this.props.selectedTrainIDFromPositionToPosition.fromStationPosition + 1; t < 4; t++) {
-                    if (t <= f)
-                        t = f + 1;
-                    Axios.post("http://localhost:3001/api/addBookingStatus", {
-                        trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
-                        coachID: this.props.selectedCoachID,
-                        date: this.props.journeyDate.split('T')[0],
-                        //date: '2021-10-22',
-                        startPositon: f,
-                        endPosition: t,
-                        seatNo: this.state.chosenSeatList[seat],
-                    })
-                        .then((res2) => {
-                        })
+            let objectList = [];
+            for (var seat = 0; seat < this.state.chosenSeatList.length; seat++) {
+                //alert(this.state.chosenSeatList[seat]);
+                for (var f = 1; f < this.props.selectedTrainIDFromPositionToPosition.toStationPosition; f++) {
+                    //alert("fdsf");
+                    for (var t = this.props.selectedTrainIDFromPositionToPosition.fromStationPosition + 1; t < 4; t++) {
+                        if (t <= f)
+                            t = f + 1;
+                        //alert(this.state.chosenSeatList[seat]+ ' ' + f + ' ' + t);
+    
+                        let object = {
+                            trainID: this.props.selectedTrainIDFromPositionToPosition.trainID,
+                            coachID: this.props.selectedCoachID,
+                            date: this.props.journeyDate.split('T')[0],
+                            //date: '2021-10-29',
+                            startPositon: f,
+                            endPosition: t,
+                            seatNo: this.state.chosenSeatList[seat],
+                        }
+    
+                        objectList.push(object);
+    
+                    }
                 }
             }
-
-        }
-
-        this.props.history.push({ pathname: '/clerk-home' });
+    
+            Axios.post("http://localhost:3001/api/addBookingStatus", {
+                objectList: objectList,
+            })
+            .then((res) => {
+                this.props.history.push({ pathname: '/clerk-home' });
+            })
     };
 
     render() {

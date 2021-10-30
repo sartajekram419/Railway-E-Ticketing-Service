@@ -526,25 +526,31 @@ app.post("/api/addTicketSeat", (req, res) => {
 app.post("/api/addBookingStatus", (req, res) => {
 
 
-    console.log("1");
+    //console.log("1");
+    const objectList = req.body.objectList
+    //console.log(objectList);
 
-    const trainID = req.body.trainID
-    const coachID = req.body.coachID
-    const date = req.body.date
-    const startPositon = req.body.startPositon
-    const endPosition = req.body.endPosition
-    const seatNo = req.body.seatNo
+    for(let i=0; i<objectList.length; i++) {
+        const trainID = objectList[i].trainID
+        const coachID = objectList[i].coachID
+        const date = objectList[i].date
+        const startPositon = objectList[i].startPositon
+        const endPosition = objectList[i].endPosition
+        const seatNo = objectList[i].seatNo
 
 
-    const sqlInsertPassenger = "INSERT INTO booking_status (Train_ID, Coach_ID, Date, Start_position, End_position, Seat_no) VALUES (?,?,?,?,?,?)"
-    db.query(sqlInsertPassenger, [trainID, coachID, date, startPositon, endPosition, seatNo], (err) => {
-        if (err == null) {
+        const sqlInsertPassenger = "INSERT INTO booking_status (Train_ID, Coach_ID, Date, Start_position, End_position, Seat_no) VALUES (?,?,?,?,?,?)"
+        db.query(sqlInsertPassenger, [trainID, coachID, date, startPositon, endPosition, seatNo], (err) => {
+            if (err == null) {
 
-        } else {
-            console.log(err);
-        }
+            } else {
+                console.log(err);
+            }
 
-    });
+        });
+    }
+
+    return res.json(true);
 
 });
 
