@@ -592,6 +592,34 @@ app.post("/api/addNewTrainCoach", (req, res) => {
 
 });
 
+app.post("/api/addTrainStation", (req, res) => {
+
+    const trainName = req.body.trainName
+    const selectedStationName = req.body.selectedStationName
+    const selectedUpTime = req.body.selectedUpTime
+    const selectedDownTime = req.body.selectedDownTime
+    const position = req.body.position
+
+
+
+    const sqlSelectTrainID = "SELECT Train_ID FROM train WHERE Name = ?"
+    db.query(sqlSelectTrainID, [trainName], (err, result) => {
+        const trainID = result[0].Train_ID
+
+        const sqlSelectStationID = "SELECT Station_ID FROM station WHERE Name=?"
+        db.query(sqlSelectStationID, [selectedStationName], (err1, result1) => {
+            const stationID = result1[0].Station_ID
+
+            const sqlInsertTrainStation = "INSERT INTO train_station (Train_ID, Station_ID, Up_time, Down_time, Position) VALUES (?,?,?,?,?)"
+            db.query(sqlInsertTrainStation, [trainID, stationID, selectedUpTime, selectedDownTime, position], (err1) => {
+                return res.json(true);
+            });
+        });
+
+    });
+
+});
+
 app.listen(3001, () => {
     console.log("running");
 })

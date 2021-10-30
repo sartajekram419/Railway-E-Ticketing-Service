@@ -327,9 +327,9 @@ export class TrainCoachClerk extends Component {
 
 
         for (var seat = 0; seat < this.state.chosenSeatList.length; seat++) {
-            for (var f = 11; f < this.props.selectedTrainIDFromPositionToPosition.toStationPosition; f++) {
+            for (var f = 1; f < this.props.selectedTrainIDFromPositionToPosition.toStationPosition; f++) {
                 //alert("fdsf");
-                for (var t = this.props.selectedTrainIDFromPositionToPosition.fromStationPosition + 1; t < 14; t++) {
+                for (var t = this.props.selectedTrainIDFromPositionToPosition.fromStationPosition + 1; t < 4; t++) {
                     if (t <= f)
                         t = f + 1;
                     Axios.post("http://localhost:3001/api/addBookingStatus", {

@@ -46,21 +46,17 @@ class AddTrainStationContainer extends Component {
     addPressed = event => {
         event.preventDefault();
 
-        // Axios.post("http://localhost:3001/api/addNewStation", {
-        //     station_name: this.state.stationName,
-        //     station_district: this.state.stationDistrict,
-        // })
-        //     .then((res) => {
-        //         if (res.data.isValid) {
-        //             alert("Station Added Successfully!");
-        //         } else {
-        //             alert("Staion already exits!");
-        //         }
-        //     })
+        Axios.post("http://localhost:3001/api/addTrainStation", {
+            trainName: this.props.trainName,
+            selectedStationName: this.state.selectedStationName,
+            selectedUpTime: this.state.selectedUpTime,
+            selectedDownTime: this.state.selectedDownTime,
+            position: this.props.stationCount,
+        })
+        .then((res) => {
+            this.props.setIsAddTrainStationContainerVisibleToFalse();
+        })
 
-        // this.props.setIsAddStationContainerOpen();
-
-        //this.props.setIsAddTrainStationContainerVisibleToFalse();
 
     };
 
