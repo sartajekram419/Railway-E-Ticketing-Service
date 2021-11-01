@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router';
-import { Container, Button, Heading, Form, NavLink, ButtonAndNavLinkBox } from '../LoginForm/LoginFormElements'
+import { Container, Button, Heading, Form, NavLink, ButtonAndNavLinkBox, MessageBox } from '../LoginForm/LoginFormElements'
 import Axios from 'axios'
 
 class LoginForm extends Component {
@@ -13,9 +13,17 @@ class LoginForm extends Component {
             email: "",
             password: "",
 
+            emailError: "",
+            passwordError: "",
+
             styleHeading: {
                 color: "#fff",
                 textAlign: "center",
+            },
+            style: {
+                display: "flex",
+                flexDirection: "column",
+                padding: "80px 0px 80px 0px",
             },
             styleInput: {
                 height: "40px",
@@ -37,15 +45,39 @@ class LoginForm extends Component {
 
         this.setEmail = this.setEmail.bind(this);
         this.setPassword = this.setPassword.bind(this);
+
+        this.validate = this.validate.bind(this);
+    }
+
+    validate = () => {
+        var isValid = true;
+        
+        if(!this.state.email.includes("@") || !this.state.email.includes(".com")) {
+            this.setState({emailError: "Invalid Email."});
+            isValid = false;
+        } else {
+            this.setState({emailError: ""});
+        }
+
+        if(this.state.password == "") {
+            this.setState({passwordError: "Password Required."})
+            isValid = false;
+        } else {
+            this.setState({passwordError: ""})
+        }
+
+        return isValid;
     }
 
     loginPressed = event => {
         event.preventDefault();
 
-        Axios.post("http://localhost:3001/api/loginPassenger", {
-            email: this.state.email,
-            password: this.state.password,
-        })
+        let isValid = this.validate();
+        if(isValid) {
+            Axios.post("http://localhost:3001/api/loginPassenger", {
+                email: this.state.email,
+                password: this.state.password,
+            })
             .then((res) => {
                 if (res.data.isValid == true) {
                     this.props.setPassengerMail(this.state.email);
@@ -55,9 +87,10 @@ class LoginForm extends Component {
                     this.props.setPassengerPassword(res.data.password);
                     this.setEmail("-1");
                 } else {
-
+                    this.setState({passwordError: "Incorrect Credentials."})
                 }
             })
+        }
     };
 
     setEmail(data) {
@@ -78,33 +111,41 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <Container>
-                <Heading>
-                    <h2 style={this.state.styleHeading}>User Login</h2>
-                </Heading>
+            <div style={this.state.style}>
 
-                <Form>
-                    <label style={this.state.styleLabel}>Email</label>
-                    <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setEmail(e.target.value) }} type="text" placeholder="Enter Email" />
-                    <br ></br>
+                <MessageBox emailError={this.state.emailError} passwordError={this.state.passwordError}>
+                        {this.state.emailError}
+                        {this.state.emailError!="" && <br></br>}
+                        {this.state.passwordError}
+                </MessageBox>
 
-                    <label style={this.state.styleLabel}>Password</label>
-                    <hr style={this.state.styleHr}></hr>
-                    <input style={this.state.styleInput} onChange={(e) => { this.setPassword(e.target.value) }} type="password" placeholder="Password" />
-                    <br></br>
+                <Container>
+                    <Heading>
+                        <h2 style={this.state.styleHeading}>User Login</h2>
+                    </Heading>
 
-                    <ButtonAndNavLinkBox>
-                        <Button onClick={this.loginPressed}>Login</Button>
-                        <NavLink to='/login' activeStyle> Forgot Password? </NavLink>
-                    </ButtonAndNavLinkBox>
-                </Form>
+                    <Form>
+                        <label style={this.state.styleLabel}>Email</label>
+                        <hr style={this.state.styleHr}></hr>
+                        <input style={this.state.styleInput} onChange={(e) => { this.setEmail(e.target.value) }} type="text" placeholder="Enter Email" />
+                        <br ></br>
 
-            </Container>
+                        <label style={this.state.styleLabel}>Password</label>
+                        <hr style={this.state.styleHr}></hr>
+                        <input style={this.state.styleInput} onChange={(e) => { this.setPassword(e.target.value) }} type="password" placeholder="Password" />
+                        <br></br>
+
+                        <ButtonAndNavLinkBox>
+                            <Button onClick={this.loginPressed}>Login</Button>
+                            <NavLink to='/login' activeStyle> Forgot Password? </NavLink>
+                        </ButtonAndNavLinkBox>
+                    </Form>
+
+                </Container>
+
+            </div>
         )
     }
 }
 
 export default withRouter(LoginForm)
-
-//Login form checked

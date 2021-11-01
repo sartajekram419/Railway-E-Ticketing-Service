@@ -70,9 +70,6 @@ class RegistrationForm extends Component {
             }
         })
 
-        // if(this.state.email != "") {
-        //     this.props.history.push({pathname: '/home-user'});
-        // }
     };
 
     setName(data) {

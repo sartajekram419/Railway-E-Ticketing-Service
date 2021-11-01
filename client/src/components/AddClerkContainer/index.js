@@ -146,5 +146,3 @@ class AddClerkContainer extends Component {
 }
 
 export default withRouter(AddClerkContainer)
-
-//Login form checked
