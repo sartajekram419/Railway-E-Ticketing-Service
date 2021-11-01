@@ -4,7 +4,7 @@ const cors = require('cors')
 const app = express();
 const mysql = require("mysql")
 const bcrypt = require('bcrypt')
-const salt = bcrypt.genSaltSync(10)
+const salt = '$2b$10$9LVBYTgOZfXNqU7Bgs4b3O'
 
 const db = mysql.createPool({
     host: "localhost",
@@ -35,7 +35,6 @@ app.post("/api/registerPassenger", (req, res) => {
                 nid: encryptedNid,
             };
         } else {
-            //console.log(error)
             var user = {
                 isValid: false,
             };
@@ -50,8 +49,7 @@ app.post("/api/loginPassenger", (req, res) => {
     const email = req.body.email
     const password = req.body.password
     const encryptedPassword = bcrypt.hashSync(password, salt)
-    //console.log(encryptedPassword)
-
+    
     const sqlSelectPassenger = "SELECT * FROM passenger WHERE email = ? AND password = ?"
     db.query(sqlSelectPassenger, [email, encryptedPassword], (err, result) => {
 
@@ -155,8 +153,7 @@ app.post("/api/verifyTicket", (req, res) => {
     db.query(sqlSelectPassenger, [ticketID], (err, result) => {
         if (result.length == 1) {
             passengerID = result[0].Passenger_ID
-            //console.log(passengerID);
-
+   
             const sqlCommand = "SELECT Mobile FROM passenger WHERE NID = ?"
             db.query(sqlCommand, [passengerID], (err1, result1) => {
                 if (result1[0].Mobile == mobileNo) {
@@ -200,7 +197,6 @@ app.post("/api/getStationIDForFindCard", (req, res) => {
 
     const sqlSelectPassenger = "SELECT Station_ID FROM station WHERE Name = ?"
     db.query(sqlSelectPassenger, [stationName], (err, result) => {
-        //console.log(result);
         return res.json(result);
     });
 
@@ -214,7 +210,6 @@ app.post("/api/getTrainIDFromPositionToPositionList", (req, res) => {
 
     const sqlSelectPassenger = "SELECT ts1.Train_ID as trainID, ts1.Position as fromStationPosition, ts2.Position as toStationPosition FROM train_station ts1, train_station ts2 WHERE  ts1.Station_ID = ? AND ts2.Station_ID = ? AND ts1.Train_ID = ts2.Train_ID"
     db.query(sqlSelectPassenger, [fromStationID, toStationID], (err, result) => {
-        //console.log(result);
         return res.json(result);
     });
 
@@ -228,7 +223,6 @@ app.post("/api/getStationNameFromTrainIDAndPosition", (req, res) => {
 
     const sqlSelectPassenger = "SELECT Name FROM station WHERE Station_ID = (SELECT Station_ID FROM train_station WHERE Train_ID = ? AND Position = ?)"
     db.query(sqlSelectPassenger, [trainID, position], (err, result) => {
-        //console.log(result);
         return res.json(result);
     });
 
@@ -241,7 +235,6 @@ app.post("/api/getUpTime", (req, res) => {
 
     const sqlSelectPassenger = "SELECT Up_time FROM train_station WHERE Train_ID = ? AND Position = ?"
     db.query(sqlSelectPassenger, [trainID, position], (err, result) => {
-        //console.log(result);
         return res.json(result);
     });
 
@@ -254,7 +247,6 @@ app.post("/api/getDownTime", (req, res) => {
 
     const sqlSelectPassenger = "SELECT Down_time FROM train_station WHERE Train_ID = ? AND Position = ?"
     db.query(sqlSelectPassenger, [trainID, position], (err, result) => {
-        //console.log(result);
         return res.json(result);
     });
 
@@ -266,15 +258,12 @@ app.post("/api/getCoachesCount", (req, res) => {
 
     const sqlSelectPassenger = "SELECT No_of_coaches FROM train WHERE Train_ID = ?"
     db.query(sqlSelectPassenger, [trainID], (err, result) => {
-        //console.log(result);
         return res.json(result);
     });
 
 });
 
 app.post("/api/getStation", (req, res) => {
-
-    // const nid = req.body.nid
 
     const sqlSelectStation = "SELECT Name, District FROM station "
     db.query(sqlSelectStation, (err, result) => {
@@ -290,7 +279,6 @@ app.post("/api/getSeatCount", (req, res) => {
 
     const sqlSelectStation = "SELECT No_of_seats, Class_ID FROM train_coach WHERE Train_ID=? AND Coach_ID=?"
     db.query(sqlSelectStation, [trainID, coachID], (err, result) => {
-        //console.log(result);
         return res.json(result);
     });
 
@@ -305,8 +293,7 @@ app.post("/api/getSeatStatus", (req, res) => {
     const date = req.body.date
     const seatID = req.body.seatID
 
-    //console.log(date);
-
+    
     const sqlInsertPassenger = "SELECT * FROM booking_status WHERE Train_ID=? AND Coach_ID=? AND Start_position=? AND End_position=? AND Seat_no=? AND Date=?"
     db.query(sqlInsertPassenger, [trainID, coachID, fromPosition, toPosition, seatID, date], (err, result) => {
 
@@ -314,24 +301,14 @@ app.post("/api/getSeatStatus", (req, res) => {
             var object = {
                 isAvailable: false,
             };
-            //console.log(seatID);
             return res.json(object);
         } else {
             var object = {
                 isAvailable: true,
             };
 
-            //console.log(object);
             return res.json(object);
         }
-        // for (var i = 0; i < result.length; i++) {
-        //     //console.log(result[i].Date.toISOString());
-        //     //console.log(date.toString())
-        //     if (date.toString() == result[i].Date.toISOString()) {
-
-        //     }
-        // }
-
 
     });
 
@@ -342,8 +319,6 @@ app.post("/api/addNewStation", (req, res) => {
     const station_name = req.body.station_name
     const station_district = req.body.station_district
 
-
-
     const sqlInsertStation = "Insert into station (Name, District) Values (?, ?)";
     db.query(sqlInsertStation, [station_name, station_district], (err) => {
 
@@ -351,8 +326,6 @@ app.post("/api/addNewStation", (req, res) => {
         if (err == null) {
             var isValid = { isValid: true };
         } else {
-            // console.log(err);
-            // console.log("Hello");
             var isValid = { isValid: false };
         }
         return res.json(isValid);
@@ -367,12 +340,9 @@ app.post("/api/deleteStation", (req, res) => {
     const sqlDeleteStation = "Delete from station Where Name =?";
     db.query(sqlDeleteStation, [station_name], (err) => {
 
-
         if (err == null) {
             var isValid = { isValid: true };
         } else {
-            // console.log(err);
-            // console.log("Hello");
             var isValid = { isValid: false };
         }
         return res.json(isValid);
@@ -417,8 +387,6 @@ app.post("/api/deleteClerk", (req, res) => {
         if (err == null) {
             var isValid = { isValid: true };
         } else {
-            // console.log(err);
-            // console.log("Hello");
             var isValid = { isValid: false };
         }
         return res.json(isValid);
@@ -439,13 +407,12 @@ app.post("/api/addNewClerk", (req, res) => {
 
         const selectedStationID = result1[0].Station_ID;
         const sqlCommand = "Insert into booking_clerk (Name, Mobile, Password, Station_ID) Values (?, ?, ?, ?)"
-        //console.log(selectedStationID);
+
         db.query(sqlCommand, [clerkName, clerkMobile, clerkPassword, selectedStationID], (err) => {
             if (err == null) {
                 var isValid = { isValid: true };
             } else {
-                // console.log(err);
-                // console.log("Hello");
+
                 var isValid = { isValid: false };
             }
             return res.json(isValid);
@@ -468,8 +435,7 @@ app.post("/api/addNewTrain", (req, res) => {
         if (err == null) {
             var isValid = { isValid: true };
         } else {
-            // console.log(err);
-            // console.log("Hello");
+
             var isValid = { isValid: false };
         }
         return res.json(isValid);
@@ -481,7 +447,6 @@ app.post("/api/addNewTrain", (req, res) => {
 
 app.post("/api/addTicket", (req, res) => {
 
-    //const issueTime = req.body.issueTime
     const issueTime = '2021-10-22 05:40:30'
     const journeyTime = req.body.journeyTime
     const startPositon = req.body.startPositon
@@ -493,24 +458,19 @@ app.post("/api/addTicket", (req, res) => {
     const fare = req.body.fare
     const passengerID = req.body.passengerID
 
-    //console.log(journeyTime);
-
     const sqlInsertPassenger = "INSERT INTO ticket (Issue_time, Journey_time, Start_position, End_position, Train_ID, Class_ID, Coach_ID, No_of_seats, Fare, Passenger_ID) VALUES (?,?,?,?,?,?,?,?,?,?)"
     db.query(sqlInsertPassenger, [issueTime, journeyTime, startPositon, endPosition, trainID, classID, coachID, noOfSeats, fare, passengerID], (err) => {
         if (err == null) {
-            // console.log("fsfds");
 
             const sqlCommand = "SELECT Ticket_ID FROM ticket WHERE Issue_time=? AND Journey_time=? AND Start_position=? AND End_position=? AND Train_ID=? AND Class_ID=? AND Coach_ID=? AND No_of_seats=? AND Fare=? AND Passenger_ID=?"
             db.query(sqlCommand, [issueTime, journeyTime, startPositon, endPosition, trainID, classID, coachID, noOfSeats, fare, passengerID], (err1, result1) => {
-                console.log(result1[0].Ticket_ID);
-                // var insertedTicketID = { insertedTicketID: result1[0].Ticket_ID };
-                // console.log(insertedTicketID.insertedTicketID);
+                
                 return res.json(result1);
             });
 
         } else {
             var insertedTicketID = { insertedTicketID: -1 };
-            //console.log(err);
+
             return res.json(insertedTicketID.insertedTicketID);
         }
 
@@ -538,9 +498,7 @@ app.post("/api/addTicketSeat", (req, res) => {
 app.post("/api/addBookingStatus", (req, res) => {
 
 
-    //console.log("1");
     const objectList = req.body.objectList
-    //console.log(objectList);
 
     for(let i=0; i<objectList.length; i++) {
         const trainID = objectList[i].trainID
@@ -556,7 +514,7 @@ app.post("/api/addBookingStatus", (req, res) => {
             if (err == null) {
 
             } else {
-                console.log(err);
+
             }
 
         });
@@ -641,14 +599,5 @@ app.post("/api/addTrainStation", (req, res) => {
 app.listen(3001, () => {
     console.log("running");
 })
-
-
-// Server issues fixed
-
-
-
-//2021-10-15T18:00:00.000Z
-
-
 
 
