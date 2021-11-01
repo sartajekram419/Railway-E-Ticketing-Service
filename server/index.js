@@ -3,6 +3,8 @@ const bobyParser = require('body-parser')
 const cors = require('cors')
 const app = express();
 const mysql = require("mysql")
+const bcrypt = require('bcrypt')
+const salt = bcrypt.genSaltSync(10)
 
 const db = mysql.createPool({
     host: "localhost",
@@ -19,18 +21,26 @@ app.post("/api/registerPassenger", (req, res) => {
 
     const name = req.body.name
     const nid = req.body.nid
+    const encryptedNid = bcrypt.hashSync(nid, salt)
     const email = req.body.email
     const mobile = req.body.mobile
     const password = req.body.password
+    const encryptedPassword = bcrypt.hashSync(password, salt)
 
     const sqlInsertPassenger = "INSERT INTO passenger (name, nid, email, mobile, password) VALUES (?,?,?,?,?)"
-    db.query(sqlInsertPassenger, [name, nid, email, mobile, password], (err) => {
+    db.query(sqlInsertPassenger, [name, encryptedNid, email, mobile, encryptedPassword], (err) => {
         if (err == null) {
-            var isValid = { isValid: 'true' };
+            var user = {
+                isValid: true,
+                nid: encryptedNid,
+            };
         } else {
-            var isValid = { isValid: 'false' };
+            //console.log(error)
+            var user = {
+                isValid: false,
+            };
         }
-        return res.json(isValid.isValid);
+        return res.json(user);
     });
 
 });
@@ -39,9 +49,11 @@ app.post("/api/loginPassenger", (req, res) => {
 
     const email = req.body.email
     const password = req.body.password
+    const encryptedPassword = bcrypt.hashSync(password, salt)
+    //console.log(encryptedPassword)
 
     const sqlSelectPassenger = "SELECT * FROM passenger WHERE email = ? AND password = ?"
-    db.query(sqlSelectPassenger, [email, password], (err, result) => {
+    db.query(sqlSelectPassenger, [email, encryptedPassword], (err, result) => {
 
         if (result.length == 1) {
             var user = {

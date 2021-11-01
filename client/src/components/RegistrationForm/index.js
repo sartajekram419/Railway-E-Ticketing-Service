@@ -58,9 +58,9 @@ class RegistrationForm extends Component {
             password: this.state.password,
         })
         .then((res) => {
-            if (res.data == 'true') {
+            if (res.data.isValid == true) {
                 this.props.setPassengerMail(this.state.email);
-                this.props.setPassengerNid(this.state.nid);
+                this.props.setPassengerNid(res.data.nid);
                 this.props.setPassengerName(this.state.name);
                 this.props.setPassengerMobile(this.state.mobile);
                 this.props.setPassengerPassword(this.state.password);

@@ -1,11 +1,11 @@
 CREATE DATABASE `railway_management_database`;
 
 CREATE TABLE railway_management_database.passenger (
-  NID INT NOT NULL,
+  NID VARCHAR(500) NOT NULL,
   Email VARCHAR(50) NOT NULL unique,
   Name VARCHAR(50) NOT NULL,
   Mobile INT NOT NULL,
-  Password VARCHAR(50) NOT NULL,
+  Password VARCHAR(500) NOT NULL,
   PRIMARY KEY (NID));
 
 CREATE TABLE `railway_management_database`.`station` (
@@ -95,7 +95,7 @@ CREATE TABLE `railway_management_database`.`ticket` (
   `Coach_ID` INT NOT NULL,
   `No_of_seats` INT NOT NULL,
   `Fare` INT NOT NULL,
-  `Passenger_ID` INT NOT NULL,
+  `Passenger_ID` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`Ticket_ID`),
   FOREIGN KEY (Passenger_ID) REFERENCES passenger(NID),
   FOREIGN KEY (Train_ID) REFERENCES train(Train_ID) ON DELETE CASCADE
@@ -115,8 +115,8 @@ CREATE TABLE `railway_management_database`.`ticket_seat` (
 INSERT INTO `railway_management_database`.admin (ID, Password)
 VALUES (1, 'admin');
 
-INSERT INTO `railway_management_database`.passenger 
-VALUES (1, 'p1@gmail.com', 'Passenger 1', 1521370630, '1'), (2, 'p2@gmail.com', 'Passenger 2', 1720658277, '1'), (3, 'p3@gmail.com', 'Passenger 3', 1924563623, '1');
+-- INSERT INTO `railway_management_database`.passenger 
+-- VALUES (1, 'p1@gmail.com', 'Passenger 1', 1521370630, '1'), (2, 'p2@gmail.com', 'Passenger 2', 1720658277, '1'), (3, 'p3@gmail.com', 'Passenger 3', 1924563623, '1');
 
 INSERT INTO `railway_management_database`.station (Name, District)
 VALUES ('Chittagong Railway Station', 'Chittagong'), ('Cumilla Railway Station', 'Cumilla'), ('Komolapur Railway Station', 'Dhaka');
@@ -174,19 +174,19 @@ VALUES (1, 1, '2021-10-17', 1, 3, 1),
 
 -- INSERT INTO `railway_management_database`.booking_status (Train_ID, Coach_ID, Date, Start_position, End_position, Seat_no) VALUES (2, 2, '2021-10-16', 11, 13, 2);
 
-INSERT INTO `railway_management_database`.ticket (Issue_time, Journey_time, Start_position, End_position, Train_ID, Class_ID, Coach_ID, No_of_seats, Fare, Passenger_ID)
-VALUES ('2021-10-17 05:40:30', '2021-10-17 07:00:00', 1, 2, 1, 1, 1, 2, 800, 1), 
-('2021-10-17 05:40:30', '2021-10-17 09:00:00', 2, 3, 1, 2, 2, 1, 400, 2),
+-- INSERT INTO `railway_management_database`.ticket (Issue_time, Journey_time, Start_position, End_position, Train_ID, Class_ID, Coach_ID, No_of_seats, Fare, Passenger_ID)
+-- VALUES ('2021-10-17 05:40:30', '2021-10-17 07:00:00', 1, 2, 1, 1, 1, 2, 800, 1), 
+-- ('2021-10-17 05:40:30', '2021-10-17 09:00:00', 2, 3, 1, 2, 2, 1, 400, 2),
 
-('2021-10-17 12:20:35', '2021-10-17 08:00:00', 3, 2, 2, 1, 1, 1, 500, 3),
-('2021-10-17 12:20:35', '2021-10-17 00:00:00', 1, 3, 2, 2, 2, 1, 400, 1);
+-- ('2021-10-17 12:20:35', '2021-10-17 08:00:00', 3, 2, 2, 1, 1, 1, 500, 3),
+-- ('2021-10-17 12:20:35', '2021-10-17 00:00:00', 1, 3, 2, 2, 2, 1, 400, 1);
 
 
-INSERT INTO `railway_management_database`.ticket_seat 
-VALUES (1, 1), (1, 2),
-(2, 2), 
-(3, 4),
-(4, 2);
+-- INSERT INTO `railway_management_database`.ticket_seat 
+-- VALUES (1, 1), (1, 2),
+-- (2, 2), 
+-- (3, 4),
+-- (4, 2);
 
 
 
