@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router';
-import { Container, Button, Heading, Form, NavLink, ButtonAndNavLinkBox } from '../AdminLoginForm/AdminLoginFormElements'
+import { Container, Button, Heading, Form, MessageBox, ButtonAndNavLinkBox } from '../AdminLoginForm/AdminLoginFormElements'
 import Axios from 'axios'
 
 class AdminLoginForm extends Component {
@@ -12,6 +12,9 @@ class AdminLoginForm extends Component {
 
             id: 0,
             password: "",
+
+            idError: "",
+            passwordError: "",
 
             styleHeading: {
                 color: "#fff",
@@ -37,15 +40,39 @@ class AdminLoginForm extends Component {
 
         this.setID = this.setID.bind(this);
         this.setPassword = this.setPassword.bind(this);
+
+        this.validate = this.validate.bind(this);
+    }
+
+    validate = () => {
+        var isValid = true;
+        
+        if(this.state.id == 0) {
+            this.setState({idError: "ID Required."});
+            isValid = false;
+        } else {
+            this.setState({idError: ""});
+        }
+
+        if(this.state.password == "") {
+            this.setState({passwordError: "Password Required."})
+            isValid = false;
+        } else {
+            this.setState({passwordError: ""})
+        }
+
+        return isValid;
     }
 
     loginPressed = event => {
         event.preventDefault();
 
-        Axios.post("http://localhost:3001/api/loginAdmin", {
-            id: this.state.id,
-            password: this.state.password,
-        })
+        let isValid = this.validate();
+        if(isValid) {
+            Axios.post("http://localhost:3001/api/loginAdmin", {
+                id: this.state.id,
+                password: this.state.password,
+            })
             .then((res) => {
 
 
@@ -54,9 +81,10 @@ class AdminLoginForm extends Component {
                     this.props.setAdminID(this.state.id);
                     this.setID(-1);
                 } else {
-
+                    this.setState({passwordError: "Incorrect Credentials."})
                 }
             })
+        }
 
         // if(this.state.email != "") {
         //     this.props.history.push({pathname: '/home-user'});
@@ -81,6 +109,13 @@ class AdminLoginForm extends Component {
 
     render() {
         return (
+            <div>
+
+            <MessageBox idError={this.state.idError} passwordError={this.state.passwordError}>
+                    {this.state.idError}
+                    {this.state.idError!="" && <br></br>}
+                    {this.state.passwordError}
+            </MessageBox>
             <Container>
                 <Heading>
                     <h2 style={this.state.styleHeading}>Admin Login</h2>
@@ -103,6 +138,8 @@ class AdminLoginForm extends Component {
                 </Form>
 
             </Container>
+
+            </div>
         )
     }
 }

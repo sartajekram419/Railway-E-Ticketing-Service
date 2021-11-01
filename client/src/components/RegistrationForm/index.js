@@ -66,7 +66,7 @@ class RegistrationForm extends Component {
                 this.props.setPassengerPassword(this.state.password);
                 this.setEmail("-1");
             } else {
-                //this.setEmail("");
+                //this.setState({})
             }
         })
 
