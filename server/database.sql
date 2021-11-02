@@ -118,59 +118,59 @@ VALUES (1, 'admin');
 -- INSERT INTO `railway_management_database`.passenger 
 -- VALUES (1, 'p1@gmail.com', 'Passenger 1', 1521370630, '1'), (2, 'p2@gmail.com', 'Passenger 2', 1720658277, '1'), (3, 'p3@gmail.com', 'Passenger 3', 1924563623, '1');
 
-INSERT INTO `railway_management_database`.station (Name, District)
-VALUES ('Chittagong Railway Station', 'Chittagong'), ('Cumilla Railway Station', 'Cumilla'), ('Komolapur Railway Station', 'Dhaka');
+-- INSERT INTO `railway_management_database`.station (Name, District)
+-- VALUES ('Chittagong Railway Station', 'Chittagong'), ('Cumilla Railway Station', 'Cumilla'), ('Komolapur Railway Station', 'Dhaka');
 
-INSERT INTO `railway_management_database`.train (Name, No_of_coaches, No_of_classes)
-VALUES ('Suborno Express', 3, 2), ('Turna Express', 3, 2);
+-- INSERT INTO `railway_management_database`.train (Name, No_of_coaches, No_of_classes)
+-- VALUES ('Suborno Express', 3, 2), ('Turna Express', 3, 2);
 
-INSERT INTO `railway_management_database`.booking_clerk (Name, Mobile, Password, Station_ID)
-VALUES ('Clerk 1', 1934562345, '1', 2);
+-- INSERT INTO `railway_management_database`.booking_clerk (Name, Mobile, Password, Station_ID)
+-- VALUES ('Clerk 1', 1934562345, '1', 2);
 
-INSERT INTO `railway_management_database`.train_coach 
-VALUES (1, 1, 1, 12),
-(1, 2, 2, 14),
-(1, 3, 2, 16),
-(2, 1, 1, 8),
-(2, 2, 2, 16),
-(2, 3, 2, 24);
-
-
-INSERT INTO `railway_management_database`.train_station (Train_ID, Station_ID, Up_time, Down_time, Position)
-VALUES (1, 1, '07:00:00', '21:00:00', 1), 
-(1, 2, '09:00:00', '19:00:00', 2),
-(1, 3, '13:00:00', '15:00:00', 3),
-(2, 1, '00:00:00', '14:00:00', 1), 
-(2, 2, '02:00:00', '12:00:00', 2),
-(2, 3, '06:00:00', '08:00:00', 3);
+-- INSERT INTO `railway_management_database`.train_coach 
+-- VALUES (1, 1, 1, 12),
+-- (1, 2, 2, 14),
+-- (1, 3, 2, 16),
+-- (2, 1, 1, 8),
+-- (2, 2, 2, 16),
+-- (2, 3, 2, 24);
 
 
-INSERT INTO `railway_management_database`.fare (Train_ID, Class_ID, Start_position, End_position, Fare)
-VALUES (1, 1, 1, 2, 400),
-(1, 1, 2, 3, 600),
-(1, 1, 1, 3, 1000),
-(1, 2, 1, 2, 200),
-(1, 2, 2, 3, 400),
-(1, 2, 1, 3, 600),
-
-(2, 1, 1, 2, 300),
-(2, 1, 2, 3, 500),
-(2, 1, 1, 3, 800),
-(2, 2, 1, 2, 100),
-(2, 2, 2, 3, 300),
-(2, 2, 1, 3, 400);
+-- INSERT INTO `railway_management_database`.train_station (Train_ID, Station_ID, Up_time, Down_time, Position)
+-- VALUES (1, 1, '07:00:00', '21:00:00', 1), 
+-- (1, 2, '09:00:00', '19:00:00', 2),
+-- (1, 3, '13:00:00', '15:00:00', 3),
+-- (2, 1, '00:00:00', '14:00:00', 1), 
+-- (2, 2, '02:00:00', '12:00:00', 2),
+-- (2, 3, '06:00:00', '08:00:00', 3);
 
 
-INSERT INTO `railway_management_database`.booking_status (Train_ID, Coach_ID, Date, Start_position, End_position, Seat_no)
-VALUES (1, 1, '2021-10-17', 1, 3, 1),
-(1, 1, '2021-10-17', 1, 3, 2),
-(1, 2, '2021-10-17', 1, 3, 2),
-(1, 3, '2021-10-17', 1, 3, 4),
-(2, 1, '2021-10-17', 1, 3, 4),
-(2, 1, '2021-10-17', 1, 3, 1),
-(2, 1, '2021-10-17', 1, 3, 5),
-(2, 2, '2021-10-17', 1, 3, 2),
-(2, 3, '2021-10-17', 1, 3, 4);
+-- INSERT INTO `railway_management_database`.fare (Train_ID, Class_ID, Start_position, End_position, Fare)
+-- VALUES (1, 1, 1, 2, 400),
+-- (1, 1, 2, 3, 600),
+-- (1, 1, 1, 3, 1000),
+-- (1, 2, 1, 2, 200),
+-- (1, 2, 2, 3, 400),
+-- (1, 2, 1, 3, 600),
+
+-- (2, 1, 1, 2, 300),
+-- (2, 1, 2, 3, 500),
+-- (2, 1, 1, 3, 800),
+-- (2, 2, 1, 2, 100),
+-- (2, 2, 2, 3, 300),
+-- (2, 2, 1, 3, 400);
+
+
+-- INSERT INTO `railway_management_database`.booking_status (Train_ID, Coach_ID, Date, Start_position, End_position, Seat_no)
+-- VALUES (1, 1, '2021-10-17', 1, 3, 1),
+-- (1, 1, '2021-10-17', 1, 3, 2),
+-- (1, 2, '2021-10-17', 1, 3, 2),
+-- (1, 3, '2021-10-17', 1, 3, 4),
+-- (2, 1, '2021-10-17', 1, 3, 4),
+-- (2, 1, '2021-10-17', 1, 3, 1),
+-- (2, 1, '2021-10-17', 1, 3, 5),
+-- (2, 2, '2021-10-17', 1, 3, 2),
+-- (2, 3, '2021-10-17', 1, 3, 4);
 
 -- INSERT INTO `railway_management_database`.booking_status (Train_ID, Coach_ID, Date, Start_position, End_position, Seat_no) VALUES (2, 2, '2021-10-16', 11, 13, 2);
 
