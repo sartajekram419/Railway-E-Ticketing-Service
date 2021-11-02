@@ -5,7 +5,7 @@ import Register from './pagesUser/register'
 import VerifyTicket from './pagesUser/verifyticket'
 import ContactUs from './pagesUser/contactus'
 import HomeUser from './pagesUser/home-user'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import React, { Component } from 'react'
 import VerifyTicketUser from './pagesUser/verifyticket-user'
 import ContactUsUser from './pagesUser/contactus-user'
@@ -269,363 +269,533 @@ class App extends Component {
 
           <Route exact path='/'
             render={props => (
-              <Home {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-                setFromStationID={this.setFromStationID}
-                fromStationID={this.state.fromStationID}
-                setToStationID={this.setToStationID}
-                toStationID={this.state.toStationID}
-                setFromStationPosition={this.setFromStationPosition}
-                fromStationPosition={this.state.fromStationPosition}
-                setToStationPosition={this.setToStationPosition}
-                toStationPosition={this.state.toStationPosition}
-                setJourneyDate={this.setJourneyDate}
-                journeyDate={this.state.journeyDate}
-                setClassID={this.setClassID}
-                classID={this.state.classID}
-                setNoOfPassengers={this.setNoOfPassengers}
-                noOfPassengers={this.state.noOfPassengers}
-                setSelectedTrainID={this.setSelectedTrainID}
-                selectedTrainID={this.state.selectedTrainID}
+              <div>
+                {this.state.passengerMail == "" && 
+                  <Home {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                  setFromStationID={this.setFromStationID}
+                  fromStationID={this.state.fromStationID}
+                  setToStationID={this.setToStationID}
+                  toStationID={this.state.toStationID}
+                  setFromStationPosition={this.setFromStationPosition}
+                  fromStationPosition={this.state.fromStationPosition}
+                  setToStationPosition={this.setToStationPosition}
+                  toStationPosition={this.state.toStationPosition}
+                  setJourneyDate={this.setJourneyDate}
+                  journeyDate={this.state.journeyDate}
+                  setClassID={this.setClassID}
+                  classID={this.state.classID}
+                  setNoOfPassengers={this.setNoOfPassengers}
+                  noOfPassengers={this.state.noOfPassengers}
+                  setSelectedTrainID={this.setSelectedTrainID}
+                  selectedTrainID={this.state.selectedTrainID}
+    
+                  setClerkID={this.setClerkID}
+                  clerkID={this.state.clerkID}
+                  />
+                }
 
-                setClerkID={this.setClerkID}
-                clerkID={this.state.clerkID}
-              />
+                {this.state.passengerMail != "" && 
+                  <Redirect to="/home-user" />
+                }
+              </div>
             )}
           />
 
           <Route exact path='/home'
             render={props => (
-              <Home {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-                setFromStationID={this.setFromStationID}
-                fromStationID={this.state.fromStationID}
-                setToStationID={this.setToStationID}
-                toStationID={this.state.toStationID}
-                setFromStationPosition={this.setFromStationPosition}
-                fromStationPosition={this.state.fromStationPosition}
-                setToStationPosition={this.setToStationPosition}
-                toStationPosition={this.state.toStationPosition}
-                setJourneyDate={this.setJourneyDate}
-                journeyDate={this.state.journeyDate}
-                setClassID={this.setClassID}
-                classID={this.state.classID}
-                setNoOfPassengers={this.setNoOfPassengers}
-                noOfPassengers={this.state.noOfPassengers}
-                setSelectedTrainID={this.setSelectedTrainID}
-                selectedTrainID={this.state.selectedTrainID}
+              <div>
+                {this.state.passengerMail == "" && 
+                  <Home {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                  setFromStationID={this.setFromStationID}
+                  fromStationID={this.state.fromStationID}
+                  setToStationID={this.setToStationID}
+                  toStationID={this.state.toStationID}
+                  setFromStationPosition={this.setFromStationPosition}
+                  fromStationPosition={this.state.fromStationPosition}
+                  setToStationPosition={this.setToStationPosition}
+                  toStationPosition={this.state.toStationPosition}
+                  setJourneyDate={this.setJourneyDate}
+                  journeyDate={this.state.journeyDate}
+                  setClassID={this.setClassID}
+                  classID={this.state.classID}
+                  setNoOfPassengers={this.setNoOfPassengers}
+                  noOfPassengers={this.state.noOfPassengers}
+                  setSelectedTrainID={this.setSelectedTrainID}
+                  selectedTrainID={this.state.selectedTrainID}
+    
+                  setClerkID={this.setClerkID}
+                  clerkID={this.state.clerkID}
+                  />
+                }
 
-                setClerkID={this.setClerkID}
-                clerkID={this.state.clerkID}
-              />
+                {this.state.passengerMail != "" && 
+                  <Redirect to="/home-user" />
+                }
+              </div>
             )}
           />
 
           <Route exact path='/login'
             render={props => (
-              <Login {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-                setPassengerNid={this.setPassengerNid}
-                passengerNid={this.state.passengerNid}
-                setPassengerName={this.setPassengerName}
-                passengerName={this.state.passengerName}
-                setPassengerMobile={this.setPassengerMobile}
-                passengerMobile={this.state.passengerMobile}
-                setPassengerPassword={this.setPassengerPassword}
-                passengerPassword={this.state.passengerPassword}
-              />
+              <div>
+                {this.state.passengerMail == "" && 
+                  <Login {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                  setPassengerNid={this.setPassengerNid}
+                  passengerNid={this.state.passengerNid}
+                  setPassengerName={this.setPassengerName}
+                  passengerName={this.state.passengerName}
+                  setPassengerMobile={this.setPassengerMobile}
+                  passengerMobile={this.state.passengerMobile}
+                  setPassengerPassword={this.setPassengerPassword}
+                  passengerPassword={this.state.passengerPassword}
+                />
+                }
+
+                {this.state.passengerMail != "" && 
+                  <Redirect to="/home-user" />
+                }
+              </div>
+              
             )}
           />
 
           <Route exact path='/register'
             render={props => (
-              <Register {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-                setPassengerNid={this.setPassengerNid}
-                passengerNid={this.state.passengerNid}
-                setPassengerName={this.setPassengerName}
-                passengerName={this.state.passengerName}
-                setPassengerMobile={this.setPassengerMobile}
-                passengerMobile={this.state.passengerMobile}
-                setPassengerPassword={this.setPassengerPassword}
-                passengerPassword={this.state.passengerPassword}
-              />
+              <div>
+                {this.state.passengerMail == "" && 
+                  <Register {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                  setPassengerNid={this.setPassengerNid}
+                  passengerNid={this.state.passengerNid}
+                  setPassengerName={this.setPassengerName}
+                  passengerName={this.state.passengerName}
+                  setPassengerMobile={this.setPassengerMobile}
+                  passengerMobile={this.state.passengerMobile}
+                  setPassengerPassword={this.setPassengerPassword}
+                  passengerPassword={this.state.passengerPassword}
+                />
+                }
+
+                {this.state.passengerMail != "" && 
+                  <Redirect to="/home-user" />
+                }
+              </div>
+
+              
             )}
           />
 
           <Route exact path='/verify-ticket'
             render={props => (
-              <VerifyTicket {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-              />
+              <div>
+                {this.state.passengerMail == "" && 
+                  <VerifyTicket {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                />
+                }
+
+                {this.state.passengerMail != "" && 
+                  <Redirect to="/verify-ticket-user" />
+                }
+              </div>
+              
             )}
           />
 
           <Route exact path='/contact-us'
             render={props => (
-              <ContactUs {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-              />
+              <div>
+                {this.state.passengerMail == "" && 
+                  <ContactUs {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                />
+                }
+
+                {this.state.passengerMail != "" && 
+                  <Redirect to="/contact-us-user" />
+                }
+              </div>
+              
             )}
           />
 
           <Route exact path='/home-user'
             render={props => (
-              <HomeUser {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-                setFromStationID={this.setFromStationID}
-                fromStationID={this.state.fromStationID}
-                setToStationID={this.setToStationID}
-                toStationID={this.state.toStationID}
-                setFromStationPosition={this.setFromStationPosition}
-                fromStationPosition={this.state.fromStationPosition}
-                setToStationPosition={this.setToStationPosition}
-                toStationPosition={this.state.toStationPosition}
-                setJourneyDate={this.setJourneyDate}
-                journeyDate={this.state.journeyDate}
-                setClassID={this.setClassID}
-                classID={this.state.classID}
-                setNoOfPassengers={this.setNoOfPassengers}
-                noOfPassengers={this.state.noOfPassengers}
-                setSelectedTrainID={this.setSelectedTrainID}
-                selectedTrainID={this.state.selectedTrainID}
+              <div>
+                {this.state.passengerMail != "" && 
+                  <HomeUser {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                  setFromStationID={this.setFromStationID}
+                  fromStationID={this.state.fromStationID}
+                  setToStationID={this.setToStationID}
+                  toStationID={this.state.toStationID}
+                  setFromStationPosition={this.setFromStationPosition}
+                  fromStationPosition={this.state.fromStationPosition}
+                  setToStationPosition={this.setToStationPosition}
+                  toStationPosition={this.state.toStationPosition}
+                  setJourneyDate={this.setJourneyDate}
+                  journeyDate={this.state.journeyDate}
+                  setClassID={this.setClassID}
+                  classID={this.state.classID}
+                  setNoOfPassengers={this.setNoOfPassengers}
+                  noOfPassengers={this.state.noOfPassengers}
+                  setSelectedTrainID={this.setSelectedTrainID}
+                  selectedTrainID={this.state.selectedTrainID}
+  
+                  setClerkID={this.setClerkID}
+                  clerkID={this.state.clerkID}
+                />
+                }
 
-                setClerkID={this.setClerkID}
-                clerkID={this.state.clerkID}
-              />
+                {this.state.passengerMail == "" && 
+                  <Redirect to="/home" />
+                }
+              </div>
+              
             )}
           />
 
           <Route exact path='/verify-ticket-user'
             render={props => (
-              <VerifyTicketUser {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-              />
+              <div>
+                {this.state.passengerMail != "" && 
+                  <VerifyTicketUser {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                />
+                }
+
+                {this.state.passengerMail == "" && 
+                  <Redirect to="/verify-ticket" />
+                }
+              </div>
+              
             )}
           />
 
           <Route exact path='/contact-us-user'
             render={props => (
-              <ContactUsUser {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-              />
+              <div>
+                {this.state.passengerMail != "" && 
+                  <ContactUsUser {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                />
+                }
+
+                {this.state.passengerMail == "" && 
+                  <Redirect to="/contact-us" />
+                }
+              </div>
+              
             )}
           />
 
           <Route exact path='/dashboard-user'
             render={props => (
-              <DashboardUser {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-                setPassengerNid={this.setPassengerNid}
-                passengerNid={this.state.passengerNid}
-                setPassengerName={this.setPassengerName}
-                passengerName={this.state.passengerName}
-                setPassengerMobile={this.setPassengerMobile}
-                passengerMobile={this.state.passengerMobile}
-                setPassengerPassword={this.setPassengerPassword}
-                passengerPassword={this.state.passengerPassword}
-              />
+              <div>
+                {this.state.passengerMail != "" && 
+                  <DashboardUser {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                  setPassengerNid={this.setPassengerNid}
+                  passengerNid={this.state.passengerNid}
+                  setPassengerName={this.setPassengerName}
+                  passengerName={this.state.passengerName}
+                  setPassengerMobile={this.setPassengerMobile}
+                  passengerMobile={this.state.passengerMobile}
+                  setPassengerPassword={this.setPassengerPassword}
+                  passengerPassword={this.state.passengerPassword}
+                />
+                }
+
+                {this.state.passengerMail == "" && 
+                  <Redirect to="/login" />
+                }
+              </div>
+              
             )}
           />
 
           <Route exact path='/admin-login'
             render={props => (
-              <AdminLogin {...props}
-                history={this.props.history}
-                setAdminID={this.setAdminID}
-                adminID={this.state.adminID}
-              />
+              <div>
+                {this.state.adminID == 0 && 
+                  <AdminLogin {...props}
+                  history={this.props.history}
+                  setAdminID={this.setAdminID}
+                  adminID={this.state.adminID}
+                />
+                }
+
+                {this.state.adminID != 0 && 
+                  <Redirect to="/stations" />
+                }
+              </div>
+              
             )}
           />
 
           <Route exact path='/clerk-login'
             render={props => (
-              <ClerkLogin {...props}
-                history={this.props.history}
-                setClerkID={this.setClerkID}
-                clerkID={this.state.clerkID}
-              />
+              <div>
+                {this.state.clerkID == 0 && 
+                  <ClerkLogin {...props}
+                  history={this.props.history}
+                  setClerkID={this.setClerkID}
+                  clerkID={this.state.clerkID}
+                />
+                }
+
+                {this.state.clerkID != 0 && 
+                  <Redirect to="/clerk-home" />
+                }
+              </div>
+              
             )}
           />
 
           <Route exact path='/clerk-home'
             render={props => (
-              <HomeClerk {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-                setFromStationID={this.setFromStationID}
-                fromStationID={this.state.fromStationID}
-                setToStationID={this.setToStationID}
-                toStationID={this.state.toStationID}
-                setFromStationPosition={this.setFromStationPosition}
-                fromStationPosition={this.state.fromStationPosition}
-                setToStationPosition={this.setToStationPosition}
-                toStationPosition={this.state.toStationPosition}
-                setJourneyDate={this.setJourneyDate}
-                journeyDate={this.state.journeyDate}
-                setClassID={this.setClassID}
-                classID={this.state.classID}
-                setNoOfPassengers={this.setNoOfPassengers}
-                noOfPassengers={this.state.noOfPassengers}
-                setSelectedTrainID={this.setSelectedTrainID}
-                selectedTrainID={this.state.selectedTrainID}
+              <div>
+                {this.state.clerkID != 0 && 
+                  <HomeClerk {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                  setFromStationID={this.setFromStationID}
+                  fromStationID={this.state.fromStationID}
+                  setToStationID={this.setToStationID}
+                  toStationID={this.state.toStationID}
+                  setFromStationPosition={this.setFromStationPosition}
+                  fromStationPosition={this.state.fromStationPosition}
+                  setToStationPosition={this.setToStationPosition}
+                  toStationPosition={this.state.toStationPosition}
+                  setJourneyDate={this.setJourneyDate}
+                  journeyDate={this.state.journeyDate}
+                  setClassID={this.setClassID}
+                  classID={this.state.classID}
+                  setNoOfPassengers={this.setNoOfPassengers}
+                  noOfPassengers={this.state.noOfPassengers}
+                  setSelectedTrainID={this.setSelectedTrainID}
+                  selectedTrainID={this.state.selectedTrainID}
+  
+                  setClerkID={this.setClerkID}
+                  clerkID={this.state.clerkID}
+                />
+                }
 
-                setClerkID={this.setClerkID}
-                clerkID={this.state.clerkID}
-              />
+                {this.state.clerkID == 0 && 
+                  <Redirect to="/clerk-login" />
+                }
+              </div>
+              
             )}
           />
 
           <Route exact path='/stations'
             render={props => (
-              <HomeAdmin {...props}
-                history={this.props.history}
-                setAdminID={this.setAdminID}
-                adminID={this.state.adminID}
-              />
+              <div>
+                {this.state.adminID != 0 && 
+                  <HomeAdmin {...props}
+                  history={this.props.history}
+                  setAdminID={this.setAdminID}
+                  adminID={this.state.adminID}
+                />
+                }
+
+                {this.state.adminID == 0 && 
+                  <Redirect to="/admin-login" />
+                }
+              </div>
+              
             )}
           />
 
           <Route exact path='/clerks'
             render={props => (
-              <Clerks {...props}
-                history={this.props.history}
-                setAdminID={this.setAdminID}
-                adminID={this.state.adminID}
-              // clerkID={this.state.clerkID}
-              // clerkName={this.clerkName}
-              // clerkMobile={this.clerkMobile}
-              // clerkPassword={this.clerkPassword}
-              // clerkStationID={this.clerkStationID}
-              />
+              <div>
+                {this.state.adminID != 0 && 
+                  <Clerks {...props}
+                  history={this.props.history}
+                  setAdminID={this.setAdminID}
+                  adminID={this.state.adminID}
+                // clerkID={this.state.clerkID}
+                // clerkName={this.clerkName}
+                // clerkMobile={this.clerkMobile}
+                // clerkPassword={this.clerkPassword}
+                // clerkStationID={this.clerkStationID}
+                />
+                }
+
+                {this.state.adminID == 0 && 
+                  <Redirect to="/admin-login" />
+                }
+              </div>
+              
             )}
           />
 
           <Route exact path='/trains'
             render={props => (
-              <Trains {...props}
-                history={this.props.history}
-                setAdminID={this.setAdminID}
-                adminID={this.state.adminID}
-              />
+              <div>
+                {this.state.adminID != 0 && 
+                  <Trains {...props}
+                  history={this.props.history}
+                  setAdminID={this.setAdminID}
+                  adminID={this.state.adminID}
+                />
+                }
+
+                {this.state.adminID == 0 && 
+                  <Redirect to="/admin-login" />
+                }
+              </div>
+              
             )}
           />
 
 
           <Route exact path='/trainlist'
             render={props => (
-              <TrainList {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-                setFromStationID={this.setFromStationID}
-                fromStationID={this.state.fromStationID}
-                setToStationID={this.setToStationID}
-                toStationID={this.state.toStationID}
-                setFromStationPosition={this.setFromStationPosition}
-                fromStationPosition={this.state.fromStationPosition}
-                setToStationPosition={this.setToStationPosition}
-                toStationPosition={this.state.toStationPosition}
-                setJourneyDate={this.setJourneyDate}
-                journeyDate={this.state.journeyDate}
-                setClassID={this.setClassID}
-                classID={this.state.classID}
-                setNoOfPassengers={this.setNoOfPassengers}
-                noOfPassengers={this.state.noOfPassengers}
-                setSelectedTrainID={this.setSelectedTrainID}
-                selectedTrainID={this.state.selectedTrainID}
+              <div>
+                {this.state.passengerMail == "" && 
+                  <TrainList {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                  setFromStationID={this.setFromStationID}
+                  fromStationID={this.state.fromStationID}
+                  setToStationID={this.setToStationID}
+                  toStationID={this.state.toStationID}
+                  setFromStationPosition={this.setFromStationPosition}
+                  fromStationPosition={this.state.fromStationPosition}
+                  setToStationPosition={this.setToStationPosition}
+                  toStationPosition={this.state.toStationPosition}
+                  setJourneyDate={this.setJourneyDate}
+                  journeyDate={this.state.journeyDate}
+                  setClassID={this.setClassID}
+                  classID={this.state.classID}
+                  setNoOfPassengers={this.setNoOfPassengers}
+                  noOfPassengers={this.state.noOfPassengers}
+                  setSelectedTrainID={this.setSelectedTrainID}
+                  selectedTrainID={this.state.selectedTrainID}
+  
+                  selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
+                  setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
+                
+                  setClerkID={this.setClerkID}
+                  clerkID={this.state.clerkID}
+                />
+                }
 
-                selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
-                setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
+                {this.state.passengerMail != "" && 
+                  <Redirect to="/trainlist-user" />
+                }
+              </div>
               
-                setClerkID={this.setClerkID}
-                clerkID={this.state.clerkID}
-              />
             )}
           />
 
           <Route exact path='/trainlist-user'
             render={props => (
-              <TrainListUser {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-                setFromStationID={this.setFromStationID}
-                fromStationID={this.state.fromStationID}
-                setToStationID={this.setToStationID}
-                toStationID={this.state.toStationID}
-                setFromStationPosition={this.setFromStationPosition}
-                fromStationPosition={this.state.fromStationPosition}
-                setToStationPosition={this.setToStationPosition}
-                toStationPosition={this.state.toStationPosition}
-                setJourneyDate={this.setJourneyDate}
-                journeyDate={this.state.journeyDate}
-                setClassID={this.setClassID}
-                classID={this.state.classID}
-                setNoOfPassengers={this.setNoOfPassengers}
-                noOfPassengers={this.state.noOfPassengers}
-                setSelectedTrainID={this.setSelectedTrainID}
-                selectedTrainID={this.state.selectedTrainID}
+              <div>
+                {this.state.passengerMail != "" && 
+                  <TrainListUser {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                  setFromStationID={this.setFromStationID}
+                  fromStationID={this.state.fromStationID}
+                  setToStationID={this.setToStationID}
+                  toStationID={this.state.toStationID}
+                  setFromStationPosition={this.setFromStationPosition}
+                  fromStationPosition={this.state.fromStationPosition}
+                  setToStationPosition={this.setToStationPosition}
+                  toStationPosition={this.state.toStationPosition}
+                  setJourneyDate={this.setJourneyDate}
+                  journeyDate={this.state.journeyDate}
+                  setClassID={this.setClassID}
+                  classID={this.state.classID}
+                  setNoOfPassengers={this.setNoOfPassengers}
+                  noOfPassengers={this.state.noOfPassengers}
+                  setSelectedTrainID={this.setSelectedTrainID}
+                  selectedTrainID={this.state.selectedTrainID}
+  
+                  selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
+                  setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
+                
+                  setClerkID={this.setClerkID}
+                  clerkID={this.state.clerkID}
+                />
+                }
 
-                selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
-                setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
+                {this.state.passengerMail == "" && 
+                  <Redirect to="/trainlist" />
+                }
+              </div>
               
-                setClerkID={this.setClerkID}
-                clerkID={this.state.clerkID}
-              />
             )}
           />
 
           <Route exact path='/trainlist-clerk'
             render={props => (
-              <TrainListClerk {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-                setFromStationID={this.setFromStationID}
-                fromStationID={this.state.fromStationID}
-                setToStationID={this.setToStationID}
-                toStationID={this.state.toStationID}
-                setFromStationPosition={this.setFromStationPosition}
-                fromStationPosition={this.state.fromStationPosition}
-                setToStationPosition={this.setToStationPosition}
-                toStationPosition={this.state.toStationPosition}
-                setJourneyDate={this.setJourneyDate}
-                journeyDate={this.state.journeyDate}
-                setClassID={this.setClassID}
-                classID={this.state.classID}
-                setNoOfPassengers={this.setNoOfPassengers}
-                noOfPassengers={this.state.noOfPassengers}
-                setSelectedTrainID={this.setSelectedTrainID}
-                selectedTrainID={this.state.selectedTrainID}
+              <div>
+                {this.state.clerkID != 0 && 
+                  <TrainListClerk {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                  setFromStationID={this.setFromStationID}
+                  fromStationID={this.state.fromStationID}
+                  setToStationID={this.setToStationID}
+                  toStationID={this.state.toStationID}
+                  setFromStationPosition={this.setFromStationPosition}
+                  fromStationPosition={this.state.fromStationPosition}
+                  setToStationPosition={this.setToStationPosition}
+                  toStationPosition={this.state.toStationPosition}
+                  setJourneyDate={this.setJourneyDate}
+                  journeyDate={this.state.journeyDate}
+                  setClassID={this.setClassID}
+                  classID={this.state.classID}
+                  setNoOfPassengers={this.setNoOfPassengers}
+                  noOfPassengers={this.state.noOfPassengers}
+                  setSelectedTrainID={this.setSelectedTrainID}
+                  selectedTrainID={this.state.selectedTrainID}
+  
+                  selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
+                  setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
+  
+                  setClerkID={this.setClerkID}
+                  clerkID={this.state.clerkID}
+                />
+                }
 
-                selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
-                setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
-
-                setClerkID={this.setClerkID}
-                clerkID={this.state.clerkID}
-              />
+                {this.state.clerkID == 0 && 
+                  <Redirect to="/clerk-login" />
+                }
+              </div>
+              
             )}
           />
 
@@ -669,42 +839,51 @@ class App extends Component {
 
           <Route exact path='/traincoach-clerk'
             render={props => (
-              <TrainCoachClerk {...props}
-                history={this.props.history}
-                setPassengerMail={this.setPassengerMail}
-                passengerMail={this.state.passengerMail}
-                
-                setPassengerNid={this.setPassengerNid}
-                passengerNid={this.state.passengerNid}
-                
-                setFromStationID={this.setFromStationID}
-                fromStationID={this.state.fromStationID}
-                setToStationID={this.setToStationID}
-                toStationID={this.state.toStationID}
-                setFromStationPosition={this.setFromStationPosition}
-                fromStationPosition={this.state.fromStationPosition}
-                setToStationPosition={this.setToStationPosition}
-                toStationPosition={this.state.toStationPosition}
-                setJourneyDate={this.setJourneyDate}
-                journeyDate={this.state.journeyDate}
-                setClassID={this.setClassID}
-                classID={this.state.classID}
-                setNoOfPassengers={this.setNoOfPassengers}
-                noOfPassengers={this.state.noOfPassengers}
-                setSelectedTrainID={this.setSelectedTrainID}
-                selectedTrainID={this.state.selectedTrainID}
+              <div>
+                {this.state.clerkID != 0 && 
+                  <TrainCoachClerk {...props}
+                  history={this.props.history}
+                  setPassengerMail={this.setPassengerMail}
+                  passengerMail={this.state.passengerMail}
+                  
+                  setPassengerNid={this.setPassengerNid}
+                  passengerNid={this.state.passengerNid}
+                  
+                  setFromStationID={this.setFromStationID}
+                  fromStationID={this.state.fromStationID}
+                  setToStationID={this.setToStationID}
+                  toStationID={this.state.toStationID}
+                  setFromStationPosition={this.setFromStationPosition}
+                  fromStationPosition={this.state.fromStationPosition}
+                  setToStationPosition={this.setToStationPosition}
+                  toStationPosition={this.state.toStationPosition}
+                  setJourneyDate={this.setJourneyDate}
+                  journeyDate={this.state.journeyDate}
+                  setClassID={this.setClassID}
+                  classID={this.state.classID}
+                  setNoOfPassengers={this.setNoOfPassengers}
+                  noOfPassengers={this.state.noOfPassengers}
+                  setSelectedTrainID={this.setSelectedTrainID}
+                  selectedTrainID={this.state.selectedTrainID}
+  
+                  setSelectedCoachID={this.setSelectedCoachID}
+                  selectedCoachID={this.state.selectedCoachID}
+                  setSelectedSeats={this.setSelectedSeats}
+                  selectedSeats={this.state.selectedSeats}
+  
+                  selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
+                  setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
+  
+                  setClerkID={this.setClerkID}
+                  clerkID={this.state.clerkID}
+                />
+                }
 
-                setSelectedCoachID={this.setSelectedCoachID}
-                selectedCoachID={this.state.selectedCoachID}
-                setSelectedSeats={this.setSelectedSeats}
-                selectedSeats={this.state.selectedSeats}
-
-                selectedTrainIDFromPositionToPosition={this.state.selectedTrainIDFromPositionToPosition}
-                setSelectedTrainIDFromPositionToPosition={this.setSelectedTrainIDFromPositionToPosition}
-
-                setClerkID={this.setClerkID}
-                clerkID={this.state.clerkID}
-              />
+                {this.state.clerkID == 0 && 
+                  <Redirect to="/clerk-login" />
+                }
+              </div>
+              
             )}
           />
 

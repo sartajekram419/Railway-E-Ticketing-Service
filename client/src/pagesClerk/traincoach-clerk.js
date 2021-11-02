@@ -356,6 +356,7 @@ export class TrainCoachClerk extends Component {
                 objectList: objectList,
             })
             .then((res) => {
+                this.props.setPassengerMail("");
                 this.props.history.push({ pathname: '/clerk-home' });
             })
     };
