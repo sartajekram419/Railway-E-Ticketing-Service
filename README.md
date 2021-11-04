@@ -16,8 +16,18 @@ Railway-E-Ticketing-Service is a replica web application for railway system mana
 * Adham Arik Rahman- 180041219
 
 
-## Features:
-*
-*
-*
-*
+## Functionalities:
+### Admin:
+* can signin to the system
+* can add and delete station
+* can add and delete clerk
+* can add train and set the train path
+
+### Booking Clerk:
+* can signin to the system
+* can sell tickets based on availability
+
+### Passenger:
+* can signup and signin to the system
+* can verify ticket online
+* can buy ticket online based on availability
