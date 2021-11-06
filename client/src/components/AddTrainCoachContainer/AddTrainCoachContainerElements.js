@@ -17,10 +17,9 @@ export const Container = styled.div`
     border: 2px solid #a4b0af;
 
     flex-direction: column;
-    width: 60%;
+
     @media (max-width: 768px) {
         flex-direction: column;
-        width: 80%;
     }
 `;
 

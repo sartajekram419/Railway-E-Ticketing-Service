@@ -19,13 +19,7 @@ class AddTrainCoachContainer extends Component {
                 textAlign: "center",
             },
             style: {
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                padding: "0px 4% 0px 0px",
-                justifyContent: "space-between",
-                alignItems: "center",
-                width: "90%"
+                width: "70%"
             },
             styleInput: {
                 height: "40px",
@@ -80,7 +74,7 @@ class AddTrainCoachContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div style={this.state.style}>
             {this.state.isVisible && 
                 <Container>
                 <Heading>
