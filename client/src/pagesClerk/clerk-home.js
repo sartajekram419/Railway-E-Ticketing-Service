@@ -35,6 +35,9 @@ export default class HomeClerk extends Component {
                 <FindCardClerk
                     setPassengerMail={this.props.setPassengerMail} 
                     passengerMail={this.props.passengerMail}
+                    
+                    setPassengerNid={this.props.setPassengerNid}
+                    passengerNid={this.props.passengerNid}
                     setFromStationID={this.props.setFromStationID}
                     fromStationID={this.props.fromStationID}
                     setToStationID={this.props.setToStationID}

@@ -112,6 +112,14 @@ class FindCardClerk extends Component {
 
             this.props.setNoOfPassengers(parseInt(this.state.selectedNoOfPassengers));
 
+            Axios.post("http://localhost:3001/api/setPassengerNid", {
+            passengerMail: this.state.selectedPassengerMail,
+            })
+            .then((res) => {
+                this.props.setPassengerNid(res.data[0].NID);
+                
+            })
+
         })
 
         Axios.post("http://localhost:3001/api/getStationIDForFindCard", {

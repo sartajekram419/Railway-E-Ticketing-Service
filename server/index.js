@@ -447,7 +447,7 @@ app.post("/api/addNewTrain", (req, res) => {
 
 app.post("/api/addTicket", (req, res) => {
 
-    const issueTime = '2021-10-22 05:40:30'
+    const issueTime = '2021-11-07 11:15:30'
     const journeyTime = req.body.journeyTime
     const startPositon = req.body.startPositon
     const endPosition = req.body.endPosition
@@ -457,9 +457,11 @@ app.post("/api/addTicket", (req, res) => {
     const noOfSeats = req.body.noOfSeats
     const fare = req.body.fare
     const passengerID = req.body.passengerID
+    //console.log(passengerID);
 
     const sqlInsertPassenger = "INSERT INTO ticket (Issue_time, Journey_time, Start_position, End_position, Train_ID, Class_ID, Coach_ID, No_of_seats, Fare, Passenger_ID) VALUES (?,?,?,?,?,?,?,?,?,?)"
     db.query(sqlInsertPassenger, [issueTime, journeyTime, startPositon, endPosition, trainID, classID, coachID, noOfSeats, fare, passengerID], (err) => {
+        //console.log(err);
         if (err == null) {
 
             const sqlCommand = "SELECT Ticket_ID FROM ticket WHERE Issue_time=? AND Journey_time=? AND Start_position=? AND End_position=? AND Train_ID=? AND Class_ID=? AND Coach_ID=? AND No_of_seats=? AND Fare=? AND Passenger_ID=?"
@@ -592,6 +594,18 @@ app.post("/api/addTrainStation", (req, res) => {
             });
         });
 
+    });
+
+});
+
+app.post("/api/setPassengerNid", (req, res) => {
+
+    const passengerMail = req.body.passengerMail
+
+    const sqlSelectStation = "SELECT NID FROM passenger WHERE Email=?"
+    db.query(sqlSelectStation, [passengerMail], (err, result) => {
+        console.log(result);
+        return res.json(result);
     });
 
 });

@@ -134,6 +134,7 @@ export class TrainCoachClerk extends Component {
                 })
         }
 
+        //alert(this.props.passengerNid);
         // alert(this.props.selectedTrainID);
         // alert(this.props.fromStationPosition);
         // alert(this.props.toStationPosition);

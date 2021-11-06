@@ -599,6 +599,9 @@ class App extends Component {
                   noOfPassengers={this.state.noOfPassengers}
                   setSelectedTrainID={this.setSelectedTrainID}
                   selectedTrainID={this.state.selectedTrainID}
+
+                  setPassengerNid={this.setPassengerNid}
+                  passengerNid={this.state.passengerNid}
   
                   setClerkID={this.setClerkID}
                   clerkID={this.state.clerkID}
